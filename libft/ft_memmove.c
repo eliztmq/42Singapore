@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eteo <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 12:22:54 by eteo              #+#    #+#             */
-/*   Updated: 2023/09/08 12:31:11 by eteo             ###   ########.fr       */
+/*   Updated: 2023/09/08 23:52:35 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,30 @@
 void	*memmove(void *dest, const void *src, size_t n)
 {
 	unsigned char	*dst;
-	unsigned char	*buff;
-	const char	*sc;
-	size_t		i;
+	unsigned char	*sc;
+	char			dir;
+	size_t			i;
 
 	i = 0;
-	dst = dest;
-	sc = src;
+	dir = 1;
+	dst = (unsigned char *)dest;
+	sc = (unsigned char *)src;
+	if (!dest && !src)
+	{
+		return (NULL);
+	}
+	if (dst > sc)
+	{
+		dir = -1;
+		dst += n - 1;
+		sc += n - 1;
+	}
 	while (i < n)
+	{
+		*dst = *sc;
+		dst += dir;
+		sc += dir;
+		i++;
+	}
+	return (dest);
 }
