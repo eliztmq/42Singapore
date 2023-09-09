@@ -6,13 +6,13 @@
 /*   By: eteo <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:47:49 by eteo              #+#    #+#             */
-/*   Updated: 2023/09/08 11:04:48 by eteo             ###   ########.fr       */
+/*   Updated: 2023/09/09 14:33:28 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*memset(void *s, int c, size_t n)
+void	*ft_memset(void *s, int c, size_t n)
 {
 	size_t			cnt;
 	unsigned char	*str;

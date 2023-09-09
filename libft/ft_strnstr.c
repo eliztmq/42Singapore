@@ -1,30 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eteo <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/07 14:09:32 by eteo              #+#    #+#             */
-/*   Updated: 2023/09/09 14:33:00 by eteo             ###   ########.fr       */
+/*   Created: 2023/09/09 16:56:14 by eteo              #+#    #+#             */
+/*   Updated: 2023/09/09 17:35:44 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	if (len == 0)
+		return (NULL);
+	while (haystack[i] != '\0' && i < len)
 	{
-		return (1);
+		j = 0;
+		while (haystack[i + j] == needle[j] && i + j < len)
+			j++;
+		if (needle[j] == '\0')
+			return ((char *)&haystack[i]);
+		i++;
 	}
-	return (0);
+	return (NULL);
 }
 /*
 int	main(void)
 {
-	int	c = 32;
-
-	printf("%d", isalpha(c));
+	char	str1[50] = "Just checking";
+	char	str2[50] = "check";
+	printf("%s", ft_strnstr(str1, str2, 40));
 }
 */

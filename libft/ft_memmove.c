@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 12:22:54 by eteo              #+#    #+#             */
-/*   Updated: 2023/09/08 23:55:36 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/09/09 12:13:44 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	dst = (unsigned char *)dest;
 	sc = (unsigned char *)src;
 	if (!dest && !src)
-	{
 		return (NULL);
-	}
 	if (dst > sc)
 	{
 		dir = -1;

@@ -1,30 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eteo <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/07 14:09:32 by eteo              #+#    #+#             */
-/*   Updated: 2023/09/09 14:33:00 by eteo             ###   ########.fr       */
+/*   Created: 2023/09/09 14:46:47 by eteo              #+#    #+#             */
+/*   Updated: 2023/09/09 16:08:06 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+char	*ft_strrchr(const char *str, int c)
 {
-	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+	size_t	cnt;
+
+	cnt = ft_strlen(str);
+	str += cnt;
+	while (cnt >= 0)
 	{
-		return (1);
+		if (*str == (char)c)
+			return ((char *)str);
+		cnt--;
+		str--;
 	}
-	return (0);
+	return (NULL);
 }
 /*
+#include<bsd/string.h>
 int	main(void)
 {
-	int	c = 32;
-
-	printf("%d", isalpha(c));
+	char	str[50] = "Just checking";
+	printf("%p", ft_strrchr(str, 99));
+	printf("%p", strrchr(str, 99));
 }
 */
