@@ -6,7 +6,7 @@
 /*   By: eteo <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:41:11 by eteo              #+#    #+#             */
-/*   Updated: 2023/09/09 16:55:31 by eteo             ###   ########.fr       */
+/*   Updated: 2023/09/12 16:27:48 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	while (i < n)
 	{
 		if (str1[i] != str2[i])
-			return ((int)(str1 - str2));
+			return (str1[i] - str2[i]);
 		i++;
 	}
 	return (0);

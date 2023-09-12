@@ -6,34 +6,11 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 23:52:44 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/09/11 19:26:54 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/09/12 15:08:32 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-int	ifspace(const char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] == ' ')
-			i++;
-		if (str[i] == '\t')
-			i++;
-		if (str[i] == '\n')
-			i++;
-		if (str[i] == '\v')
-			i++;
-		if (str[i] == '\f')
-			i++;
-		if (str[i] == '\r')
-			i++;
-	}
-	return (i);
-}
 
 int	ft_atoi(const char *str)
 {
@@ -43,7 +20,9 @@ int	ft_atoi(const char *str)
 
 	sign = 1;
 	result = 0;
-	i = ifspace(str);
+	i = 0;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
 	if (str[i] == '+' || str[i] == '-')
 	{
 		if (str[i] == '-')

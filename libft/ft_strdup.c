@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 20:27:33 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/09/11 23:44:59 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/09/12 16:29:59 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ char	*ft_strdup(const char *s1)
 		pt[i] = s1[i];
 		i++;
 	}
+	pt[i] = '\0';
 	return (pt);
 }

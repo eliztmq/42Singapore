@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 14:46:47 by eteo              #+#    #+#             */
-/*   Updated: 2023/09/12 11:13:40 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/09/12 15:31:40 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 
 char	*ft_strrchr(const char *str, int c)
 {
-	size_t	cnt;
+	int	cnt;
 
-	cnt = ft_strlen(str);
-	str += cnt + 1;
-	while ((cnt + 1) >= 0)
+	cnt = ft_strlen(str) + 1;
+	while (cnt >= 0)
 	{
 		if (str[cnt] == (char)c)
-			return ((char *)(str + cnt + 1));
+			return ((char *)(str + cnt));
 		cnt--;
 	}
 	return (NULL);
