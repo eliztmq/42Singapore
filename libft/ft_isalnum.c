@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eteo <eteo@student.42singapore.sg>         +#+  +:+       +#+        */
+/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:05:39 by eteo              #+#    #+#             */
-/*   Updated: 2023/09/08 12:08:13 by eteo             ###   ########.fr       */
+/*   Updated: 2023/09/11 19:26:10 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ int	ft_isalnum(int c)
 {
 	if ((c >= 'A' && c <= 'Z') || 
 		(c >= 'a' && c <= 'z') || (c >= '0' && c <= '9'))
-	{
-		return (1);
-	}
+			return (1);
 	return (0);
 }
 /*

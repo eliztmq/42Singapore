@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 23:52:44 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/09/10 21:06:37 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/09/11 19:26:54 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,21 @@
 int	ifspace(const char *str)
 {
 	int	i;
-	
+
 	i = 0;
 	while (str[i] != '\0')
 	{
-		if (str[i] == " ")
+		if (str[i] == ' ')
 			i++;
-		if (str[i] == "\t")
+		if (str[i] == '\t')
 			i++;
-		if (str[i] == "\n")
+		if (str[i] == '\n')
 			i++;
-		if (str[i] == "\v")
+		if (str[i] == '\v')
 			i++;
-		if (str[i] == "\f")
+		if (str[i] == '\f')
 			i++;
-		if (str[i] == "\r")
+		if (str[i] == '\r')
 			i++;
 	}
 	return (i);
@@ -38,9 +38,9 @@ int	ifspace(const char *str)
 int	ft_atoi(const char *str)
 {
 	int					i;
-    int					sign;
-    unsigned long int	result;
-	
+	int					sign;
+	unsigned long int	result;
+
 	sign = 1;
 	result = 0;
 	i = ifspace(str);
@@ -48,7 +48,7 @@ int	ft_atoi(const char *str)
 	{
 		if (str[i] == '-')
 			sign *= -1;
-		i++;    
+		i++;
 	}
 	while (ft_isdigit(str[i]))
 	{

@@ -6,13 +6,13 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 20:57:23 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/09/10 21:13:55 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/09/11 23:44:57 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin (char const *s1, char const *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*jstr;
 	size_t	s1len;

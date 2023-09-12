@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eteo <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 12:26:04 by eteo              #+#    #+#             */
-/*   Updated: 2023/09/09 16:01:45 by eteo             ###   ########.fr       */
+/*   Updated: 2023/09/11 21:29:43 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 		i++;
 	}
 	dest[dcnt] = '\0';
-	return (dcnt);
+	return (ft_strlen(dest) + ft_strlen(&src[i]));
 }
 /*
 #include <bsd/string.h>

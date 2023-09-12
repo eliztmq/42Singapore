@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eteo <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 14:34:50 by eteo              #+#    #+#             */
-/*   Updated: 2023/09/09 14:45:33 by eteo             ###   ########.fr       */
+/*   Updated: 2023/09/11 22:15:40 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 char	*ft_strchr(const char *str, int c)
 {
-	while (*str)
+	if ((char)c == '\0')
+		return ((char *)str + ft_strlen(str));
+	while ((*str))
 	{
 		if (*str == (char)c)
 			return ((char *)str);

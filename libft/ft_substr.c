@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 20:32:25 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/09/10 21:07:46 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/09/11 23:45:07 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*substr;
-	size_t	i;
 	size_t	strlen;
-	
-	i = 0;
+
 	strlen = ft_strlen(s);
 	if (!s || start > strlen)
 		return (NULL);
