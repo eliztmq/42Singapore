@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/07 16:05:39 by eteo              #+#    #+#             */
-/*   Updated: 2023/09/13 18:40:52 by elizabethte      ###   ########.fr       */
+/*   Created: 2023/09/13 15:05:31 by elizabethte       #+#    #+#             */
+/*   Updated: 2023/09/13 15:41:46 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalnum(int c)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	if ((c >= 'A' && c <= 'Z') || 
-		(c >= 'a' && c <= 'z') || (c >= '0' && c <= '9'))
-		return (1);
-	return (0);
+	char			*mods;
+	int				strlen;
+	unsigned int	i;
+
+	strlen = ft_strlen(s);
+	i = 0;
+	mods = (char *)malloc(sizeof(char) * (strlen + 1));
+	if (!mods)
+		return (NULL);
+	while (s[i])
+	{
+		mods[i] = f(i, s[i]);
+		i++;
+	}
+	mods[i] = '\0';
+	return (mods);
 }
-/*
-int	main(void)
-{
-	int	c = 67;
-	printf("%d", ft_isalnum(c));
-}
-*/

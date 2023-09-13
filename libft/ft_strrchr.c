@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 14:46:47 by eteo              #+#    #+#             */
-/*   Updated: 2023/09/12 15:31:40 by eteo             ###   ########.fr       */
+/*   Updated: 2023/09/13 17:07:38 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_strrchr(const char *str, int c)
 {
 	int	cnt;
 
-	cnt = ft_strlen(str) + 1;
+	cnt = ft_strlen(str);
 	while (cnt >= 0)
 	{
 		if (str[cnt] == (char)c)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eteo <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:56:14 by eteo              #+#    #+#             */
-/*   Updated: 2023/09/09 17:35:44 by eteo             ###   ########.fr       */
+/*   Updated: 2023/09/13 18:37:55 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,19 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	size_t	j;
 
 	i = 0;
-	if (len == 0)
+	if (!len && !haystack)
 		return (NULL);
-	while (haystack[i] != '\0' && i < len)
+	if (!needle || needle == haystack)
+		return ((char *)haystack);
+	while (haystack[i] != '\0')
 	{
 		j = 0;
-		while (haystack[i + j] == needle[j] && i + j < len)
+		while (haystack[i + j] != '\0' && needle[j] != '\0' && (i + j) < len)
+		{
+			if (haystack[i + j] != needle[j])
+				break ;
 			j++;
+		}
 		if (needle[j] == '\0')
 			return ((char *)&haystack[i]);
 		i++;

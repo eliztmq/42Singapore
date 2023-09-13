@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eteo <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:22:50 by eteo              #+#    #+#             */
-/*   Updated: 2023/09/12 15:46:49 by eteo             ###   ########.fr       */
+/*   Updated: 2023/09/13 17:12:44 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 
 	i = 0;
 	chk = (unsigned char *)s;
-	while (i < n && chk[i])
+	while (i < n)
 	{
 		if (chk[i] == (unsigned char)c)
 			return (&chk[i]);

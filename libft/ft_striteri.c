@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/07 16:05:39 by eteo              #+#    #+#             */
-/*   Updated: 2023/09/13 18:40:52 by elizabethte      ###   ########.fr       */
+/*   Created: 2023/09/13 15:42:19 by elizabethte       #+#    #+#             */
+/*   Updated: 2023/09/13 18:41:20 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalnum(int c)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	if ((c >= 'A' && c <= 'Z') || 
-		(c >= 'a' && c <= 'z') || (c >= '0' && c <= '9'))
-		return (1);
-	return (0);
+	int	i;
+	
+	i = 0;
+	if (!s)
+		return ;
+	while (s[i])
+	{
+		(*f)(i, &s[i]);
+		i++;
+	}
+	s[i] = '\0';
 }
-/*
-int	main(void)
-{
-	int	c = 67;
-	printf("%d", ft_isalnum(c));
-}
-*/
