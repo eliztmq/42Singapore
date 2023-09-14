@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:31:26 by eteo              #+#    #+#             */
-/*   Updated: 2023/09/13 19:01:12 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/09/14 16:53:17 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,8 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
+t_list		*ft_lstnew(void *content);
+t_list		*ft_lstlast(t_list *lst);
+void		ft_lstadd_front(t_list **lst, t_list *new);
+int			ft_lstsize(t_list *lst);
 #endif
