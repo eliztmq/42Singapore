@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 22:44:05 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/09/14 23:35:49 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/09/15 18:12:08 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 	t_list	*dlst;
 	t_list	*tmp;
 
-	if(!lst)
+	if (!lst)
 		return ;
 	dlst = *lst;
-	while(dlst)
+	while (dlst)
 	{
 		tmp = dlst -> next;
 		ft_lstdelone(dlst, del);

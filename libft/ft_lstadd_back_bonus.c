@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:00:50 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/09/14 18:05:24 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/09/15 18:09:13 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	if (!list || !new)
+	if (!lst || !new)
 		return ;
-	if(*lst)
+	if (*lst)
 		ft_lstlast(*lst)->next = new;
 	else
 		*lst = new;
