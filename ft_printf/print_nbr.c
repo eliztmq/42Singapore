@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   print_nbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/21 17:17:04 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/09/24 21:12:05 by elizabethte      ###   ########.fr       */
+/*   Created: 2023/09/24 17:57:21 by elizabethte       #+#    #+#             */
+/*   Updated: 2023/09/24 21:11:41 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <stdarg.h>
-# include <stdlib.h>
-# include <unistd.h>
+#include "ft_printf.h"
 
-int	strchk(const char *str, char c);
-int	ft_asgn(const char c, va_list *args);
-int	ft_printf(const char *str, ...);
-int	ft_putchar(int c);
-int	ft_putstr(char *str);
-int	ft_putint(long n);
-int	ft_putptr(unsigned long n);
-int	ft_puthex(unsigned long n, const char *str);
+int	ft_putint(long n)
+{
+	int		count;
+	long	nb;
 
-#endif
+	nb = n;
+	count = 0;
+	if (nb < 0)
+	{
+		count += ft_putchar('-');
+		nb *= -1;
+	}
+	if (n > 9)
+	{
+		ft_putint(nb / 10);
+		ft_putint(nb % 10);
+	}
+	else
+		count += ft_putchar(nb + '0');
+	return (count);
+}

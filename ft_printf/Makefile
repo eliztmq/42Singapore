@@ -6,7 +6,7 @@
 #    By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/21 17:20:18 by elizabethte       #+#    #+#              #
-#    Updated: 2023/09/21 17:21:32 by elizabethte      ###   ########.fr        #
+#    Updated: 2023/09/24 21:03:16 by elizabethte      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra
 
-SRC = ft_printf.c
+SRC = ft_printf.c print_hex.c print_nbr.c print_str.c \
 
 OFILES = $(SRC:.c=.o)
 

@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   print_hex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/21 17:17:04 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/09/24 21:12:05 by elizabethte      ###   ########.fr       */
+/*   Created: 2023/09/24 18:07:25 by elizabethte       #+#    #+#             */
+/*   Updated: 2023/09/24 21:13:19 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <stdarg.h>
-# include <stdlib.h>
-# include <unistd.h>
+#include "ft_printf.h"
 
-int	strchk(const char *str, char c);
-int	ft_asgn(const char c, va_list *args);
-int	ft_printf(const char *str, ...);
-int	ft_putchar(int c);
-int	ft_putstr(char *str);
-int	ft_putint(long n);
-int	ft_putptr(unsigned long n);
-int	ft_puthex(unsigned long n, const char *str);
+int	ft_putptr(uintptr_t n)
+{
+	int	count;
 
-#endif
+	count = 0;
+	count += ft_putstr("0x");
+	count += ft_puthex(n, "0123456789abcdef");
+	return (count);
+}
+
+int	ft_puthex(unsigned long n, const char *str)
+{
+	int	count;
+
+	count = 0;
+	if (n > 15)
+	{
+		count += ft_puthex(n / 16, str);
+		count += ft_puthex(n % 16, str);
+	}
+	count += ft_putchar(str[n]);
+	return (count);
+}

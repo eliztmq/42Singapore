@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   print_str.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/21 17:17:04 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/09/24 21:12:05 by elizabethte      ###   ########.fr       */
+/*   Created: 2023/09/24 20:24:08 by elizabethte       #+#    #+#             */
+/*   Updated: 2023/09/24 21:14:20 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <stdarg.h>
-# include <stdlib.h>
-# include <unistd.h>
+#include "ft_printf.h"
 
-int	strchk(const char *str, char c);
-int	ft_asgn(const char c, va_list *args);
-int	ft_printf(const char *str, ...);
-int	ft_putchar(int c);
-int	ft_putstr(char *str);
-int	ft_putint(long n);
-int	ft_putptr(unsigned long n);
-int	ft_puthex(unsigned long n, const char *str);
+int	ft_putchar(int c)
+{
+	write(1, &c, 1);
+	return (1);
+}
 
-#endif
+int	ft_putstr(char *str)
+{
+	int	count;
+
+	count = 0;
+	if (!str)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
+	while (*str)
+	{
+		count += ft_putchar(*str);
+		str++;
+	}
+	return (count);
+}
