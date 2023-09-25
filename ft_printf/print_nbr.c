@@ -6,30 +6,27 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 17:57:21 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/09/24 21:11:41 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/09/25 23:57:55 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putint(long n)
+void	ft_putint(long n, int *count)
 {
-	int		count;
 	long	nb;
 
 	nb = n;
-	count = 0;
 	if (nb < 0)
 	{
-		count += ft_putchar('-');
+		*count += ft_putchar('-');
 		nb *= -1;
 	}
 	if (n > 9)
 	{
-		ft_putint(nb / 10);
-		ft_putint(nb % 10);
+		ft_putint(nb / 10, count);
+		ft_putint(nb % 10, count);
 	}
 	else
-		count += ft_putchar(nb + '0');
-	return (count);
+		*count += ft_putchar(nb + '0');
 }

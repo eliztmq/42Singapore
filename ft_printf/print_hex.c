@@ -6,32 +6,28 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 18:07:25 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/09/24 21:13:19 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/09/25 23:56:54 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putptr(uintptr_t n)
+void	ft_putptr(uintptr_t n, int *count)
 {
-	int	count;
-
-	count = 0;
-	count += ft_putstr("0x");
-	count += ft_puthex(n, "0123456789abcdef");
-	return (count);
+	*count += write(1, "0x", 2);
+	if (n == 0)
+		*count += ft_putchar('0');
+	else
+		ft_puthex(n, "0123456789abcdef", count);
 }
 
-int	ft_puthex(unsigned long n, const char *str)
+void	ft_puthex(unsigned long n, const char *str, int *count)
 {
-	int	count;
-
-	count = 0;
 	if (n > 15)
 	{
-		count += ft_puthex(n / 16, str);
-		count += ft_puthex(n % 16, str);
+		ft_puthex(n / 16, str, count);
+		ft_puthex(n % 16, str, count);
 	}
-	count += ft_putchar(str[n]);
-	return (count);
+	else
+		*count += ft_putchar(str[n]);
 }
