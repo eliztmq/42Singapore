@@ -15,7 +15,7 @@ CASE SCENARIOS:
 FUNCTIONS IN UTILS:
 1. ft_modsplit (modified -> will output the first part of the string, then calloc and static char the rest)
 2. ft_join
-3. ft_strzero (convert all to zeros)
+3. ft_bzero (convert all to zeros)
 4. ft_strlcpy
 
 char *get_next_line(int fd)
@@ -49,6 +49,8 @@ char *ft_read(int fd)
 	char *buf
 
 	buf  = calloc (buffer size * (sizeof(char) + 1))
+	if (!buf)
+		return (NULL)
 	byteread = read(fd, buf, buffer size)
 	if (byteread <= 0) // shows there is nothing else to read
 	{
@@ -63,8 +65,9 @@ char *ft_cases(int fd, static char *str, char *buf)
 	char *output
 	char *holding
 
+
 	temp = ft_join(buf, str);
-	ft_zero(str);
+	ft_bzero(str);
 	if (checkstr(temp))
 	{
 		output = ft_split(temp, str) (allocates the leftover to str)
