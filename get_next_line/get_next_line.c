@@ -6,11 +6,11 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:27:42 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/10/10 23:34:40 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/10/12 00:37:07 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "get_next_line.h"
+#include "get_next_line.h"
 
 int	checkstr(char *str)
 {
@@ -40,25 +40,24 @@ char	*ft_read(int fd)
 	return (buf);
 }
 
-char	*ft_cases(int fd, char *str, char *buf)
+char	*ft_cases(int fd, char *str, char *buf) //this could be the issue since i never checked str and buf? need to double check
 {
-	char	*temp;
 	char	*output;
 	char	*holding;
 
-	temp = ft_join(buf, str);
+	output = ft_join(buf, str);
 	ft_bzero(str, BUFFER_SIZE + 1);
-	if (checkstr(temp))
-		output = ft_modsplit(temp, str);
+	if (checkstr(output))
+		ft_modsplit(output, str);
 	else
 	{
 		holding = ft_read(fd);
 		if (!*holding)
-			return (temp);
+			return (output);
 		else
 		{
 			ft_strlcpy(str, holding, BUFFER_SIZE + 1);
-			ft_cases(fd, str, temp);
+			ft_cases(fd, str, output);
 		}
 	}
 	return (output);
@@ -74,9 +73,12 @@ char	*get_next_line(int fd)
 		return (NULL);
 	if (checkstr(str))
 	{
-		ft_strlcpy(holding, str, BUFFER_SIZE + 1);
+		readstr = (char *)malloc(BUFFER_SIZE + 1 * sizeof(char));
+		if (readstr == NULL)
+			return (NULL);
+		ft_strlcpy(readstr, str, BUFFER_SIZE + 1);
 		ft_bzero(str, BUFFER_SIZE + 1);
-		readstr = ft_modsplit(holding, str);
+		ft_modsplit(readstr, str);
 	}
 	else
 	{

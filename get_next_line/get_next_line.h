@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:25:35 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/10/09 23:32:00 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/10/11 23:46:10 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,17 @@
 # include <unistd.h>
 # include <fcntl.h>
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 80
-#endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 80
+# endif
+
+int		checkstr(char *str);
+char	*ft_read(int fd);
+char	*ft_cases(int fd, char *str, char *buf);
+char	*get_next_line(int fd);
+char	*ft_join(char *s1, char *s2);
+void	ft_bzero(void *s, size_t n);
+void	ft_modsplit(char *temp, char *str);
+size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 
 #endif

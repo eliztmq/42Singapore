@@ -6,11 +6,11 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:29:33 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/10/10 23:43:22 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/10/12 00:08:02 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "get_next_line.h"
+#include "get_next_line.h"
 
 void	ft_bzero(void *s, size_t n)
 {
@@ -26,7 +26,7 @@ void	ft_bzero(void *s, size_t n)
 	}
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_join(char *s1, char *s2)
 {
 	char	*jstr;
 	int		s1len;
@@ -57,6 +57,7 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 	size_t	cnt;
 	int		i;
 
+	i = 0;
 	cnt = 0;
 	while (src[i])
 		i++;
@@ -72,3 +73,26 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 	return (i);
 }
 
+void	ft_modsplit(char *srcstr, char *str)
+{
+	int		i;
+	int		cnt;
+	void	*temp;
+
+	i = 0;
+	cnt = 0;
+	while (srcstr[i++] && srcstr[i] != '\n')
+		continue ;
+	i += 2;
+	while (srcstr[i + cnt])
+	{
+		str[cnt] = srcstr[i + cnt];
+		if (cnt != 0)
+			free(&srcstr[i + cnt]);
+		cnt++;
+	}
+	srcstr[i] = '\0';
+	temp = realloc(srcstr, i + 1);
+	if (temp == NULL)
+		return (NULL);
+}
