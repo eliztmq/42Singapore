@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:29:33 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/10/12 10:47:07 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/10/12 15:33:24 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,18 +81,16 @@ void	ft_modsplit(char *srcstr, char *str)
 
 	i = 0;
 	cnt = 0;
-	while (srcstr[i++] && srcstr[i] != '\n')
-		continue ;
+	while (srcstr && srcstr[i] != '\n')
+		i++;
 	i += 2;
 	while (srcstr[i + cnt])
 	{
 		str[cnt] = srcstr[i + cnt];
-		if (cnt != 0)
-			free(&srcstr[i + cnt]);
 		cnt++;
 	}
 	srcstr[i] = '\0';
 	temp = realloc(srcstr, i + 1);
 	if (temp == NULL)
-		return ;
+		free(srcstr);
 }

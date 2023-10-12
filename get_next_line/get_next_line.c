@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:27:42 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/10/12 10:47:05 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/10/12 15:20:47 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ char	*ft_read(int fd)
 	ssize_t	byteread;
 	char	*buf;
 
-	buf = (char *)calloc(BUFFER_SIZE + 1, sizeof(char));
+	buf = (char *)malloc(BUFFER_SIZE + 1 * sizeof(char));
 	if (!buf)
 		return (NULL);
 	byteread = read(fd, buf, BUFFER_SIZE);
-	if (byteread < 0)
+	if (byteread <= 0)
 	{
 		free(buf);
 		return (NULL);
@@ -52,13 +52,15 @@ char	*ft_cases(int fd, char *str, char *buf)
 	else
 	{
 		holding = ft_read(fd);
+		if (holding == NULL)
+			return (NULL);
 		if (!*holding)
 			return (output);
 		else
 		{
 			ft_strlcpy(str, holding, BUFFER_SIZE + 1);
 			free(holding);
-			ft_cases(fd, str, output);
+			output = ft_cases(fd, str, output);
 		}
 	}
 	return (output);
@@ -93,4 +95,37 @@ char	*get_next_line(int fd)
 			readstr = ft_cases(fd, str, holding);
 	}
 	return (readstr);
+}
+
+#include <stdio.h>
+
+int main(void) {
+    int fd;            // File descriptor for the text file
+    char *line;        // Pointer to store the line read
+    int line_count = 0;
+
+    // Open the text file for reading (replace "your_file.txt" with the actual file path)
+    fd = open("file.txt", O_RDONLY);
+
+    if (fd < 0) {
+        perror("Failed to open the file");
+        return 1;
+    }
+
+    // Repeatedly call get_next_line until the end of the file is reached
+    while (1) {
+        line = get_next_line(fd);
+        if (line) {
+            printf("Line %d: %s\n", ++line_count, line);
+            free(line); // Free the memory allocated by get_next_line
+        } else {
+            printf("End of file reached.\n");
+            break;
+        }
+    }
+
+    // Close the file descriptor
+    close(fd);
+
+    return 0;
 }
