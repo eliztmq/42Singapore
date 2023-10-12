@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:27:42 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/10/12 00:37:07 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/10/12 10:47:05 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*ft_read(int fd)
 	return (buf);
 }
 
-char	*ft_cases(int fd, char *str, char *buf) //this could be the issue since i never checked str and buf? need to double check
+char	*ft_cases(int fd, char *str, char *buf)
 {
 	char	*output;
 	char	*holding;
@@ -57,6 +57,7 @@ char	*ft_cases(int fd, char *str, char *buf) //this could be the issue since i n
 		else
 		{
 			ft_strlcpy(str, holding, BUFFER_SIZE + 1);
+			free(holding);
 			ft_cases(fd, str, output);
 		}
 	}
@@ -84,7 +85,10 @@ char	*get_next_line(int fd)
 	{
 		holding = ft_read(fd);
 		if (!*holding)
+		{
+			free(holding);
 			return (str);
+		}
 		else
 			readstr = ft_cases(fd, str, holding);
 	}

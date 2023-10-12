@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:29:33 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/10/12 00:08:02 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/10/12 10:47:07 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,5 @@ void	ft_modsplit(char *srcstr, char *str)
 	srcstr[i] = '\0';
 	temp = realloc(srcstr, i + 1);
 	if (temp == NULL)
-		return (NULL);
+		return ;
 }
