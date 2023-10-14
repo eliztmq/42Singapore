@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:29:33 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/10/12 15:33:24 by eteo             ###   ########.fr       */
+/*   Updated: 2023/10/14 21:27:39 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,16 @@ char	*ft_join(char *s1, char *s2)
 	cnt = 0;
 	while (s1 && s1[s1len])
 		s1len++;
-	while (s2 && s2[s2len])
+	while (s2 && s2[s2len] && s2len < BUFFER_SIZE + 1)
 		s2len++;
-	jstr = (char *)malloc(sizeof(char) * (s1len + s2len + 1));
-	if (jstr == NULL || !s1 || !s2)
+	jstr = (char *)calloc((s1len + s2len + 1), sizeof(char));
+	if (jstr == NULL)
 		return (NULL);
-	while (cnt < s1len && cnt++)
-		jstr[cnt] = s1[cnt];
+	while (cnt < s1len && ++cnt)
+		jstr[cnt - 1] = s1[cnt - 1];
 	s1len = 0;
-	while (cnt + s1len < cnt + s2len && s1len++)
-		jstr[cnt + s1len] = s2[s1len];
+	while (cnt + s1len < cnt + s2len && ++s1len)
+		jstr[cnt + s1len - 1] = s2[s1len - 1];
 	jstr[cnt + s1len] = '\0';
 	return (jstr);
 }
@@ -81,16 +81,21 @@ void	ft_modsplit(char *srcstr, char *str)
 
 	i = 0;
 	cnt = 0;
-	while (srcstr && srcstr[i] != '\n')
+	while (srcstr && srcstr[i] && srcstr[i] != '\n')
 		i++;
-	i += 2;
+	i++;
 	while (srcstr[i + cnt])
 	{
 		str[cnt] = srcstr[i + cnt];
 		cnt++;
 	}
 	srcstr[i] = '\0';
-	temp = realloc(srcstr, i + 1);
+	temp = realloc(srcstr, i);
 	if (temp == NULL)
+	{
 		free(srcstr);
+		srcstr = NULL;
+	}
+	else
+		srcstr = temp;
 }
