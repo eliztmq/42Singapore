@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 16:25:35 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/10/15 15:56:09 by elizabethte      ###   ########.fr       */
+/*   Created: 2023/10/15 22:23:49 by elizabethte       #+#    #+#             */
+/*   Updated: 2023/10/15 22:30:10 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ char	*ft_join(char *s1, char *s2);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*check_str(char *str);
 void	ft_bzero(void *s, size_t n);
-void	ft_modsplit(char *temp, char *str);
+void	ft_modsplit(char **str, char c);
 
 #endif
