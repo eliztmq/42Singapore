@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:27:42 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/10/14 21:22:03 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/10/15 16:55:12 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,30 @@ int	checkstr(char *str)
 	return (0);
 }
 
-char	*ft_read(int fd)
+char	*ft_read(int fd, char *str)
 {
 	ssize_t	byteread;
+	char	*hold;
 	char	*buf;
+	char	*output;
 
 	buf = (char *)calloc(BUFFER_SIZE + 1, sizeof(char));
 	if (!buf)
 		return (NULL);
+	hold = ft_substr(str, 0, BUFFER_SIZE + 1);
 	byteread = read(fd, buf, BUFFER_SIZE);
-	if (byteread <= 0 || !buf)
+	if (byteread <= 0)
 	{
 		free(buf);
+		free(hold);
 		return (NULL);
 	}
-	return (buf);
+	buf[byteread] = '\0';
+	output = ft_join(hold, buf);
+	free(buf);
+	free(hold);
+	ft_bzero(str, BUFFER_SIZE + 1);
+	return (output);
 }
 
 char	*ft_cases(int fd, char *str, char *buf)
@@ -45,26 +54,23 @@ char	*ft_cases(int fd, char *str, char *buf)
 	char	*output;
 	char	*holding;
 
-	output = ft_join(buf, str);
-	ft_bzero(str, BUFFER_SIZE + 1);
-	if (checkstr(output))
-		ft_modsplit(output, str);
+	if (checkstr(buf))
+	{
+		ft_modsplit(buf, str);
+		return (buf);
+	}
 	else
 	{
-		holding = ft_read(fd);
+		holding = ft_read(fd, str);
 		if (holding == NULL)
-			return (output);
+			return (buf);
 		if (!*holding)
 		{
 			free (holding);
-			return (output);
+			return (buf);
 		}
 		else
-		{
-			ft_strlcpy(str, holding, BUFFER_SIZE + 1);
-			free(holding);
-			output = ft_cases(fd, str, output);
-		}
+			output = ft_cases(fd, str, holding);
 	}
 	return (output);
 }
@@ -73,10 +79,7 @@ char	*check_str(char *str)
 {
 	char	*readstr;
 
-	readstr = (char *)calloc(BUFFER_SIZE + 1, sizeof(char));
-	if (readstr == NULL)
-		return (NULL);
-	ft_strlcpy(readstr, str, BUFFER_SIZE + 1);
+	readstr = ft_substr(str, 0, BUFFER_SIZE + 1);
 	ft_bzero(str, BUFFER_SIZE + 1);
 	ft_modsplit(readstr, str);
 	return (readstr);
@@ -94,7 +97,7 @@ char	*get_next_line(int fd)
 		readstr = check_str(str);
 	else
 	{
-		holding = ft_read(fd);
+		holding = ft_read(fd, str);
 		if (!holding)
 			return (NULL);
 		if (!*holding)
@@ -103,10 +106,7 @@ char	*get_next_line(int fd)
 			return (str);
 		}
 		else
-		{
 			readstr = ft_cases(fd, str, holding);
-			free(holding);
-		}
 	}
 	return (readstr);
 }

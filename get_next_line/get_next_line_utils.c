@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:29:33 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/10/14 21:27:39 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/10/15 21:51:34 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,32 +52,28 @@ char	*ft_join(char *s1, char *s2)
 	return (jstr);
 }
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	cnt;
-	int		i;
+	char	*output;
+	size_t	i;
 
+	output = calloc((len + 1), sizeof(char));
+	if (!output)
+		return (NULL);
 	i = 0;
-	cnt = 0;
-	while (src[i])
-		i++;
-	if (size != 0)
+	while (i < len && s[start + i] != '\0')
 	{
-		while (src[cnt] != '\0' && cnt < (size - 1))
-		{
-			dest[cnt] = src[cnt];
-			cnt++;
-		}
-		dest[cnt] = '\0';
+		output[i] = s[start + i];
+		i++;
 	}
-	return (i);
+	output[i] = '\0';
+	return (output);
 }
 
 void	ft_modsplit(char *srcstr, char *str)
 {
 	int		i;
 	int		cnt;
-	void	*temp;
 
 	i = 0;
 	cnt = 0;
@@ -90,12 +86,4 @@ void	ft_modsplit(char *srcstr, char *str)
 		cnt++;
 	}
 	srcstr[i] = '\0';
-	temp = realloc(srcstr, i);
-	if (temp == NULL)
-	{
-		free(srcstr);
-		srcstr = NULL;
-	}
-	else
-		srcstr = temp;
 }
