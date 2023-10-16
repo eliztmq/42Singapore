@@ -6,23 +6,22 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:27:42 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/10/16 22:47:36 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/10/16 23:15:20 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_read(int fd, char *str)
+char	*ft_read(int fd, char *output)
 {
 	ssize_t	byteread;
 	char	*buf;
-	char	*output;
+	char	*tmp;
 
 	buf = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	if (!buf)
 		return (NULL);
 	byteread = 1;
-	output = ft_substr(str, 0, BUFFER_SIZE + 1);
 	while (byteread > 0 && checkstr(output) == 0)
 	{
 		byteread = read(fd, buf, BUFFER_SIZE);
@@ -32,7 +31,9 @@ char	*ft_read(int fd, char *str)
 			free(output);
 			return (NULL);
 		}
-		output = ft_join(output, buf);
+		tmp = ft_join(output, buf);
+		free(output);
+		output = tmp;
 		ft_bzero(buf, BUFFER_SIZE + 1);
 	}
 	free(buf);
@@ -69,10 +70,12 @@ char	*get_next_line(int fd)
 {
 	static char	str[BUFFER_SIZE + 1];
 	char		*readstr;
+	char		*tmp;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
-	readstr = ft_read(fd, str);
+	tmp = ft_substr(str, 0, BUFFER_SIZE + 1);
+	readstr = ft_read(fd, tmp);
 	ft_bzero(str, BUFFER_SIZE + 1);
 	if (readstr == NULL)
 		return (NULL);
