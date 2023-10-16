@@ -6,107 +6,81 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:27:42 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/10/15 16:55:12 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/10/16 22:47:36 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	checkstr(char *str)
-{
-	while (*str)
-	{
-		if (*str == '\n')
-			return (1);
-		str++;
-	}
-	return (0);
-}
-
 char	*ft_read(int fd, char *str)
 {
 	ssize_t	byteread;
-	char	*hold;
 	char	*buf;
 	char	*output;
 
-	buf = (char *)calloc(BUFFER_SIZE + 1, sizeof(char));
+	buf = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	if (!buf)
 		return (NULL);
-	hold = ft_substr(str, 0, BUFFER_SIZE + 1);
-	byteread = read(fd, buf, BUFFER_SIZE);
-	if (byteread <= 0)
+	byteread = 1;
+	output = ft_substr(str, 0, BUFFER_SIZE + 1);
+	while (byteread > 0 && checkstr(output) == 0)
 	{
-		free(buf);
-		free(hold);
-		return (NULL);
-	}
-	buf[byteread] = '\0';
-	output = ft_join(hold, buf);
-	free(buf);
-	free(hold);
-	ft_bzero(str, BUFFER_SIZE + 1);
-	return (output);
-}
-
-char	*ft_cases(int fd, char *str, char *buf)
-{
-	char	*output;
-	char	*holding;
-
-	if (checkstr(buf))
-	{
-		ft_modsplit(buf, str);
-		return (buf);
-	}
-	else
-	{
-		holding = ft_read(fd, str);
-		if (holding == NULL)
-			return (buf);
-		if (!*holding)
+		byteread = read(fd, buf, BUFFER_SIZE);
+		if (byteread < 0)
 		{
-			free (holding);
-			return (buf);
+			free(buf);
+			free(output);
+			return (NULL);
 		}
-		else
-			output = ft_cases(fd, str, holding);
+		output = ft_join(output, buf);
+		ft_bzero(buf, BUFFER_SIZE + 1);
 	}
+	free(buf);
 	return (output);
 }
 
-char	*check_str(char *str)
+void	ft_modsplit(char *srcstr, char *str)
 {
-	char	*readstr;
+	int		i;
+	int		cnt;
+	char	*tmp;
 
-	readstr = ft_substr(str, 0, BUFFER_SIZE + 1);
-	ft_bzero(str, BUFFER_SIZE + 1);
-	ft_modsplit(readstr, str);
-	return (readstr);
+	i = 0;
+	cnt = 0;
+	while (srcstr[cnt])
+		cnt++;
+	while (srcstr[i] && srcstr[i] != '\n')
+		i++;
+	tmp = ft_substr(srcstr, i + 1, cnt - i);
+	if (srcstr[i] == '\n')
+		srcstr[i + 1] = '\0';
+	if (tmp == NULL)
+		return ;
+	i = 0;
+	while (tmp[i])
+	{
+		str[i] = tmp[i];
+		i++;
+	}
+	free(tmp);
 }
 
 char	*get_next_line(int fd)
 {
 	static char	str[BUFFER_SIZE + 1];
 	char		*readstr;
-	char		*holding;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
-	if (checkstr(str))
-		readstr = check_str(str);
-	else
+	readstr = ft_read(fd, str);
+	ft_bzero(str, BUFFER_SIZE + 1);
+	if (readstr == NULL)
+		return (NULL);
+	if (!*readstr)
 	{
-		holding = ft_read(fd, str);
-		if (!holding)
-			return (NULL);
-		if (!*holding)
-		{
-			free(holding);
-			return (str);
-		}
-		else
-			readstr = ft_cases(fd, str, holding);
+		free (readstr);
+		return (NULL);
 	}
+	ft_modsplit(readstr, str);
 	return (readstr);
 }

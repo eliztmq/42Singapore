@@ -6,11 +6,22 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:29:33 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/10/15 21:51:34 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/10/16 22:49:27 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+int	checkstr(char *str)
+{
+	while (*str)
+	{
+		if (*str == '\n')
+			return (1);
+		str++;
+	}
+	return (0);
+}
 
 void	ft_bzero(void *s, size_t n)
 {
@@ -40,7 +51,7 @@ char	*ft_join(char *s1, char *s2)
 		s1len++;
 	while (s2 && s2[s2len] && s2len < BUFFER_SIZE + 1)
 		s2len++;
-	jstr = (char *)calloc((s1len + s2len + 1), sizeof(char));
+	jstr = ft_calloc((s1len + s2len + 1), sizeof(char));
 	if (jstr == NULL)
 		return (NULL);
 	while (cnt < s1len && ++cnt)
@@ -57,7 +68,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char	*output;
 	size_t	i;
 
-	output = calloc((len + 1), sizeof(char));
+	output = ft_calloc((len + 1), sizeof(char));
 	if (!output)
 		return (NULL);
 	i = 0;
@@ -70,20 +81,13 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (output);
 }
 
-void	ft_modsplit(char *srcstr, char *str)
+void	*ft_calloc(size_t count, size_t size)
 {
-	int		i;
-	int		cnt;
+	void	*ptr;
 
-	i = 0;
-	cnt = 0;
-	while (srcstr && srcstr[i] && srcstr[i] != '\n')
-		i++;
-	i++;
-	while (srcstr[i + cnt])
-	{
-		str[cnt] = srcstr[i + cnt];
-		cnt++;
-	}
-	srcstr[i] = '\0';
+	ptr = malloc(count * size);
+	if (ptr == NULL)
+		return (NULL);
+	ft_bzero(ptr, count * size);
+	return (ptr);
 }
