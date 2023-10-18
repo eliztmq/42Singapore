@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 16:27:42 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/10/17 11:20:38 by elizabethte      ###   ########.fr       */
+/*   Created: 2023/10/17 20:58:49 by elizabethte       #+#    #+#             */
+/*   Updated: 2023/10/18 13:56:36 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_read(int fd, char *output)
 {
@@ -68,15 +68,15 @@ void	ft_modsplit(char *srcstr, char *str)
 
 char	*get_next_line(int fd)
 {
-	static char	str[BUFFER_SIZE + 1];
+	static char	str[1024][BUFFER_SIZE + 1];
 	char		*readstr;
 	char		*tmp;
 
-	if (fd < 0 || BUFFER_SIZE < 1)
+	if (fd < 0 || fd > 1024 || BUFFER_SIZE < 1)
 		return (NULL);
-	tmp = ft_substr(str, 0, BUFFER_SIZE + 1);
+	tmp = ft_substr(str[fd], 0, BUFFER_SIZE + 1);
 	readstr = ft_read(fd, tmp);
-	ft_bzero(str, BUFFER_SIZE + 1);
+	ft_bzero(str[fd], BUFFER_SIZE + 1);
 	if (readstr == NULL)
 		return (NULL);
 	if (!*readstr)
@@ -84,6 +84,6 @@ char	*get_next_line(int fd)
 		free (readstr);
 		return (NULL);
 	}
-	ft_modsplit(readstr, str);
+	ft_modsplit(readstr, str[fd]);
 	return (readstr);
 }
