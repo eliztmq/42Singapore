@@ -6,11 +6,11 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:45:53 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/10/18 13:50:15 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/10/19 15:57:22 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 int	checkstr(char *str)
 {

@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 20:58:49 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/10/18 13:56:36 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/10/24 14:27:23 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,11 @@ void	ft_modsplit(char *srcstr, char *str)
 
 char	*get_next_line(int fd)
 {
-	static char	str[1024][BUFFER_SIZE + 1];
+	static char	str[1042][BUFFER_SIZE + 1];
 	char		*readstr;
 	char		*tmp;
 
-	if (fd < 0 || fd > 1024 || BUFFER_SIZE < 1)
+	if (fd < 0 || fd > 1042 || BUFFER_SIZE < 1)
 		return (NULL);
 	tmp = ft_substr(str[fd], 0, BUFFER_SIZE + 1);
 	readstr = ft_read(fd, tmp);

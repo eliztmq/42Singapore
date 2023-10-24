@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:44:39 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/10/18 13:47:21 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/10/19 15:50:44 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <limits.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 80
