@@ -71,7 +71,7 @@ Cron tab syntax *(minute) *(hour) *(day of month) *(month) *(day of week)
 8. add user to group: sudo adduser <user> evaluating
 9. verify if user in group: getent group evaluating
 10. check hostname: hostname
-11. modify hostname: sudo nano /etc/hostname && sudo nano /etc/hosts
+11. modify hostname: sudo nano /etc/hostname (used to identify a specific device in the network) && sudo nano /etc/hosts (used to resolve and communicate between devices via names rather than IP addreses)
 12. reboot machine: sudo reboot
 13. check partitions: lsblk
 14. check sudo is installed: which sudo || dpkg -s sudo
@@ -84,3 +84,10 @@ Cron tab syntax *(minute) *(hour) *(day of month) *(month) *(day of week)
 21. crontab file: sudo crontab -u root -e
 22. stop script for cron: sudo /etc/init.d/cron stop
 23. start the script: sudo /etc/init.d/cron start
+
+#Script
+1. wc -l (counts the line of the output)
+2. awk (processes data based on text files) e.g. awk'$1 == "Mem:" (compare if first work of a row is equal to Mem:) || {print $3} (prints the third word of that row)
+3. grep -v "/boot" (means to exclude lines that contain the following) -meant for storing boot related files and does not contribute directly to overall disk space usage-
+4. tail -1 (produce output only on the last line)
+5. ss -ta shows only TCP connections (responsible for establishing, managing and terminating connections between computers over a network)
