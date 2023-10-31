@@ -1,4 +1,4 @@
-Virtual Machine
+#Virtual Machine
 Uses software instead of a physical computer to run programs or apps. Each VM has its own operating system and functions separately, so it is possible to have more than one VM per machine. Can be used to test applications in a safe, separate environment.
 
 #Operating Systems
@@ -52,3 +52,35 @@ AppArmor has 2 types of rules
 and 2 modes
 1. Enforce = policy is enforced
 2. Complain = policy violations are only logged
+
+#LVM - Logical Volume Manager 
+Allows for very flexible disk space management compared to conventional partitioning schemes for storing volumes
+
+#Cron 
+A scheduler tool, a background process executing non-interactive jobs
+Cron tab syntax *(minute) *(hour) *(day of month) *(month) *(day of week)
+
+#Commands
+1. test if graphical interface: ls /usr/bin/*session
+2. ufw service: sudo ufw status && sudo service ufw status
+3. ssh service: sudo service ssh status
+4. OS: uname -v
+5. user within groups: getent group sudo && getent group user42
+6. create a new user: sudo adduser <user>
+7. create a new group: sudo addgroup evaluating
+8. add user to group: sudo adduser <user> evaluating
+9. verify if user in group: getent group evaluating
+10. check hostname: hostname
+11. modify hostname: sudo nano /etc/hostname && sudo nano /etc/hosts
+12. reboot machine: sudo reboot
+13. check partitions: lsblk
+14. check sudo is installed: which sudo || dpkg -s sudo
+15. show application of rules for sudo: nano /etc/sudoers.d/sudo_config (will need to be in root)
+16. check if ufw is installed: dpkg -s ufw && sudo service ufw status
+17. Active rules in ufw: sudo ufw status numbered
+18. Create new rule: sudo ufw allow 8080
+19. Delete rule: sudo ufw delete num_rule
+20. check ssh is installed: which ssh && sudo service ssh status
+21. crontab file: sudo crontab -u root -e
+22. stop script for cron: sudo /etc/init.d/cron stop
+23. start the script: sudo /etc/init.d/cron start
