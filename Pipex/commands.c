@@ -6,14 +6,14 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 13:09:37 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/11/27 23:09:04 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/11/29 22:46:28 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
 //function to retrieve the path and split it according to : && also add the / at the end
-//function to split the command according to space(taking into account the quotation marks)
+//function to split the command according to space - quotation marks in the command line are not considered in argv
 //str_join the path split as well as the command
 
 char	**ft_readpath(char **envp)
@@ -43,7 +43,26 @@ char	**ft_readpath(char **envp)
 	return(possiblepath);
 }
 
-char	**ft_cmdarg(char *cmd)
+void	execute_cmd(char *cmd, char **envp)
 {
-	
+	char	**cmdlst;
+	char	**paths;
+	char	*cmdpath;
+	int		i;
+
+	i = -1;
+	cmdlst = ft_split(cmd, " ");
+	paths = ft_readpath(envp);
+	while(paths[++i])
+	{
+		cmdpath = ft_strjoin(paths[i], cmdlst[0]);
+		if (access(cmdpath, F_OK) == 0)
+		{
+			if (access(cmdpath, X_OK) == 0)
+				execve(cmdpath, cmdlst, envp);
+			else
+				perror(cmdpath);
+		}
+		free(cmdpath);
+	}
 }
