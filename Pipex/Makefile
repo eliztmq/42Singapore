@@ -26,10 +26,10 @@ OFILES = $(SRC:.c=.o)
 all : ${NAME}
 
 $(NAME) : $(OFILES) $(LIBFT)
-	ar -rcs $(NAME) $(OFILES) $(LIBFT)
+	$(CC) $(CFLAGS) -I. -o $(NAME) $(OFILES) $(LIBFT)
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c -o $@ $^
+$(OFILES): $(SRC)
+	$(CC) $(CFLAGS) -c $^
 
 $(LIBFT):
 	@make -C $(LIBFT_PATH) all
