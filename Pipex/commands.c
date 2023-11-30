@@ -6,15 +6,12 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 13:09:37 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/11/29 22:46:28 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/11/30 17:13:04 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-//function to retrieve the path and split it according to : && also add the / at the end
-//function to split the command according to space - quotation marks in the command line are not considered in argv
-//str_join the path split as well as the command
+#include "libft/libft.h"
 
 char	**ft_readpath(char **envp)
 {
@@ -23,11 +20,12 @@ char	**ft_readpath(char **envp)
 	int		i;
 
 	i = 0;
-	while (envp[i] != NULL)
+	possiblepath = NULL;
+	while (envp[i])
 	{
 		if (ft_strncmp(envp[i], "PATH=", 5) == 0)
 		{
-			possiblepath = ft_split(envp[i] + 5, ":");
+			possiblepath = ft_split(envp[i] + 5, ':');
 			break ;
 		}
 		i++;
@@ -40,7 +38,7 @@ char	**ft_readpath(char **envp)
 		possiblepath[i] = temppath;
 		i++;
 	}
-	return(possiblepath);
+	return (possiblepath);
 }
 
 void	execute_cmd(char *cmd, char **envp)
@@ -51,9 +49,9 @@ void	execute_cmd(char *cmd, char **envp)
 	int		i;
 
 	i = -1;
-	cmdlst = ft_split(cmd, " ");
+	cmdlst = ft_split(cmd, ' ');
 	paths = ft_readpath(envp);
-	while(paths[++i])
+	while (paths[++i])
 	{
 		cmdpath = ft_strjoin(paths[i], cmdlst[0]);
 		if (access(cmdpath, F_OK) == 0)

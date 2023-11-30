@@ -6,32 +6,40 @@
 #    By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/21 17:20:18 by elizabethte       #+#    #+#              #
-#    Updated: 2023/11/25 10:46:55 by elizabethte      ###   ########.fr        #
+#    Updated: 2023/11/30 23:11:33 by elizabethte      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = pipex.a
+NAME = pipex
+
+LIBFT_PATH = ./libft
+LIBFT = $(LIBFT_PATH)/libft.a
 
 CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra
 
-SRC =  \
+SRC =  pipex.c commands.c\
 
 OFILES = $(SRC:.c=.o)
 
 all : ${NAME}
 
-${NAME} : ${OFILES}
-	ar -rc ${NAME} ${OFILES}
+$(NAME) : $(OFILES) $(LIBFT)
+	ar -rcs $(NAME) $(OFILES) $(LIBFT)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c -o $@ $^
+
+$(LIBFT):
+	@make -C $(LIBFT_PATH) all
 
 clean :
-	rm -f ${OFILES}
+	@make -C $(LIBFT_PATH) clean
+	rm -f $(OFILES)
 
 fclean : clean
-	rm -f ${NAME}
+	@make -C $(LIBFT_PATH) fclean
+	rm -f $(NAME)
 
 re : fclean all
