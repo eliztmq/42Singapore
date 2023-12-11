@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 10:47:51 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/11/30 17:12:46 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/12/11 22:18:15 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	execoutchild(int *fd, int f2, char **argv, char **envp)
 	if (dup2(f2, STDOUT_FILENO) == -1)
 		perror("Dup2 output child:");
 	close(f2);
+	close(fd[0]);
 	execute_cmd(argv[3], envp);
 	exit(EXIT_FAILURE);
 }
@@ -33,11 +34,12 @@ void	execinchild(int *fd, int f1, char **argv, char **envp)
 	if (dup2(fd[1], STDOUT_FILENO) == -1)
 		perror("Dup2 input child:");
 	close(f1);
+	close(fd[1]);
 	execute_cmd(argv[2], envp);
 	exit(EXIT_FAILURE);
 }
 
-int	execpipe(int f1, int f2, char **argv, char **envp)
+void	execpipe(int f1, int f2, char **argv, char **envp)
 {
 	int		fd[2];
 	pid_t	inputchild;
@@ -49,21 +51,15 @@ int	execpipe(int f1, int f2, char **argv, char **envp)
 	if (inputchild == -1)
 		perror("Input fork error:");
 	else if (inputchild == 0)
-	{
 		execinchild(fd, f1, argv, envp);
-		return (0);
-	}
+	close(fd[1]);
 	outputchild = fork();
 	if (outputchild == -1)
 		perror("Output fork error:");
 	else if (outputchild == 0)
-	{
 		execoutchild(fd, f2, argv, envp);
-		return (0);
-	}
 	waitpid(inputchild, NULL, 0);
 	waitpid(outputchild, NULL, 0);
-	return (0);
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -77,7 +73,7 @@ int	main(int argc, char **argv, char **envp)
 	{
 		f1 = open(argv[1], O_RDONLY);
 		f2 = open(argv[argc - 1], O_CREAT | O_RDWR | O_TRUNC, 0644);
-		if (f1 || f2 < 0)
+		if (f1 == -1 || f2 == -1)
 			perror("Message from perror for files");
 		execpipe(f1, f2, argv, envp);
 	}

@@ -6,7 +6,7 @@
 #    By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/21 17:20:18 by elizabethte       #+#    #+#              #
-#    Updated: 2023/11/30 23:11:33 by elizabethte      ###   ########.fr        #
+#    Updated: 2023/12/05 16:33:00 by elizabethte      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,3 +43,5 @@ fclean : clean
 	rm -f $(NAME)
 
 re : fclean all
+
+.PHONY: clean fclean re
