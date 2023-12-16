@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 09:54:31 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/09/15 18:27:12 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/09/16 11:20:32 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
 	t_list	*n;
-	
+
 	if (!lst)
 		return ;
 	n = lst;

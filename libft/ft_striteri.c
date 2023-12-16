@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 15:42:19 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/09/15 18:15:04 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/09/16 11:23:21 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
 	int	i;
-	
+
 	i = 0;
 	if (!s)
 		return ;

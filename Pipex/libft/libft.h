@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:31:26 by eteo              #+#    #+#             */
-/*   Updated: 2023/12/15 17:25:55 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/09/15 10:55:23 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void		*ft_memcpy(void *dest, const void *src, size_t n);
 void		*ft_memchr(const void *s, int c, size_t n);
 void		*ft_memmove(void *dest, const void *src, size_t n);
 void		*ft_calloc(size_t count, size_t size);
-void		*ft_realloc(void *ptr, size_t size, size_t osize);
 
 typedef struct s_list
 {

@@ -14,11 +14,11 @@ Options : Debian vs Rocky
 *.rpm packages by YUM and its successor, dnf as package manager (powerful, flexible an easy to use)
 
 #Packaging Manager
+-Apt offers command-line interface VS Aptitiude offers visual interface
 Differences: Apt vs Aptitude (dpkg -> APT (command line) -> Aptitude (command line) OR Synaptic (graphical))
 -Aptitude is a high-level package manager while APT is lower level package manage which can be used by other higher-level package managers 
--Apt offers command-line interface VS Aptitiude offers visual interface
 -When facing a package conflict, Apt will not fix the issue while Aptitude will suggest a resolution that can do the job
--Aptitude can interactively retrive and display the Debian changelog of all available official packages
+-Aptitude can interactively retrieve and display the Debian changelog of all available official packages
 
 #Security System
 Differences: SELinux vs APPArmor
