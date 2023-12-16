@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 10:47:51 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/12/11 22:41:21 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/12/15 13:46:04 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,17 @@ void	execpipe(int f1, int f2, char **argv, char **envp)
 	inputchild = fork();
 	if (inputchild == -1)
 		perror("Input fork error:");
-	else if (inputchild == 0)
+	if (inputchild == 0)
 		execinchild(fd, f1, argv, envp);
-	close(fd[1]);
-	outputchild = fork();
-	if (outputchild == -1)
-		perror("Output fork error:");
-	else if (outputchild == 0)
-		execoutchild(fd, f2, argv, envp);
+	else
+	{
+		close(fd[1]);
+		outputchild = fork();
+		if (outputchild == -1)
+			perror("Output fork error:");
+		if (outputchild == 0)
+			execoutchild(fd, f2, argv, envp);
+	}
 }
 
 int	main(int argc, char **argv, char **envp)

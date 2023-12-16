@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 13:09:37 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/12/02 12:25:30 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/12/15 18:04:59 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,46 @@ char	**ft_readpath(char **envp)
 	return (possiblepath);
 }
 
+char	**ft_getcmd(char *cmd)
+{
+	char	**output;
+	char	*temp;
+	char	div;
+	int		i;
+	int		count;
+
+	i = 0;
+	count = 0;
+	output = ft_calloc(1, sizeof(char *));
+	while (cmd[i])
+	{
+		div = ' ';
+		if (cmd[i] == '\'' || cmd[i] == '\"')
+		{
+			div = cmd[i];
+			i++;
+		}
+		temp = ft_strchr(cmd + i, div);
+		if (temp)
+		{
+			output[count] = ft_substr(cmd, i, temp - (cmd + i));
+			i += temp - (cmd + i);
+			count++;
+			output = ft_realloc(output, (count + 1) * sizeof(char *),
+					count * sizeof(char *));
+
+		}
+		else
+		{
+			output[count] = ft_substr(cmd, i, ft_strlen(cmd) - i);
+			i += ft_strlen(cmd) - i;
+		}
+		i++;
+	}
+	output[count] = NULL ;
+	return (output);
+}
+
 void	execute_cmd(char *cmd, char **envp)
 {
 	char	**cmdlst;
@@ -49,7 +89,7 @@ void	execute_cmd(char *cmd, char **envp)
 	int		i;
 
 	i = -1;
-	cmdlst = ft_split(cmd, ' ');
+	cmdlst = ft_getcmd(cmd);
 	paths = ft_readpath(envp);
 	while (paths[++i])
 	{

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/25 10:48:22 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/12/11 21:11:54 by elizabethte      ###   ########.fr       */
+/*   Created: 2023/12/15 16:59:07 by elizabethte       #+#    #+#             */
+/*   Updated: 2023/12/15 17:26:09 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 //commands.c
 char	**ft_readpath(char **envp);
+char	**ft_getcmd(char *cmd);
 void	execute_cmd(char *cmd, char **envp);
 
 //pipex.c
