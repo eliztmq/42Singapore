@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 16:59:07 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/12/15 17:26:09 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/12/26 22:53:29 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 //commands.c
 char	**ft_readpath(char **envp);
-char	**ft_getcmd(char *cmd);
+void	ft_getcmd(char *cmd, char ***output);
 void	execute_cmd(char *cmd, char **envp);
 
 //pipex.c

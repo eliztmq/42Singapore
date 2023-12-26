@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 13:09:37 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/12/15 18:04:59 by elizabethte      ###   ########.fr       */
+/*   Updated: 2023/12/26 23:50:29 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,44 +41,34 @@ char	**ft_readpath(char **envp)
 	return (possiblepath);
 }
 
-char	**ft_getcmd(char *cmd)
+void	ft_getcmd(char *cmd, char ***output)
 {
-	char	**output;
 	char	*temp;
 	char	div;
 	int		i;
 	int		count;
+	int		length;
 
-	i = 0;
+	i = -1;
 	count = 0;
-	output = ft_calloc(1, sizeof(char *));
-	while (cmd[i])
+	while (cmd[++i])
 	{
 		div = ' ';
 		if (cmd[i] == '\'' || cmd[i] == '\"')
-		{
 			div = cmd[i];
-			i++;
-		}
+		i += (cmd[i] == '\'' || cmd[i] == '\"');
 		temp = ft_strchr(cmd + i, div);
 		if (temp)
-		{
-			output[count] = ft_substr(cmd, i, temp - (cmd + i));
-			i += temp - (cmd + i);
-			count++;
-			output = ft_realloc(output, (count + 1) * sizeof(char *),
-					count * sizeof(char *));
-
-		}
+			length = temp - (cmd + i);
 		else
-		{
-			output[count] = ft_substr(cmd, i, ft_strlen(cmd) - i);
-			i += ft_strlen(cmd) - i;
-		}
-		i++;
+			length = ft_strlen(cmd) - i;
+		(*output)[count] = ft_substr(cmd, i, length);
+		count++;
+		*output = ft_realloc(*output, (count + 1) * sizeof(char *),
+				count * sizeof(char *));
+		i += length;
 	}
-	output[count] = NULL ;
-	return (output);
+	(*output)[count] = NULL ;
 }
 
 void	execute_cmd(char *cmd, char **envp)
@@ -89,7 +79,10 @@ void	execute_cmd(char *cmd, char **envp)
 	int		i;
 
 	i = -1;
-	cmdlst = ft_getcmd(cmd);
+	cmdlst = ft_calloc(1, sizeof(char *));
+	if (cmdlst == NULL)
+		exit(1);
+	ft_getcmd(cmd, &cmdlst);
 	paths = ft_readpath(envp);
 	while (paths[++i])
 	{
