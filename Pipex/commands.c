@@ -43,7 +43,6 @@ char	**ft_readpath(char **envp)
 
 void	ft_getcmd(char *cmd, char ***output)
 {
-	char	*temp;
 	char	div;
 	int		i;
 	int		count;
@@ -51,15 +50,15 @@ void	ft_getcmd(char *cmd, char ***output)
 
 	i = -1;
 	count = 0;
-	while (cmd[++i])
+	while (++i < (int)ft_strlen(cmd))
 	{
 		div = ' ';
+		i += (cmd[i] == ' ');
 		if (cmd[i] == '\'' || cmd[i] == '\"')
 			div = cmd[i];
 		i += (cmd[i] == '\'' || cmd[i] == '\"');
-		temp = ft_strchr(cmd + i, div);
-		if (temp)
-			length = temp - (cmd + i);
+		if (ft_strchr(cmd + i, div) != NULL)
+			length = ft_strchr(cmd + i, div) - (cmd + i);
 		else
 			length = ft_strlen(cmd) - i;
 		(*output)[count] = ft_substr(cmd, i, length);
