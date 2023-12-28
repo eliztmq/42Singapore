@@ -60,6 +60,8 @@ void	execpipe(int f1, int f2, char **argv, char **envp)
 			perror("Output fork error:");
 		if (outputchild == 0)
 			execoutchild(fd, f2, argv, envp);
+		else
+			waitpid(outputchild, NULL, 0);
 	}
 }
 
