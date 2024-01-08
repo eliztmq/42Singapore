@@ -6,33 +6,49 @@
 #    By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/21 17:20:18 by elizabethte       #+#    #+#              #
-#    Updated: 2023/12/05 10:58:57 by elizabethte      ###   ########.fr        #
+#    Updated: 2024/01/08 15:14:05 by elizabethte      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
+NAME = fdf
+
+LIBFT_PATH = ./libft
+LIBFT = $(LIBFT_PATH)/libft.a
+
+MINILIBX_PATH = ./mlx
+MINILIBX = $(MINILIBX_PATH)/libmlx.a
 
 CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra
 
-SRC = ft_printf.c print_hex.c print_nbr.c print_str.c \
+SRC =  fdf.c\
 
 OFILES = $(SRC:.c=.o)
 
 all : ${NAME}
 
-${NAME} : ${OFILES}
-	ar -rc ${NAME} ${OFILES}
+$(NAME) : $(OFILES) $(LIBFT)
+	$(CC) $(CFLAGS) -o $(NAME) $(OFILES) $(LIBFT) $(MINILIBX) -Lmlx -lmlx -framework OpenGL -framework AppKit
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+$(OFILES): $(SRC)
+	$(CC) $(CFLAGS) -c $^
+
+$(LIBFT):
+	@make -C $(LIBFT_PATH) all
+
+$(MINILIBX):
+	@make -C $(MINILIBX_PATH) all
 
 clean :
-	rm -f ${OFILES}
+	@make -C $(LIBFT_PATH) clean
+	@make -C $(MINILIBX_PATH) clean
+	rm -f $(OFILES)
 
 fclean : clean
-	rm -f ${NAME}
+	@make -C $(LIBFT_PATH) fclean
+	@make -C $(MINILIBX_PATH) clean
+	rm -f $(NAME)
 
 re : fclean all
 

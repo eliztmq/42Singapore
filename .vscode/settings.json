@@ -1,0 +1,7 @@
+{
+	"C_Cpp.errorSquiggles": "enabled",
+	"github.copilot.editor.enableAutoCompletions": false,
+	"files.associations": {
+		"libft.h": "c"
+	}
+}

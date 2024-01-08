@@ -1,0 +1,166 @@
+ft_printf();
+
+int	ft_printf(const char *s, ...);
+
+s   -> format string... eg "print this string : %s"
+... -> variable number of parameters/arguments
+%   -> conditional conversion specifier
+
+each conversion specification is introduced by %, ends with conversion specifier. there may be...
+
+in order:
+0 or more flags (in our case '-0.# +')
+optional minimum field width (padding, n or 0n)
+optional precision (.n)
+optional length modifier
+
+
+mandatory conversions
+
+%c  -> single character
+%s  -> string
+%p  -> void * pointer argument printed in hexadecimal format
+%d  -> decimal (base 10) number
+%i  -> (base 10) integer
+%u  -> unsigned decimal (base 10) number
+%x  -> prints a number in hexadecimal (base 16) lowercase format
+%X  -> prints a number in hexadecimal (base 16) uppercase format
+%%  -> prints % sign
+
+
+bonus flags - '-', '0' and '.' or any combination of the 3
+
+%5  -> % followed by number = padding with blanks (spaces) up to n number of characters
+%05 -> % followed by 0 and number = padding with 0 up to n number of characters
+%.5 -> % followed by dot and number = precision control... for numbers, prints n number of decimal places (rounded), for strs, prints n number of characters
+%-5 -> % followed by - and number = left justified padding up to n number of characters. note that - overrides 0 if they are combined together.
+
+examples
+
+printf("this is a test |%5c|\n", 'c');         		outputs : this is a test |    c|
+printf("this is a test |%-5c|\n", 'c');			outputs : this is a test |c    |
+printf("this is a test |%.5s|\n", "testing");  		outputs : this is a test |testi|
+printf("this is a test |%.5f|\n", 1.234567);		outputs : this is a test |1.23457|
+printf("this is a test |%05c|\n", 'c');			outputs : this is a test |0000c|
+printf("this is a test |%#f|\n", 1);			outputs : this is a test |0.000000|
+
+
+bonus flags - '#', ' ' and '+' or any combination of the 3
+
+
+%#  -> % followed by #
+
+when used with #x or #X, adds 0x prefix to non-zero values
+printf("this is a test |%#5x|\n", 1);			outputs : this is a test |  0x1|
+printf("this is a test |%#5x|\n", 125);			outputs : this is a test | 0x7d|
+
+
+%   -> % followed by a space ' '
+
+a blank is left before a positive number or empty string after signed conversion
+printf("this is a test |% 5i|\n", 123);			outputs : this is a test | 123|
+printf("this is a test |% 5i|\n", -123);		outputs : this is a test |-123|
+
+
+%+  -> % followed by a space +
+
+a sign is written before any number (by default, only - is written for negative), overrides ' ' if they are combined.
+printf("this is a test |%+i|\n", 123);			outputs : this is a test |+123|
+printf("this is a test |%+i|\n", -123);			outputs : this is a test |-123|
+
+
+about va_start, va_arg, va_copy, va_end...
+
+va -> variable arguments
+
+#include <stdarg.h> //header for va macros
+#include <stdio.h>
+
+void va_start(va_list ap, last) 	-> name of last argument before variable argument list
+type va_arg(va_list ap, type) 		-> return type here depends on type put in
+void va_end(va_list ap)			
+void va_copy(va_list dest, va_list src)
+
+va_start(va_list ap, LAST)
+takes the variable number of arguments after LAST in the function, initialises a va_list ap, and stores the arguments in ap
+
+va_arg(va_list ap, TPYE)
+iterates through the va_list ap, returning them of type TYPE
+***if ap is passed to a function that uses va_arg(ap, type), value of ap is undefined after return of that function
+
+va_copy(va_list dest, va_list src)
+va_list version of strdup, strcpy, memcpy, etc
+
+va_end(va_list ap)
+clears ap and makes it undefined
+
+TEST FUNCTION TO FAMILIARISE WITH AP MACROS
+
+#include <stdio.h>
+#include <stdarg.h>
+
+int test(const char *fmt, ...)
+{
+    va_list ap;
+    va_start(ap, fmt);
+    
+    while (*fmt) {
+    if (*fmt == 's') {          /* string */
+        char *s = va_arg(ap, char *);
+        printf("string %s\n", s);
+    } else if (*fmt == 'd') {   /* int */
+        int d = va_arg(ap, int);
+        printf("int %d\n", d);
+    } else if (*fmt == 'c') {   /* char */
+        /* need a cast here since va_arg only takes fully promoted types */
+        char c = (char) va_arg(ap, int);
+        printf("char %c\n", c);
+    }
+    fmt++;  // Move to the next character in the format string
+    }
+}
+
+int main() 
+{
+    char    *fmt = "sdcs";
+    char    *s = "hello";
+    int     d = 1;
+    char    c = 'A';
+    printf("fmt : %s\n", fmt);
+    test(fmt, s, d, c, s);
+    printf("\nfmt : %s\n", fmt);
+    test(fmt, s, s, d, c);
+}
+
+outputs : 
+
+fmt : sdcs
+string hello
+int 1
+char A
+string hello
+
+fmt : sdcs
+string hello
+int 4202533
+char 
+Segmentation fault
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
