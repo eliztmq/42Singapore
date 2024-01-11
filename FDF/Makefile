@@ -6,7 +6,7 @@
 #    By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/21 17:20:18 by elizabethte       #+#    #+#              #
-#    Updated: 2024/01/08 15:14:05 by elizabethte      ###   ########.fr        #
+#    Updated: 2024/01/11 13:50:15 by elizabethte      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = fdf
 LIBFT_PATH = ./libft
 LIBFT = $(LIBFT_PATH)/libft.a
 
-MINILIBX_PATH = ./mlx
+MINILIBX_PATH = ./mlx_linux
 MINILIBX = $(MINILIBX_PATH)/libmlx.a
 
 CC = gcc
@@ -28,8 +28,8 @@ OFILES = $(SRC:.c=.o)
 
 all : ${NAME}
 
-$(NAME) : $(OFILES) $(LIBFT)
-	$(CC) $(CFLAGS) -o $(NAME) $(OFILES) $(LIBFT) $(MINILIBX) -Lmlx -lmlx -framework OpenGL -framework AppKit
+$(NAME) : $(OFILES) $(LIBFT) $(MINILIBX)
+	$(CC) $(CFLAGS) -o $(NAME) $(OFILES) $(LIBFT) $(MINILIBX) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
 $(OFILES): $(SRC)
 	$(CC) $(CFLAGS) -c $^

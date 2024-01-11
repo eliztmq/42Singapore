@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   mlx_destroy_display.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
+/*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/08 15:15:20 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/01/11 13:52:32 by elizabethte      ###   ########.fr       */
+/*   Created: 2020/10/03 18:56:35 by mg                #+#    #+#             */
+/*   Updated: 2020/10/04 01:55:35 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "mlx_int.h"
 
-# include "libft/libft.h"
-# include "mlx_linux/mlx.h"
-# include "mlx_linux/mlx_int.h"
-
-#endif
+int	mlx_destroy_display(t_xvar *xvar)
+{
+	XCloseDisplay(xvar->display);
+}

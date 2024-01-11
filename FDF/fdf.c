@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 17:13:13 by eteo              #+#    #+#             */
-/*   Updated: 2024/01/03 17:27:45 by eteo             ###   ########.fr       */
+/*   Updated: 2024/01/11 13:52:29 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minilibx-linux/mlx.h"
 #include "fdf.h"
+#include "mlx_linux/mlx.h"
 
 int	main(void)
 {
