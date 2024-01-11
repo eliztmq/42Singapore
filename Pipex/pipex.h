@@ -23,6 +23,7 @@
 char	**ft_readpath(char **envp);
 void	ft_getcmd(char *cmd, char ***output);
 void	execute_cmd(char *cmd, char **envp);
+void	error_msg(char *str);
 
 //pipex.c
 void	execoutchild(int *fd, int f2, char **argv, char **envp);

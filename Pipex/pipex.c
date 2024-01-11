@@ -17,9 +17,9 @@ void	execoutchild(int *fd, int f2, char **argv, char **envp)
 {
 	close(fd[1]);
 	if (dup2(fd[0], STDIN_FILENO) == -1)
-		perror("Dup2 output child:");
+		error_msg("Output child");
 	if (dup2(f2, STDOUT_FILENO) == -1)
-		perror("Dup2 output child:");
+		error_msg("Output child");
 	close(f2);
 	close(fd[0]);
 	execute_cmd(argv[3], envp);
@@ -30,9 +30,9 @@ void	execinchild(int *fd, int f1, char **argv, char **envp)
 {
 	close(fd[0]);
 	if (dup2(f1, STDIN_FILENO) == -1)
-		perror("Dup2 input child:");
+		error_msg("Input child");
 	if (dup2(fd[1], STDOUT_FILENO) == -1)
-		perror("Dup2 input child:");
+		error_msg("Input child");
 	close(f1);
 	close(fd[1]);
 	execute_cmd(argv[2], envp);
@@ -46,10 +46,10 @@ void	execpipe(int f1, int f2, char **argv, char **envp)
 	pid_t	outputchild;
 
 	if (pipe(fd) == -1)
-		perror("Pipe error:");
+		error_msg("Pipe error");
 	inputchild = fork();
 	if (inputchild == -1)
-		perror("Input fork error:");
+		error_msg("Input fork error");
 	if (inputchild == 0)
 		execinchild(fd, f1, argv, envp);
 	else
@@ -57,7 +57,7 @@ void	execpipe(int f1, int f2, char **argv, char **envp)
 		close(fd[1]);
 		outputchild = fork();
 		if (outputchild == -1)
-			perror("Output fork error:");
+			error_msg("Output fork error");
 		if (outputchild == 0)
 			execoutchild(fd, f2, argv, envp);
 		else
@@ -76,8 +76,10 @@ int	main(int argc, char **argv, char **envp)
 	{
 		f1 = open(argv[1], O_RDONLY);
 		f2 = open(argv[argc - 1], O_CREAT | O_RDWR | O_TRUNC, 0644);
-		if (f1 == -1 || f2 == -1)
-			perror("Message from perror for files");
+		if (f1 == -1)
+			error_msg("Input File");
+		if (f2 == -1)
+			error_msg("Output File");
 		execpipe(f1, f2, argv, envp);
 	}
 }

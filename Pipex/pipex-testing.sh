@@ -11,39 +11,39 @@ outfile=outfile
 # echo
 # echo "====================================================================="
 
-# echo "grep "^processor" /proc/cpuinfo | wc -l"
-# grep "^processor" /proc/cpuinfo | wc -l
-# echo 
-# ./pipex $infile "grep \"^processor\" \"/proc/cpuinfo\"" "wc -l" outfile
-# cat $outfile
-# echo
-# echo "====================================================================="
+echo "grep "^processor" /proc/cpuinfo | wc -l"
+grep "^processor" /proc/cpuinfo | wc -l
+echo 
+./pipex $infile "grep \"^processor\" \"/proc/cpuinfo\"" "wc -l" outfile
+cat $outfile
+echo
+echo "====================================================================="
 
 ./pipex $infile "ls -l" "wc -l" outfile
 cat $outfile
 
-# echo "free -m | awk '\$1 == \"Mem:\" {print \$2}'"
-# free -m | awk '$1 == "Mem:" {print $2}'
-# echo 
-# ./pipex $infile "free -m" "awk '\$1 == \"Mem:\" {print \$2}'" outfile
-# cat outfile
-# echo
-# echo "====================================================================="
+echo "free -m | awk '\$1 == \"Mem:\" {print \$2}'"
+free -m | awk '$1 == "Mem:" {print $2}'
+echo 
+./pipex $infile "free -m" "awk '\$1 == \"Mem:\" {print \$2}'" outfile
+cat outfile
+echo
+echo "====================================================================="
 
-# echo "free -m | awk '\$1 == \"Mem:\" {print \$3}'"
-# free -m | awk '$1 == "Mem:" {print $3}'
-# echo 
-# ./pipex $infile "free -m" "awk '\$1 == \"Mem:\" {print \$3}'" outfile
-# cat outfile
-# echo
-# echo "====================================================================="
+echo "free -m | awk '\$1 == \"Mem:\" {print \$3}'"
+free -m | awk '$1 == "Mem:" {print $3}'
+echo 
+./pipex $infile "free -m" "awk '\$1 == \"Mem:\" {print \$3}'" outfile
+cat outfile
+echo
+echo "====================================================================="
 
-# echo "free | awk '\$1 == \"Mem:\" {printf("%.2f"), \$3/\$2*100}'" 
-# free | awk '$1 == "Mem:" {printf("%.2f"), $3/$2*100}'
-# echo 
-# ./pipex $infile "free" "awk '\$1 == \"Mem:\" {printf(\"%.2f\"), \$3/\$2*100}'" outfile
-# cat outfile
-# echo
+echo "free | awk '\$1 == \"Mem:\" {printf("%.2f"), \$3/\$2*100}'" 
+free | awk '$1 == "Mem:" {printf("%.2f"), $3/$2*100}'
+echo 
+./pipex $infile "free" "awk '\$1 == \"Mem:\" {printf(\"%.2f\"), \$3/\$2*100}'" outfile
+cat outfile
+echo
 # echo "====================================================================="
 
 # echo "df -Bg | grep '^/dev/' | grep -v '/boot$' | awk '{ft += \$2} END {print ft}'"
@@ -102,13 +102,15 @@ cat $outfile
 # echo
 # echo "====================================================================="
 
-# echo "users | ls -l"
-# users | ls -l
-# echo 
-# ./pipex $infile "users" "ls -l" outfile
-# cat outfile
-# echo
-# echo "====================================================================="
+echo "users | ls -asl"
+# rm outfile
+# touch outfile
+users | ls -asl
+echo
+./pipex $infile "users" "ls -asl" outfile
+cat outfile
+echo
+echo "====================================================================="
 
 # echo "ip link show | awk '\$1 == "link/ether" {print \$2}'"
 # ip link show | awk '$1 == "link/ether" {print $2}'

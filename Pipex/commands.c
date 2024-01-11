@@ -70,6 +70,12 @@ void	ft_getcmd(char *cmd, char ***output)
 	(*output)[count] = NULL ;
 }
 
+void	error_msg(char *str)
+{
+	perror(str);
+	exit(EXIT_FAILURE);
+}
+
 void	execute_cmd(char *cmd, char **envp)
 {
 	char	**cmdlst;
@@ -91,8 +97,9 @@ void	execute_cmd(char *cmd, char **envp)
 			if (access(cmdpath, X_OK) == 0)
 				execve(cmdpath, cmdlst, envp);
 			else
-				perror(cmdpath);
+				error_msg("Path");
 		}
 		free(cmdpath);
 	}
+	error_msg("Command");
 }
