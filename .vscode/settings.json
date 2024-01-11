@@ -2,6 +2,8 @@
 	"C_Cpp.errorSquiggles": "enabled",
 	"github.copilot.editor.enableAutoCompletions": false,
 	"files.associations": {
-		"libft.h": "c"
+		"libft.h": "c",
+		"mlx.h": "c",
+		"mlx_int.h": "c"
 	}
 }
