@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 17:13:13 by eteo              #+#    #+#             */
-/*   Updated: 2024/01/12 19:20:39 by eteo             ###   ########.fr       */
+/*   Updated: 2024/01/12 19:24:06 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int main(void)
 	// while (++i < 100)
 	// 	my_mlx_pixel_put(&img, i, i, 255);
 	// mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
-	mlx_hook(vars.win, 2, 1L<<0, event_hook, &vars);
-	mlx_hook(vars.win, 6, 1L<<6, event_hook, &vars);
+	mlx_hook(vars.win, 2, 1L<<0, key_hook, &vars);
+	//mlx_hook(vars.win, 6, 1L<<6, mouse_hook, &vars);
 	mlx_loop(vars.mlx);
 	return (0);
 }
