@@ -3,32 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
+/*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 17:13:13 by eteo              #+#    #+#             */
-/*   Updated: 2024/01/11 14:05:24 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/01/12 19:20:39 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "mlx_linux/mlx.h"
 
-int	close_window(int keycode)
+int	key_hook(int keycode, t_vars *vars)
 {
-	if (keycode == 27)
-		exit(0);
+	printf("%i\n", keycode);
+	if (keycode == XK_Escape)
+		mlx_destroy_window(vars->mlx, vars->win);
 	return (0);
+}
+
+void	my_mlx_pixel_put(t_data	*data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
 }
 
 int main(void)
 {
-	void *mlx;
-	void *mlx_win;
+	// int		i;
+	// t_data	img;
+	t_vars	vars;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello World!");
-	mlx_loop(mlx);
-	mlx_hook(mlx_win, 2, 1L << 17, close_window, NULL);
+	// i = -1;
+	vars.mlx = mlx_init();
+	vars.win = mlx_new_window(vars.mlx, 400, 400, "Hello world!!!");
+	// img.img = mlx_new_image(vars.mlx, 1920, 1080);
+	// img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+	// while (++i < 100)
+	// 	my_mlx_pixel_put(&img, i, i, 255);
+	// mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
+	mlx_hook(vars.win, 2, 1L<<0, event_hook, &vars);
+	mlx_hook(vars.win, 6, 1L<<6, event_hook, &vars);
+	mlx_loop(vars.mlx);
 	return (0);
 }
 
