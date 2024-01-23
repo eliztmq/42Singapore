@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+         #
+#    By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/21 17:20:18 by elizabethte       #+#    #+#              #
-#    Updated: 2024/01/11 14:00:49 by elizabethte      ###   ########.fr        #
+#    Updated: 2024/01/23 14:34:40 by eteo             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra
 
-SRC =  fdf.c\
+SRC =  fdf.c line.c\
 
 OFILES = $(SRC:.c=.o)
 
