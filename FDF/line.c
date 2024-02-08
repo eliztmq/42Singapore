@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:25:19 by eteo              #+#    #+#             */
-/*   Updated: 2024/01/23 15:11:11 by eteo             ###   ########.fr       */
+/*   Updated: 2024/02/08 16:04:28 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int swapx_y(int *x0, int *y0, int *x1, int *y1)
 	else
 		return (0);
 }
-
+ //Bresenham's line algorithm - assumption is that gradient < 1
+ //to apply to other cases, the values have to be modified accordingly
 void drawline(t_data img, int x0, int y0, int x1, int y1)
 {
 	int swap;
