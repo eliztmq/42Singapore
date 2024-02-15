@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:31:26 by eteo              #+#    #+#             */
-/*   Updated: 2023/12/20 16:38:35 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/02/15 17:14:10 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <fcntl.h>
 
 int			ft_isalpha(int c);
 int			ft_isdigit(int c);
@@ -68,5 +69,18 @@ void		ft_lstdelone(t_list *lst, void (*del)(void*));
 void		ft_lstclear(t_list **lst, void (*del)(void*));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 int			ft_lstsize(t_list *lst);
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 80
+# endif
+
+int			checkstr(char *str);
+char		*ft_read(int fd, char *str);
+char		*get_next_line(int fd);
+char		*ft_join(char *s1, char *s2);
+char		*ft_substr(char const *s, unsigned int start, size_t len);
+void		ft_modsplit(char *srcstr, char *str);
+void		ft_bzero(void *s, size_t n);
+void		*ft_calloc(size_t count, size_t size);
 
 #endif
