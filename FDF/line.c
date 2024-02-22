@@ -6,12 +6,11 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:25:19 by eteo              #+#    #+#             */
-/*   Updated: 2024/02/15 23:10:36 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/02/17 16:35:27 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include "libft/libft.h"
 #include "mlx_linux/mlx.h"
 
 void	my_mlx_pixel_put(t_data	*data, int x, int y, int color)

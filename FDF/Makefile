@@ -6,7 +6,7 @@
 #    By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/21 17:20:18 by elizabethte       #+#    #+#              #
-#    Updated: 2024/02/15 23:08:42 by elizabethte      ###   ########.fr        #
+#    Updated: 2024/02/22 22:52:04 by elizabethte      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra
 
-SRC =  fdf.c grid.c line.c mouse.c window.c\
+SRC =  fdf.c grid.c line.c mouse.c rotate.c window.c\
 
 OFILES = $(SRC:.c=.o)
 

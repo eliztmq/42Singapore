@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:15:20 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/02/15 23:08:05 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/02/22 22:58:31 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@
 # define MOUSE_MOVE 6
 # define EXIT 17
 
+# define WIN_WIDTH 1920
+# define WIN_HEIGHT 1080
+
 typedef struct s_data
 {
 	void	*img;
@@ -49,11 +52,13 @@ typedef struct s_vars
 
 typedef struct mouse_data
 {
-	int	button;
-	int	x;
-	int	y;
-	int	delta_x;
-	int	delta_y;
+	int		button;
+	int		x;
+	int		y;
+	int		delta_x;
+	int		delta_y;
+	double	rot_angle;
+	t_coord	rot_axis;
 }	t_mouse;
 
 typedef struct s_visual
@@ -61,6 +66,8 @@ typedef struct s_visual
 	t_data	img;
 	t_vars	vars;
 	t_mouse	mouse;
+	int		centre_x;
+	int		centre_y;
 }	t_visual;
 
 typedef struct grid_data
@@ -85,7 +92,7 @@ typedef struct quat_rot
 	int	z;
 }	t_quat;
 
-int		key_hook(int keycode, t_visual *visual);
+int		key_hook(int keycode, t_visual *vis);
 int		mouse_hook(int x, int y);
 void	my_mlx_pixel_put(t_data	*data, int x, int y, int color);
 
