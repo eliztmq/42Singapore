@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 22:56:39 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/02/22 22:33:33 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/02/26 21:20:13 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	mouse_drag(int x, int y, t_visual *vis)
 		return (1);
 	vis->mouse.delta_x = x - vis->mouse.x;
 	vis->mouse.delta_y = y - vis->mouse.y;
+	vis->mouse.rot_angle = atan2(vis->mouse.delta_y, vis->mouse.delta_x);
 	vis->mouse.x = x;
 	vis->mouse.y = y;
 	//draw with change in angle

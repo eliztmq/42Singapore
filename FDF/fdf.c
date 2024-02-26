@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 17:13:13 by eteo              #+#    #+#             */
-/*   Updated: 2024/02/22 22:33:40 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/02/26 23:20:34 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,21 @@ int	key_exit(int keycode, t_visual *vis)
 	return (0);
 }
 
-//still need to complete
 int	close_win(t_visual *vis)
 {
+	int	i;
+	int	j;
+
+	i = -1;
+	j = -1;
+	mlx_destroy_image(vis->vars.mlx, vis->img.img);
 	mlx_destroy_window(vis->vars.mlx, vis->vars.win);
+	mlx_destroy_display(vis->vars.mlx);
+	while (++j < vis->grid->max_y)
+		free(vis->grid->all_points[j]);
+	free(vis->grid->all_points);
+	free(vis->grid);
+	free(vis->vars.mlx);
 }
 
 void	error_msg(char *str)
@@ -35,8 +46,7 @@ void	error_msg(char *str)
 int	main(int argc, char **argv)
 {
 	t_visual	vis;
-	t_grid		grid;
-	t_coord		**all_points;
+	t_grid		*grid;
 	int			fd;
 
 	if (argc != 2)
@@ -44,11 +54,12 @@ int	main(int argc, char **argv)
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 		error_msg("File Access\n");
-	all_points = (t_coord **)malloc(sizeof(t_coord));
-	if (!all_points)
+	grid = (t_grid *)malloc(sizeof(t_grid));
+	if (!grid)
 		error_msg("Malloc Error\n");
-	create_grid(fd, &grid, all_points);
-	render_grid(&vis, &grid);
+	create_grid(fd, grid);
+	create_window(&vis, grid);
+	render_grid(&vis);
 	mlx_hook(vis.vars.win, KEY_PRESS, 1L << 0, key_exit, &vis);
 	mlx_hook(vis.vars.win, MOUSE_DOWN, 1L << 2, mouse_down, &vis);
 	mlx_hook(vis.vars.win, MOUSE_UP, 1L << 3, mouse_up, &vis);

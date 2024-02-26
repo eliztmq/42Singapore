@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:44:48 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/02/20 18:54:41 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/02/26 23:10:41 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,14 @@ void	fill_points(char *read_str, t_grid *grid)
 	ft_free(row_coord);
 }
 
-void	create_grid(int fd, t_grid *grid, t_coord **all_points)
+void	create_grid(int fd, t_grid *grid)
 {
 	char	*read_str;
+	t_coord	**all_points;
 
+	all_points = (t_coord **)malloc(sizeof(t_coord));
+	if (!all_points)
+		error_msg("Malloc Error\n");
 	grid->all_points = all_points;
 	grid->max_x = 0;
 	grid->max_y = 0;

@@ -6,52 +6,54 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:25:19 by eteo              #+#    #+#             */
-/*   Updated: 2024/02/17 16:35:27 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/02/26 23:17:58 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "mlx_linux/mlx.h"
 
-void	my_mlx_pixel_put(t_data	*data, int x, int y, int color)
+t_coord	trans_pt(t_coord *p, t_visual *vis)
 {
-	char	*dst;
+	t_coord	new_pt;
 
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
+	new_pt.x = p->x + vis->centre_x;
+	new_pt.y = p->y + vis->centre_y;
+	new_pt.z = p->z;
+	return(new_pt);
 }
 
-int	swapx_y(int *x0, int *y0, int *x1, int *y1)
+int	swapx_y(t_coord *p0, t_coord *p1)
 {
 	int	s_x;
 	int	s_y;
 
-	if ((*y1 - *y0) / (*x1 - *x0))
+	if (((p1->y - p0->y) / (p1->x - p0->x)) > 1)
 	{
-		s_x = *x0;
-		*x0 = *y0;
-		*y0 = s_x;
-		s_y = *y1;
-		*y1 = *x1;
-		*x1 = s_y;
+		s_x = p0->x;
+		p0->x = p0->y;
+		p0->y = s_x;
+		s_y = p1->y;
+		p1->y = p1->x;
+		p1->x = s_y;
 		return (1);
 	}
 	else
 		return (0);
 }
 
-void	drawline(t_data img, int x0, int y0, int x1, int y1)
+void	drawline(t_data img, t_coord p0, t_coord p1)
 {
 	int	swap;
 	int	x;
 	int	y;
 	int	p;
 
-	swap = swapx_y(&x0, &y0, &x1, &y1);
-	x = x0;
-	y = y0;
-	p = (2 * (y1 - y0)) - (x1 - x0);
-	while (x <= x1)
+	swap = swapx_y(&p0, &p1);
+	x = p0.x;
+	y = p0.y;
+	p = (2 * (p1.y - p0.y)) - (p1.x - p0.x);
+	while (x <= p1.x)
 	{
 		if (swap == 1)
 			my_mlx_pixel_put(&img, y, x, 255);
@@ -59,11 +61,34 @@ void	drawline(t_data img, int x0, int y0, int x1, int y1)
 			my_mlx_pixel_put(&img, x, y, 255);
 		x++;
 		if (p < 0)
-			p = p + (2 * (y1 - y0));
+			p = p + (2 * (p1.y - p0.y));
 		else
 		{
-			p = p + (2 * (y1 - y0)) - (2 * (x1 - x0));
+			p = p + (2 * (p1.y - p0.y)) - (2 * (p1.x - p0.x));
 			y++;
 		}
+	}
+}
+
+void	drawing_logic(t_visual *vis)
+{
+	int	i;
+	int	j;
+
+	j = 0;
+	while (j < vis->grid->max_y)
+	{
+		i = 0;
+		while (i < vis->grid->max_x)
+		{
+			if (i != vis->grid->max_x - 1)
+				drawline(vis->img, trans_pt(&vis->grid->all_points[j][i], vis),
+					trans_pt(&vis->grid->all_points[j][i + 1], vis));
+			if (j != 0)
+				drawline(vis->img, trans_pt(&vis->grid->all_points[j][i], vis),
+					trans_pt(&vis->grid->all_points[j - 1][i], vis));
+			i++;
+		}
+		j++;
 	}
 }

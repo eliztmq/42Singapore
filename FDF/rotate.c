@@ -6,23 +6,22 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 16:24:54 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/02/22 23:16:08 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/02/26 23:16:05 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "mlx_linux/mlx.h"
 
-void	rotate_grid(t_grid *grid, t_visual *vis)
+void	rotate_grid(t_visual *vis)
 {
 	t_quat	rot_transf;
 
-	if (vis->mouse.button == 1)
-		vis->mouse.rot_angle = atan2(vis->mouse.delta_y, vis->mouse.delta_x);
 	rot_transf.w = cos(vis->mouse.rot_angle / 2);
 	rot_transf.x = sin(vis->mouse.rot_angle / 2) * vis->mouse.rot_axis.x;
 	rot_transf.y = sin(vis->mouse.rot_angle / 2) * vis->mouse.rot_axis.y;
 	rot_transf.z = sin(vis->mouse.rot_angle / 2) * vis->mouse.rot_axis.z;
+	//will need to replace the x y z of the points in all_points to save the transformation
 }
 
 t_coord	rotate_point(t_coord pt, t_quat q)

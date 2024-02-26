@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:15:20 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/02/22 22:58:31 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/02/26 23:20:24 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct s_visual
 	t_mouse	mouse;
 	int		centre_x;
 	int		centre_y;
+	t_grid	*grid;
 }	t_visual;
 
 typedef struct grid_data
@@ -92,6 +93,7 @@ typedef struct quat_rot
 	int	z;
 }	t_quat;
 
+//to be updated
 int		key_hook(int keycode, t_visual *vis);
 int		mouse_hook(int x, int y);
 void	my_mlx_pixel_put(t_data	*data, int x, int y, int color);
