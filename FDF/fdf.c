@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 17:13:13 by eteo              #+#    #+#             */
-/*   Updated: 2024/02/26 23:20:34 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/02/27 22:37:58 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,6 @@ int	main(int argc, char **argv)
 	mlx_hook(vis.vars.win, MOUSE_UP, 1L << 3, mouse_up, &vis);
 	mlx_hook(vis.vars.win, MOUSE_MOVE, 1L << 6, mouse_drag, &vis);
 	mlx_hook(vis.vars.win, EXIT, 1L << 17, close_win, &vis);
+	mlx_loop_hook(vis.vars.mlx, render_grid, &vis);
 	mlx_loop(vis.vars.mlx);
 }

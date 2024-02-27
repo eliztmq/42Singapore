@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 17:19:19 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/02/26 23:20:13 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/02/27 23:11:36 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,24 @@ void	my_mlx_pixel_put(t_data	*data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
+void	black_canvas(t_visual *vis)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (++i < WIN_WIDTH)
+	{
+		j = -1;
+		while (++j < WIN_HEIGHT)
+			my_mlx_pixel_put(&vis->img, i, j, 0);
+	}
+	mlx_put_image_to_window(vis->vars.mlx, vis->vars.win, vis->img.img, 0, 0);
+}
+
 void	render_grid(t_visual *vis)
 {
+	black_canvas(vis);
 	rotate_grid(vis);
 	drawing_logic(vis);
 	mlx_put_image_to_window(vis->vars.mlx, vis->vars.win, vis->img.img, 0, 0);

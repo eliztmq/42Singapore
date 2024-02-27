@@ -7,4 +7,6 @@ Objective: to use MiniLibX to create a simple wireframe model representation of 
 3. Pressing ESC must close the window and quit the program in a clean way
 4. Clicking on the cross on the window's frame must close the window and quit the program in a clean way
 
+Navigation of model space: Rotation by right clicking and dragging of mouse
+
 Background: MiniLibX is a library developed internally that includes basic necessary tools to open a window, create images and deal with keyboard and mouse events

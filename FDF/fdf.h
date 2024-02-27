@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:15:20 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/02/26 23:20:24 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/02/27 22:57:43 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int		key_hook(int keycode, t_visual *vis);
 int		mouse_hook(int x, int y);
 void	my_mlx_pixel_put(t_data	*data, int x, int y, int color);
 
-int		swapx_y(int *x0, int *y0, int *x1, int *y1);
-void	drawline(t_data img, int x0, int y0, int x1, int y1);
+int		swapx_y(t_coord *p0, t_coord *p1);
+void	drawline(t_data *img, t_coord p0, t_coord p1);
 
 #endif
