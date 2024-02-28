@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
+/*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 22:56:39 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/02/27 22:47:36 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/02/28 14:45:03 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	mouse_drag(int x, int y, t_visual *vis)
 
 int	mouse_up(int button, int x, int y, t_visual *vis)
 {
+	(void)x;
+	(void)y;
 	if (button != MOUSE_CLICK_RIGHT)
 		return (1);
 	vis->mouse.button = 0;

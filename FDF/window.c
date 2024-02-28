@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
+/*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 17:19:19 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/02/27 23:11:36 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/02/28 14:30:51 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,13 @@ void	black_canvas(t_visual *vis)
 	mlx_put_image_to_window(vis->vars.mlx, vis->vars.win, vis->img.img, 0, 0);
 }
 
-void	render_grid(t_visual *vis)
+int	render_grid(t_visual *vis)
 {
 	black_canvas(vis);
 	rotate_grid(vis);
 	drawing_logic(vis);
 	mlx_put_image_to_window(vis->vars.mlx, vis->vars.win, vis->img.img, 0, 0);
+	return (0);
 }
 
 void	initial_val(t_visual *vis, t_grid *grid)

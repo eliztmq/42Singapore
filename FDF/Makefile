@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+         #
+#    By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/21 17:20:18 by elizabethte       #+#    #+#              #
-#    Updated: 2024/02/28 22:16:28 by elizabethte      ###   ########.fr        #
+#    Updated: 2024/02/28 14:51:46 by eteo             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,8 +28,8 @@ OFILES = $(SRC:.c=.o)
 
 all : ${NAME}
 
-$(NAME) : $(OFILES) $(LIBFT) $(MINILIBX)
-	$(CC) $(CFLAGS) -o $(NAME) $(OFILES) $(LIBFT) $(MINILIBX) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+$(NAME) : $(LIBFT) $(MINILIBX) $(OFILES)
+	$(CC) $(CFLAGS) -o $(NAME) $(MINILIBX) $(OFILES) $(LIBFT) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
 $(OFILES): $(SRC)
 	$(CC) $(CFLAGS) -c $^

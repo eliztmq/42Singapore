@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
+/*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 17:13:13 by eteo              #+#    #+#             */
-/*   Updated: 2024/02/27 22:37:58 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/02/28 14:30:19 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,17 @@ int	key_exit(int keycode, t_visual *vis)
 int	close_win(t_visual *vis)
 {
 	int	i;
-	int	j;
 
 	i = -1;
-	j = -1;
 	mlx_destroy_image(vis->vars.mlx, vis->img.img);
 	mlx_destroy_window(vis->vars.mlx, vis->vars.win);
 	mlx_destroy_display(vis->vars.mlx);
-	while (++j < vis->grid->max_y)
-		free(vis->grid->all_points[j]);
+	while (++i < vis->grid->max_y)
+		free(vis->grid->all_points[i]);
 	free(vis->grid->all_points);
 	free(vis->grid);
 	free(vis->vars.mlx);
+	exit(0);
 }
 
 void	error_msg(char *str)

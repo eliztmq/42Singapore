@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
+/*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:15:20 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/02/28 22:16:10 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/02/28 14:31:05 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,13 @@ typedef struct s_vars
 	void	*win;
 }	t_vars;
 
+typedef struct euler_coord
+{
+	int	x;
+	int	y;
+	int	z;
+}	t_coord;
+
 typedef struct mouse_data
 {
 	int		button;
@@ -61,6 +68,13 @@ typedef struct mouse_data
 	t_coord	rot_axis;
 }	t_mouse;
 
+typedef struct grid_data
+{
+	t_coord	**all_points;
+	int		max_x;
+	int		max_y;
+}	t_grid;
+
 typedef struct s_visual
 {
 	t_data	img;
@@ -70,20 +84,6 @@ typedef struct s_visual
 	int		centre_y;
 	t_grid	*grid;
 }	t_visual;
-
-typedef struct grid_data
-{
-	t_coord	**all_points;
-	int		max_x;
-	int		max_y;
-}	t_grid;
-
-typedef struct euler_coord
-{
-	int	x;
-	int	y;
-	int	z;
-}	t_coord;
 
 typedef struct quat_rot
 {
@@ -122,7 +122,7 @@ void	rotate_point(t_coord *pt, t_quat q);
 //window.c
 void	my_mlx_pixel_put(t_data	*data, int x, int y, int color);
 void	black_canvas(t_visual *vis);
-void	render_grid(t_visual *vis);
+int		render_grid(t_visual *vis);
 void	initial_val(t_visual *vis, t_grid *grid);
 void	create_window(t_visual *vis, t_grid *grid);
 #endif
