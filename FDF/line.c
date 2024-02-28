@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:25:19 by eteo              #+#    #+#             */
-/*   Updated: 2024/02/27 22:53:33 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/02/28 22:17:03 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_coord	trans_pt(t_coord p, t_visual *vis)
 	new_pt.x = p.x + vis->centre_x;
 	new_pt.y = p.y + vis->centre_y;
 	new_pt.z = p.z;
-	return(new_pt);
+	return (new_pt);
 }
 
 int	swapx_y(t_coord *p0, t_coord *p1)

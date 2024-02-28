@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:15:20 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/02/27 22:57:43 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/02/28 22:16:10 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,12 +93,36 @@ typedef struct quat_rot
 	int	z;
 }	t_quat;
 
-//to be updated
-int		key_hook(int keycode, t_visual *vis);
-int		mouse_hook(int x, int y);
-void	my_mlx_pixel_put(t_data	*data, int x, int y, int color);
+//fdf.c
+int		key_exit(int keycode, t_visual *vis);
+int		close_win(t_visual *vis);
+void	error_msg(char *str);
 
+//grid.c
+int		count_outer_list(char **str);
+void	ft_free(char **str);
+void	fill_points(char *read_str, t_grid *grid);
+void	create_grid(int fd, t_grid *grid);
+
+//line.c
+t_coord	trans_pt(t_coord p, t_visual *vis);
 int		swapx_y(t_coord *p0, t_coord *p1);
 void	drawline(t_data *img, t_coord p0, t_coord p1);
+void	drawing_logic(t_visual *vis);
 
+//mouse.c
+int		mouse_down(int button, int x, int y, t_visual *vis);
+int		mouse_drag(int x, int y, t_visual *vis);
+int		mouse_up(int button, int x, int y, t_visual *vis);
+
+//rotate.c
+void	rotate_grid(t_visual *vis);
+void	rotate_point(t_coord *pt, t_quat q);
+
+//window.c
+void	my_mlx_pixel_put(t_data	*data, int x, int y, int color);
+void	black_canvas(t_visual *vis);
+void	render_grid(t_visual *vis);
+void	initial_val(t_visual *vis, t_grid *grid);
+void	create_window(t_visual *vis, t_grid *grid);
 #endif
