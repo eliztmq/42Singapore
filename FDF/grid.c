@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:44:48 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/03/01 23:06:48 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/03/01 23:08:30 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void	fill_points(char *read_str, t_grid *grid)
 	while (++i < count_outer_list(row_coord))
 	{
 		temp_point.x = i  * (WIN_WIDTH * 0.5);
-		temp_point.y = grid->max_y  * (WIN_WIDTH * 0.5);
-		temp_point.z = ft_atoi(&row_coord[i][0])  * (WIN_WIDTH * 0.5);
+		temp_point.y = grid->max_y  * (WIN_HEIGHT * 0.5);
+		temp_point.z = ft_atoi(&row_coord[i][0])  * ((WIN_WIDTH + WIN_HEIGHT) * 0.5);
 		grid->all_points[grid->max_y][i] = temp_point;
 	}
 	grid->max_x = i;
