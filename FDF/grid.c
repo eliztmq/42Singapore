@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   grid.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:44:48 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/03/01 13:42:24 by eteo             ###   ########.fr       */
+/*   Updated: 2024/03/01 23:06:48 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ void	fill_points(char *read_str, t_grid *grid)
 	grid->all_points[grid->max_y] = ft_calloc(total_pts, sizeof(t_coord));
 	while (++i < count_outer_list(row_coord))
 	{
-		temp_point.x = i;
-		temp_point.y = grid->max_y;
-		temp_point.z = ft_atoi(&row_coord[i][0]);
+		temp_point.x = i  * (WIN_WIDTH * 0.5);
+		temp_point.y = grid->max_y  * (WIN_WIDTH * 0.5);
+		temp_point.z = ft_atoi(&row_coord[i][0])  * (WIN_WIDTH * 0.5);
 		grid->all_points[grid->max_y][i] = temp_point;
 	}
 	grid->max_x = i;
