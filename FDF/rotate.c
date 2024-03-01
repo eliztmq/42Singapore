@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
+/*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 16:24:54 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/02/28 22:19:15 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/03/01 08:04:07 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ void	rotate_grid(t_visual *vis)
 	{
 		i = -1;
 		while (++i < vis->grid->max_x)
-			rotate_point(&vis->grid->all_points[j][i], rot_transf);
+			vis->grid->all_points[j][i] = rotate_point(&vis->grid->all_points[j][i], rot_transf);
 	}
 }
 
-void	rotate_point(t_coord *pt, t_quat q)
+t_coord	rotate_point(t_coord *pt, t_quat q)
 {
 	t_coord	rotated_pt;
 
@@ -47,5 +47,5 @@ void	rotate_point(t_coord *pt, t_quat q)
 	rotated_pt.z = (2 * q.x * q.z * pt->x) + (2 * q.y * q.z * pt->y)
 		+ (q.z * q.z * pt->z) - (2 * q.w * q.y * pt->x) - (q.y * q.y * pt->z)
 		+ (2 * q.w * q.x * pt->y) - (q.x * q.x * pt->z) + (q.w * q.w * pt->z);
-	*pt = rotated_pt;
+	return(rotated_pt);
 }

@@ -6,7 +6,7 @@
 #    By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/21 17:20:18 by elizabethte       #+#    #+#              #
-#    Updated: 2024/02/28 14:51:46 by eteo             ###   ########.fr        #
+#    Updated: 2024/03/01 05:37:41 by eteo             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ MINILIBX = $(MINILIBX_PATH)/libmlx.a
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 
 SRC =  fdf.c grid.c line.c mouse.c rotate.c window.c\
 

@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:15:20 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/02/28 14:31:05 by eteo             ###   ########.fr       */
+/*   Updated: 2024/03/01 14:18:25 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # include <fcntl.h>
 # include <math.h>
 
+# define M_PI 3.14159265358979323846
+
 # define MOUSE_CLICK_RIGHT 2
 # define KEY_PRESS 2
 # define KEY_RELEASE 3
@@ -32,8 +34,8 @@
 # define MOUSE_MOVE 6
 # define EXIT 17
 
-# define WIN_WIDTH 1920
-# define WIN_HEIGHT 1080
+# define WIN_WIDTH 920
+# define WIN_HEIGHT 480
 
 typedef struct s_data
 {
@@ -117,7 +119,7 @@ int		mouse_up(int button, int x, int y, t_visual *vis);
 
 //rotate.c
 void	rotate_grid(t_visual *vis);
-void	rotate_point(t_coord *pt, t_quat q);
+t_coord	rotate_point(t_coord *pt, t_quat q);
 
 //window.c
 void	my_mlx_pixel_put(t_data	*data, int x, int y, int color);

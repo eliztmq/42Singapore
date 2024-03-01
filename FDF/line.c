@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
+/*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:25:19 by eteo              #+#    #+#             */
-/*   Updated: 2024/02/28 22:17:03 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/03/01 14:54:37 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ t_coord	trans_pt(t_coord p, t_visual *vis)
 {
 	t_coord	new_pt;
 
-	new_pt.x = p.x + vis->centre_x;
-	new_pt.y = p.y + vis->centre_y;
+	new_pt.x = (p.x + vis->centre_x) * (WIN_WIDTH * 0.5);
+	new_pt.y = (p.y + vis->centre_y) * (WIN_HEIGHT * 0.5);
 	new_pt.z = p.z;
 	return (new_pt);
 }

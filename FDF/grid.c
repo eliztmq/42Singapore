@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:44:48 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/02/28 14:47:09 by eteo             ###   ########.fr       */
+/*   Updated: 2024/03/01 13:42:24 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,20 @@ void	fill_points(char *read_str, t_grid *grid)
 	char	**row_coord;
 	t_coord	temp_point;
 	int		i;
+	int		total_pts;
 
 	i = -1;
 	grid->all_points = ft_realloc(grid->all_points, (grid->max_y + 1)
 			* sizeof(t_coord *), (grid->max_y) * sizeof(t_coord *));
 	row_coord = ft_split(read_str, ' ');
 	free(read_str);
+	total_pts = count_outer_list(row_coord);
+	grid->all_points[grid->max_y] = ft_calloc(total_pts, sizeof(t_coord));
 	while (++i < count_outer_list(row_coord))
 	{
 		temp_point.x = i;
 		temp_point.y = grid->max_y;
 		temp_point.z = ft_atoi(&row_coord[i][0]);
-		grid->all_points[grid->max_y] = ft_calloc(i + 1, sizeof(t_coord));
 		grid->all_points[grid->max_y][i] = temp_point;
 	}
 	grid->max_x = i;
@@ -63,18 +65,22 @@ void	create_grid(int fd, t_grid *grid)
 {
 	char	*read_str;
 	t_coord	**all_points;
+	int		i;
 
-	all_points = (t_coord **)malloc(sizeof(t_coord));
+	i = -1;
+	all_points = (t_coord **)malloc(sizeof(t_coord *));
 	if (!all_points)
 		error_msg("Malloc Error\n");
 	grid->all_points = all_points;
 	grid->max_x = 0;
 	grid->max_y = 0;
-	read_str = get_next_line(fd);
-	while (read_str != NULL)
+	while (++i)
 	{
+		read_str = get_next_line(fd);
+		if (read_str == NULL)
+			break ;
 		fill_points(read_str, grid);
 		grid->max_y++;
-		read_str = get_next_line(fd);
 	}
+	all_points[grid->max_y] = NULL;
 }
