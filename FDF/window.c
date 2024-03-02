@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 17:19:19 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/03/01 14:18:28 by eteo             ###   ########.fr       */
+/*   Updated: 2024/03/02 16:17:28 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	my_mlx_pixel_put(t_data	*data, int x, int y, int color)
 {
 	char	*dst;
 
+	if (x < 0 || x >= WIN_WIDTH || y < 0 || y >= WIN_HEIGHT)
+		return ;
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }

@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:25:19 by eteo              #+#    #+#             */
-/*   Updated: 2024/03/01 23:06:57 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/03/02 16:11:52 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	swapx_y(t_coord *p0, t_coord *p1)
 	int	s_x;
 	int	s_y;
 
-	if (((p1->y - p0->y) / (p1->x - p0->x)) > 1)
+	if ((p1->y - p0->y) > (p1->x - p0->x))
 	{
 		s_x = p0->x;
 		p0->x = p0->y;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:15:20 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/03/01 14:18:25 by eteo             ###   ########.fr       */
+/*   Updated: 2024/03/02 15:58:56 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,10 @@ typedef struct s_visual
 
 typedef struct quat_rot
 {
-	int	w;
-	int	x;
-	int	y;
-	int	z;
+	double	w;
+	double	x;
+	double	y;
+	double	z;
 }	t_quat;
 
 //fdf.c

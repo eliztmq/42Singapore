@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:44:48 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/03/01 23:18:24 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/03/02 16:20:07 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void	fill_points(char *read_str, t_grid *grid)
 	int		total_pts;
 
 	i = -1;
-	grid->all_points = ft_realloc(grid->all_points, (grid->max_y + 1)
-			* sizeof(t_coord *), (grid->max_y) * sizeof(t_coord *));
+	grid->all_points = ft_realloc(grid->all_points, (grid->max_y + 2)
+			* sizeof(t_coord *), (grid->max_y + 1) * sizeof(t_coord *));
 	row_coord = ft_split(read_str, ' ');
 	free(read_str);
 	total_pts = count_outer_list(row_coord);
@@ -65,22 +65,16 @@ void	create_grid(int fd, t_grid *grid)
 {
 	char	*read_str;
 	t_coord	**all_points;
-	int		i;
 
-	i = -1;
 	all_points = (t_coord **)malloc(sizeof(t_coord *));
 	if (!all_points)
 		error_msg("Malloc Error\n");
 	grid->all_points = all_points;
 	grid->max_x = 0;
 	grid->max_y = 0;
-	while (++i)
+	while ((read_str = get_next_line(fd)) != NULL )
 	{
-		read_str = get_next_line(fd);
-		if (read_str == NULL)
-			break ;
 		fill_points(read_str, grid);
 		grid->max_y++;
 	}
-	all_points[grid->max_y] = NULL;
 }
