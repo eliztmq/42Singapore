@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   grid.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
+/*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:44:48 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/03/02 16:20:07 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/03/02 09:58:33 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,11 @@ void	create_grid(int fd, t_grid *grid)
 	grid->all_points = all_points;
 	grid->max_x = 0;
 	grid->max_y = 0;
-	while ((read_str = get_next_line(fd)) != NULL )
+	while (1)
 	{
+		read_str = get_next_line(fd);
+		if (read_str == NULL)
+			break ;
 		fill_points(read_str, grid);
 		grid->max_y++;
 	}
