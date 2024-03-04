@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 16:24:54 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/03/02 08:52:40 by eteo             ###   ########.fr       */
+/*   Updated: 2024/03/04 14:37:36 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	rotate_grid(t_visual *vis)
 	rot_transf.y = sin(vis->mouse.rot_angle / 2) * vis->mouse.rot_axis.y;
 	rot_transf.z = sin(vis->mouse.rot_angle / 2) * vis->mouse.rot_axis.z;
 	j = -1;
+	printf("max_y before rotating %d\n", vis->grid->max_x);
 	while (++j < vis->grid->max_y)
 	{
 		i = -1;

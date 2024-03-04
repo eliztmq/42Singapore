@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   grid.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
+/*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:44:48 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/03/04 21:47:35 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/03/04 14:37:11 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_free(char **str)
 	free(str);
 }
 
-void	fill_points(char *read_str, t_grid *grid, t_coord ***all_points)
+void	fill_points(char *read_str, t_grid *grid)
 {
 	char	**row_coord;
 	t_coord	temp_point;
@@ -44,18 +44,18 @@ void	fill_points(char *read_str, t_grid *grid, t_coord ***all_points)
 	int		total_pts;
 
 	i = -1;
-	*all_points = ft_realloc(all_points, (grid->max_y + 1)
+	grid->all_points = ft_realloc(grid->all_points, (grid->max_y + 1)
 			* sizeof(t_coord *), (grid->max_y) * sizeof(t_coord *));
 	row_coord = ft_split(read_str, ' ');
 	free(read_str);
 	total_pts = count_outer_list(row_coord);
-	all_points[grid->max_y] = ft_calloc(total_pts, sizeof(t_coord));
+	grid->all_points[grid->max_y] = ft_calloc(total_pts, sizeof(t_coord));
 	while (++i < count_outer_list(row_coord))
 	{
 		temp_point.x = i * 2;
 		temp_point.y = grid->max_y * 2;
 		temp_point.z = ft_atoi(&row_coord[i][0]) * 2;
-		*all_points[grid->max_y][i] = temp_point;
+		grid->all_points[grid->max_y][i] = temp_point;
 	}
 	grid->max_x = i;
 	ft_free(row_coord);
@@ -64,7 +64,6 @@ void	fill_points(char *read_str, t_grid *grid, t_coord ***all_points)
 void	create_grid(int fd, t_grid *grid)
 {
 	char	*read_str;
-	t_coord	**all_points;
 
 	grid->max_x = 0;
 	grid->max_y = 0;
@@ -73,8 +72,8 @@ void	create_grid(int fd, t_grid *grid)
 		read_str = get_next_line(fd);
 		if (read_str == NULL)
 			break ;
-		fill_points(read_str, grid, &all_points);
+		fill_points(read_str, grid);
 		grid->max_y++;
 	}
-	grid->all_points;
+	printf("max_y %d", grid->max_y);
 }
