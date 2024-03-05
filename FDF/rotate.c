@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 16:24:54 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/03/04 14:37:36 by eteo             ###   ########.fr       */
+/*   Updated: 2024/03/05 15:11:37 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,16 @@ void	rotate_grid(t_visual *vis)
 	rot_transf.y = sin(vis->mouse.rot_angle / 2) * vis->mouse.rot_axis.y;
 	rot_transf.z = sin(vis->mouse.rot_angle / 2) * vis->mouse.rot_axis.z;
 	j = -1;
-	printf("max_y before rotating %d\n", vis->grid->max_x);
+	printf("max_y before rotating %d\n", vis->grid->max_y);
 	while (++j < vis->grid->max_y)
 	{
 		i = -1;
 		while (++i < vis->grid->max_x)
+		{
+			printf("j = %d, i = %d\n", j, i);
+			printf("testing point: x = %d, y = %d, z = %d", vis->grid->all_points[j][i].x,vis->grid->all_points[j][i].y,vis->grid->all_points[j][i].z);
 			vis->grid->all_points[j][i] = rotate_point(&vis->grid->all_points[j][i], rot_transf);
+		}
 	}
 }
 
