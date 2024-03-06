@@ -1,0 +1,6 @@
+Bugs:
+1. Realloc being used instead of ft_realloc *need to change back
+2. Rotation needs to be done by x and y axis
+3. Movement to centre of window is not done properly
+4. Scaling of object according to size of window to be done
+

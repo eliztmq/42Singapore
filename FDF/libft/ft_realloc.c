@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
+/*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 16:16:58 by elizabethte       #+#    #+#             */
-/*   Updated: 2023/12/15 17:32:06 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/03/06 09:11:39 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,10 @@ void	*ft_realloc(void *ptr, size_t size, size_t osize)
 	new_ptr = ft_calloc(1, size);
 	if (!new_ptr)
 		return (NULL);
-	if (!ptr)
-		return (new_ptr);
-	if (size == 0)
+	if (!ptr || osize == 0)
 	{
 		free(ptr);
-		return (NULL);
+		return (new_ptr);
 	}
 	if (size < osize)
 		ft_memmove(new_ptr, ptr, size);

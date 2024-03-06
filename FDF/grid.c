@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:44:48 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/03/05 15:13:18 by eteo             ###   ########.fr       */
+/*   Updated: 2024/03/06 14:59:39 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,17 @@ void	fill_points(char *read_str, t_grid *grid)
 	int		total_pts;
 
 	i = -1;
-	grid->all_points = ft_realloc(grid->all_points, (grid->max_y + 1)
-			* sizeof(t_coord *), (grid->max_y) * sizeof(t_coord *));
+	grid->all_points = realloc(grid->all_points, (grid->max_y + 1)
+			* sizeof(t_coord *));
 	row_coord = ft_split(read_str, ' ');
 	free(read_str);
 	total_pts = count_outer_list(row_coord);
 	grid->all_points[grid->max_y] = ft_calloc(total_pts, sizeof(t_coord));
 	while (++i < count_outer_list(row_coord))
 	{
-		temp_point.x = i * 2;
-		temp_point.y = grid->max_y * 2;
-		temp_point.z = ft_atoi(&row_coord[i][0]) * 2;
+		temp_point.x = i * 10;
+		temp_point.y = grid->max_y * 10;
+		temp_point.z = ft_atoi(&row_coord[i][0]) * 10;
 		grid->all_points[grid->max_y][i] = temp_point;
 	}
 	grid->max_x = i;
@@ -67,6 +67,7 @@ void	create_grid(int fd, t_grid *grid)
 
 	grid->max_x = 0;
 	grid->max_y = 0;
+	grid->all_points = NULL;
 	while (1)
 	{
 		read_str = get_next_line(fd);
@@ -76,5 +77,4 @@ void	create_grid(int fd, t_grid *grid)
 		grid->max_y++;
 	}
 	printf("max_y %d", grid->max_y);
-	printf("testing point: x = %d, y = %d, z = %d", grid->all_points[0][0].x,grid->all_points[0][0].y,grid->all_points[0][0].z);
 }

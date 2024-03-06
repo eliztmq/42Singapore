@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 22:56:39 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/02/28 14:45:03 by eteo             ###   ########.fr       */
+/*   Updated: 2024/03/06 14:28:36 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	mouse_drag(int x, int y, t_visual *vis)
 	vis->mouse.rot_angle = atan2(vis->mouse.delta_y, vis->mouse.delta_x);
 	vis->mouse.x = x;
 	vis->mouse.y = y;
+	render_grid(vis);
 	return (0);
 }
 
