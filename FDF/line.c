@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:25:19 by eteo              #+#    #+#             */
-/*   Updated: 2024/03/11 15:31:41 by eteo             ###   ########.fr       */
+/*   Updated: 2024/03/11 15:36:15 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	drawline(t_data *img, t_coord p0, t_coord p1)
 			line.err += line.dy;
 			p0.x += line.sx;
 		}
-		if (line.e2 <= line.dy)
+		if (line.e2 <= line.dx)
 		{
 			line.err += line.dx;
 			p0.y += line.sy;
