@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:25:19 by eteo              #+#    #+#             */
-/*   Updated: 2024/03/06 14:48:24 by eteo             ###   ########.fr       */
+/*   Updated: 2024/03/11 15:31:41 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,55 +17,47 @@ t_coord	trans_pt(t_coord p, t_visual *vis)
 {
 	t_coord	new_pt;
 
-	new_pt.x = (p.x + vis->centre_x);
-	new_pt.y = (p.y + vis->centre_y);
+	new_pt.x = p.x + vis->centre_x;
+	new_pt.y = p.y + vis->centre_y;
 	new_pt.z = p.z;
 	return (new_pt);
 }
 
-int	swapx_y(t_coord *p0, t_coord *p1)
+void	fill_line(t_line *line, t_coord p0, t_coord p1)
 {
-	int	s_x;
-	int	s_y;
-
-	if ((p1->y - p0->y) > (p1->x - p0->x))
-	{
-		s_x = p0->x;
-		p0->x = p0->y;
-		p0->y = s_x;
-		s_y = p1->y;
-		p1->y = p1->x;
-		p1->x = s_y;
-		return (1);
-	}
+	line->dx = abs(p1.x - p0.x);
+	line->dy = -1 * abs(p1.y - p0.y);
+	if (p0.x < p1.x)
+		line->sx = 1;
 	else
-		return (0);
+		line->sx = -1;
+	if (p0.y < p1.y)
+		line->sy = 1;
+	else
+		line->sy = -1;
+	line->err = line->dx + line->dy;
 }
 
 void	drawline(t_data *img, t_coord p0, t_coord p1)
 {
-	int	swap;
-	int	x;
-	int	y;
-	int	p;
+	t_line	line;
 
-	swap = swapx_y(&p0, &p1);
-	x = p0.x;
-	y = p0.y;
-	p = (2 * (p1.y - p0.y)) - (p1.x - p0.x);
-	while (x <= p1.x)
+	fill_line(&line, p0, p1);
+	while (1)
 	{
-		if (swap == 1)
-			my_mlx_pixel_put(img, y, x, 255);
-		else if (swap == 0)
-			my_mlx_pixel_put(img, x, y, 255);
-		x++;
-		if (p < 0)
-			p = p + (2 * (p1.y - p0.y));
-		else
+		my_mlx_pixel_put(img, p0.x, p0.y, 255);
+		if (p0.x == p1.x && p0.y == p1.y)
+			break ;
+		line.e2 = 2 * line.err;
+		if (line.e2 >= line.dy)
 		{
-			p = p + (2 * (p1.y - p0.y)) - (2 * (p1.x - p0.x));
-			y++;
+			line.err += line.dy;
+			p0.x += line.sx;
+		}
+		if (line.e2 <= line.dy)
+		{
+			line.err += line.dx;
+			p0.y += line.sy;
 		}
 	}
 }

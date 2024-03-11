@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:15:20 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/03/04 14:27:12 by eteo             ###   ########.fr       */
+/*   Updated: 2024/03/11 15:31:52 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 # define M_PI 3.14159265358979323846
 
-# define MOUSE_CLICK_RIGHT 2
+# define MOUSE_CLICK_RIGHT 3
 # define KEY_PRESS 2
 # define KEY_RELEASE 3
 # define MOUSE_DOWN 4
@@ -51,6 +51,16 @@ typedef struct s_vars
 	void	*mlx;
 	void	*win;
 }	t_vars;
+
+typedef	struct line_data
+{
+	int	dx;
+	int	dy;
+	int	sx;
+	int	sy;
+	int	err;
+	int	e2;
+}	t_line;
 
 typedef struct euler_coord
 {
@@ -108,11 +118,12 @@ void	create_grid(int fd, t_grid *grid);
 
 //line.c
 t_coord	trans_pt(t_coord p, t_visual *vis);
-int		swapx_y(t_coord *p0, t_coord *p1);
+void	fill_line(t_line *line, t_coord p0, t_coord p1);
 void	drawline(t_data *img, t_coord p0, t_coord p1);
+void	NewFunction(int swap, t_data *img, int y, int x);
 void	drawing_logic(t_visual *vis);
 
-//mouse.c
+// mouse.c
 int		mouse_down(int button, int x, int y, t_visual *vis);
 int		mouse_drag(int x, int y, t_visual *vis);
 int		mouse_up(int button, int x, int y, t_visual *vis);

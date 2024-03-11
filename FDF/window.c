@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 17:19:19 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/03/06 15:02:45 by eteo             ###   ########.fr       */
+/*   Updated: 2024/03/07 14:38:15 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,7 @@ void	initial_val(t_visual *vis, t_grid *grid)
 	t_mouse	mouse;
 	t_coord	rot_axis;
 
-	mouse.x_angle = (45 * M_PI)/180;
-	mouse.y_angle = (45 * M_PI)/180; //need to rotate by x and y
+	mouse.rot_angle = 25 * M_PI / 180;
 	mouse.button = 0;
 	mouse.x = 0;
 	mouse.y = 0;

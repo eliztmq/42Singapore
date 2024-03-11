@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:44:48 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/03/06 14:59:39 by eteo             ###   ########.fr       */
+/*   Updated: 2024/03/07 14:18:17 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,4 @@ void	create_grid(int fd, t_grid *grid)
 		fill_points(read_str, grid);
 		grid->max_y++;
 	}
-	printf("max_y %d", grid->max_y);
 }
