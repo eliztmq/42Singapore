@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:15:20 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/03/11 15:31:52 by eteo             ###   ########.fr       */
+/*   Updated: 2024/03/12 15:10:25 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 
 # define WIN_WIDTH 920
 # define WIN_HEIGHT 480
+# define SCALE_FAC 0.3
 
 typedef struct s_data
 {
@@ -94,6 +95,7 @@ typedef struct s_visual
 	t_mouse	mouse;
 	int		centre_x;
 	int		centre_y;
+	int		scale;
 	t_grid	*grid;
 }	t_visual;
 
@@ -128,8 +130,9 @@ int		mouse_down(int button, int x, int y, t_visual *vis);
 int		mouse_drag(int x, int y, t_visual *vis);
 int		mouse_up(int button, int x, int y, t_visual *vis);
 
-//rotate.c
-void	rotate_grid(t_visual *vis);
+//trans.c
+t_coord	**rotate_grid(t_visual *vis);
+t_coord	scale_points(t_coord pt, t_visual *vis);
 t_coord	rotate_point(t_coord *pt, t_quat q);
 
 //window.c

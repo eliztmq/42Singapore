@@ -1,8 +1,11 @@
 Bugs:
 1. Realloc being used instead of ft_realloc *need to change back
-2. Cannot replace original grid coord as rotation is done, will cause multiplcation effect to be
-amplified while division is not visible since we are mapping float to int (TBD)
-3. Scaling of object according to size of window to be done
-4. Movement to centre of window is not done properly (need to consider scale)
+2. Need to fix rotation axis 
+3. Figure out how to rotate via centre of object and not via origin (or slow down rotation to figure this out)
 5. Rotation needs to be done by x and y axis *KIV
 
+Completed:
+1. Movement to centre of window is not done properly (need to consider scale)
+2. Scaling of object according to size of window to be done
+3. Cannot replace original grid coord as rotation is done, will cause multiplcation effect to be
+amplified while division is not visible since we are mapping float to int

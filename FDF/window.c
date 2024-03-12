@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 17:19:19 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/03/07 14:38:15 by eteo             ###   ########.fr       */
+/*   Updated: 2024/03/12 15:10:45 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,16 @@ void	black_canvas(t_visual *vis)
 
 int	render_grid(t_visual *vis)
 {
+	t_coord	**rotated_pts;
+	t_coord	**tmp;
+
 	black_canvas(vis);
-	rotate_grid(vis);
+	rotated_pts = rotate_grid(vis);
+	tmp = vis->grid->all_points;
+	vis->grid->all_points = rotated_pts;
 	drawing_logic(vis);
 	mlx_put_image_to_window(vis->vars.mlx, vis->vars.win, vis->img.img, 0, 0);
+	vis->grid->all_points = tmp;
 	return (0);
 }
 
@@ -63,8 +69,12 @@ void	initial_val(t_visual *vis, t_grid *grid)
 	rot_axis.z = 0;
 	mouse.rot_axis = rot_axis;
 	vis->mouse = mouse;
-	vis->centre_x = (WIN_WIDTH - grid->max_x) / 2;
-	vis->centre_y = (WIN_HEIGHT - grid->max_y) / 2;
+	if (WIN_WIDTH / grid->max_x < WIN_HEIGHT / grid->max_y)
+		vis->scale = (WIN_WIDTH / grid->max_x) * SCALE_FAC;
+	else
+		vis->scale = (WIN_HEIGHT / grid->max_y) * SCALE_FAC;
+	vis->centre_x = (WIN_WIDTH - (grid->max_x * vis->scale)) / 2;
+	vis->centre_y = (WIN_HEIGHT - (grid->max_y * vis->scale)) / 2;
 	vis->grid = grid;
 }
 

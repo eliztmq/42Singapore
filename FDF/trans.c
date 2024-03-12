@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   trans.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 16:24:54 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/03/06 15:03:35 by eteo             ###   ########.fr       */
+/*   Updated: 2024/03/12 15:07:40 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "mlx_linux/mlx.h"
 
-void	rotate_grid(t_visual *vis)
+t_coord	**rotate_grid(t_visual *vis)
 {
 	t_quat	rot_transf;
+	t_coord	**rotated_pts;
 	int		i;
 	int		j;
 
@@ -23,15 +24,29 @@ void	rotate_grid(t_visual *vis)
 	rot_transf.x = sin(vis->mouse.rot_angle / 2) * vis->mouse.rot_axis.x;
 	rot_transf.y = sin(vis->mouse.rot_angle / 2) * vis->mouse.rot_axis.y;
 	rot_transf.z = sin(vis->mouse.rot_angle / 2) * vis->mouse.rot_axis.z;
+	rotated_pts = malloc(sizeof(t_coord *) * vis->grid->max_y);
 	j = -1;
 	while (++j < vis->grid->max_y)
 	{
 		i = -1;
+		rotated_pts[j] = ft_calloc(vis->grid->max_x, sizeof(t_coord));
 		while (++i < vis->grid->max_x)
 		{
-			vis->grid->all_points[j][i] = rotate_point(&vis->grid->all_points[j][i], rot_transf);
+			rotated_pts[j][i] = scale_points(vis->grid->all_points[j][i], vis);
+			rotated_pts[j][i] = rotate_point(&rotated_pts[j][i], rot_transf);
 		}
 	}
+	return(rotated_pts);
+}
+
+t_coord	scale_points(t_coord pt, t_visual *vis)
+{
+	t_coord	scaled_pt;
+
+	scaled_pt.x = pt.x * vis->scale;
+	scaled_pt.y = pt.y * vis->scale;
+	scaled_pt.z = pt.z * vis->scale;
+	return(scaled_pt);
 }
 
 t_coord	rotate_point(t_coord *pt, t_quat q)
