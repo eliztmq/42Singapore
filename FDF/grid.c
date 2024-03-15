@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:44:48 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/03/15 04:04:22 by eteo             ###   ########.fr       */
+/*   Updated: 2024/03/15 06:33:48 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void	fill_points(char *read_str, t_grid *grid)
 	int		total_pts;
 
 	i = -1;
-	grid->all_points = realloc(grid->all_points, (grid->max_y + 1)
-			* sizeof(t_coord *));
+	grid->all_points = ft_realloc(grid->all_points, (grid->max_y + 1)
+			* sizeof(t_coord *), (grid->max_y) * sizeof(t_coord *));
 	row_coord = ft_split(read_str, ' ');
 	free(read_str);
 	total_pts = count_outer_list(row_coord);
