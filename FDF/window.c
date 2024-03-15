@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 17:19:19 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/03/15 06:21:58 by eteo             ###   ########.fr       */
+/*   Updated: 2024/03/15 07:22:44 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,18 @@ int	render_grid(t_visual *vis)
 {
 	t_coord	**rotated_pts;
 	t_coord	**tmp;
+	int		i;
 
+	i = -1;
 	black_canvas(vis);
 	rotated_pts = rotate_grid(vis);
 	tmp = vis->grid->all_points;
 	vis->grid->all_points = rotated_pts;
 	drawing_logic(vis);
 	mlx_put_image_to_window(vis->vars.mlx, vis->vars.win, vis->img.img, 0, 0);
+	while (++i < vis->grid->max_y)
+		free(rotated_pts[i]);
+	free(rotated_pts);
 	vis->grid->all_points = tmp;
 	return (0);
 }

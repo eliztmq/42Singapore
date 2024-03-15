@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   trans.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
+/*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 16:24:54 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/03/15 14:41:44 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/03/15 07:35:25 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@ t_coord	**rotate_grid(t_visual *vis)
 	int		i;
 	int		j;
 
-	rot_transf = mquat(axis_quat(vis->mouse.rot_anglex, 1, 0, 0),
+	rot_transf = mquat(axis_quat(vis->mouse.rot_anglex, -1, 0, 0),
 			axis_quat(vis->mouse.rot_angley, 0, 1, 0));
 	rotated_pts = malloc(sizeof(t_coord *) * vis->grid->max_y);
+	if (!rotated_pts)
+		return (NULL);
 	j = -1;
 	while (++j < vis->grid->max_y)
 	{
@@ -63,8 +65,8 @@ t_coord	trans_points(t_coord pt, t_visual *vis)
 {
 	t_coord	trans_pt;
 
-	trans_pt.x = (pt.x * vis->scale) + (vis->grid->max_x * vis->scale / 2);
-	trans_pt.y = (pt.y * vis->scale) + (vis->grid->max_y * vis->scale / 2);
+	trans_pt.x = (pt.x * vis->scale) - (vis->grid->max_x * vis->scale / 2);
+	trans_pt.y = (pt.y * vis->scale) - (vis->grid->max_y * vis->scale / 2);
 	trans_pt.z = (pt.z * vis->scale);
 	return (trans_pt);
 }
