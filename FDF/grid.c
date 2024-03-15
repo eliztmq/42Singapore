@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:44:48 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/03/15 16:30:46 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/03/15 16:38:38 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	fill_points(char *read_str, t_grid *grid)
 	{
 		temp_point.x = i;
 		temp_point.y = grid->max_y;
-		temp_point.z = ft_atoi(&row_coord[i]);
+		temp_point.z = ft_atoi(row_coord[i]);
 		grid->all_points[grid->max_y][i] = temp_point;
 	}
 	grid->max_x = i;
