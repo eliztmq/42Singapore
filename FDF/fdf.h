@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:15:20 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/03/15 04:04:31 by eteo             ###   ########.fr       */
+/*   Updated: 2024/03/15 14:42:09 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct s_vars
 	void	*win;
 }	t_vars;
 
-typedef	struct line_data
+typedef struct line_data
 {
 	int	dx;
 	int	dy;
