@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:15:20 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/03/12 15:10:25 by eteo             ###   ########.fr       */
+/*   Updated: 2024/03/15 04:04:31 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 # define WIN_WIDTH 920
 # define WIN_HEIGHT 480
 # define SCALE_FAC 0.3
+# define ROT_FAC 0.005
 
 typedef struct s_data
 {
@@ -77,8 +78,8 @@ typedef struct mouse_data
 	int		y;
 	int		delta_x;
 	int		delta_y;
-	double	rot_angle;
-	t_coord	rot_axis;
+	double	rot_anglex;
+	double	rot_angley;
 }	t_mouse;
 
 typedef struct grid_data
@@ -132,7 +133,9 @@ int		mouse_up(int button, int x, int y, t_visual *vis);
 
 //trans.c
 t_coord	**rotate_grid(t_visual *vis);
-t_coord	scale_points(t_coord pt, t_visual *vis);
+t_quat	axis_quat(double angle, int x, int y, int z);
+t_quat	mquat(t_quat q1, t_quat q2);
+t_coord	trans_points(t_coord pt, t_visual *vis);
 t_coord	rotate_point(t_coord *pt, t_quat q);
 
 //window.c

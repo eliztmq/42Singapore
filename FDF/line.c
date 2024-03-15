@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:25:19 by eteo              #+#    #+#             */
-/*   Updated: 2024/03/11 15:36:15 by eteo             ###   ########.fr       */
+/*   Updated: 2024/03/15 06:17:13 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ t_coord	trans_pt(t_coord p, t_visual *vis)
 {
 	t_coord	new_pt;
 
-	new_pt.x = p.x + vis->centre_x;
-	new_pt.y = p.y + vis->centre_y;
+	new_pt.x = p.x - (vis->grid->max_x * vis->scale/ 2) + vis->centre_x;
+	new_pt.y = p.y - (vis->grid->max_y * vis->scale/ 2) + vis->centre_y;
 	new_pt.z = p.z;
 	return (new_pt);
 }

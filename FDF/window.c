@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 17:19:19 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/03/12 15:10:45 by eteo             ###   ########.fr       */
+/*   Updated: 2024/03/15 06:21:58 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,18 +56,14 @@ int	render_grid(t_visual *vis)
 void	initial_val(t_visual *vis, t_grid *grid)
 {
 	t_mouse	mouse;
-	t_coord	rot_axis;
 
-	mouse.rot_angle = 25 * M_PI / 180;
+	mouse.rot_anglex = -10 * M_PI / 180;
+	mouse.rot_angley = -15 * M_PI / 180;
 	mouse.button = 0;
 	mouse.x = 0;
 	mouse.y = 0;
 	mouse.delta_x = 0;
 	mouse.delta_y = 0;
-	rot_axis.x = 1;
-	rot_axis.y = 1;
-	rot_axis.z = 0;
-	mouse.rot_axis = rot_axis;
 	vis->mouse = mouse;
 	if (WIN_WIDTH / grid->max_x < WIN_HEIGHT / grid->max_y)
 		vis->scale = (WIN_WIDTH / grid->max_x) * SCALE_FAC;
