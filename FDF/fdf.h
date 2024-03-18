@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:15:20 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/03/15 14:42:09 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/03/18 08:56:24 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 
 # define WIN_WIDTH 920
 # define WIN_HEIGHT 480
-# define SCALE_FAC 0.3
+# define SCALE_FAC 0.5
 # define ROT_FAC 0.005
 
 typedef struct s_data
