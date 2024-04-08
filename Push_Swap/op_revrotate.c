@@ -1,49 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_swap.c                                          :+:      :+:    :+:   */
+/*   op_revrotate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/07 22:07:50 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/04/08 22:51:17 by elizabethte      ###   ########.fr       */
+/*   Created: 2024/04/08 22:45:40 by elizabethte       #+#    #+#             */
+/*   Updated: 2024/04/08 22:59:20 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft/libft.h"
 
-static void	ft_swap(t_node **stack)
+static void	ft_rev_rotate(t_node **stack)
 {
-	t_node	*tmp;
+	t_node	*last_node;
 
 	if (!stack || !*stack || !(*stack)->next)
 		return ;
-	tmp = (*stack);
-	(*stack) = (*stack)->next;
-	tmp->next = (*stack)->next;
-	(*stack)->next = tmp;
-	(*stack)->next->prev = (*stack);
-	if ((*stack)->next->next)
-		(*stack)->next->next->prev = (*stack)->next;
-	(*stack)->prev = NULL;
+	last_node = ft_lstlast(*stack);
+	last_node->prev->next = NULL;
+	last_node->prev = NULL;
+	last_node->next = *stack;
+	(*stack)->prev = last_node;
+	*stack = last_node;
 }
 
-void	ft_sa(t_node **a)
+void	ft_rra(t_node **a)
 {
-	ft_swap(a);
-	write(1, "sa\n", 3);
+	ft_rev_rotate(a);
+	write(1, "rra\n", 4);
 }
 
-void	ft_sb(t_node **b)
+void	ft_rrb(t_node **b)
 {
-	ft_swap(b);
-	write(1, "sb\n", 3);
+	ft_rev_rotate(b);
+	write(1, "rrb\n", 4);
 }
 
-void	ft_ss(t_node **a, t_node **b)
+void	ft_rrr(t_node **a, t_node **b)
 {
-	ft_swap(a);
-	ft_swap(b);
-	write(1, "ss\n", 3);
+	ft_rev_rotate(a);
+	ft_rev_rotate(b);
+	write(1, "rrr\n", 4);
 }
