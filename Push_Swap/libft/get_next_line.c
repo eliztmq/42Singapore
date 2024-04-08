@@ -1,0 +1,89 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/03 16:27:42 by elizabethte       #+#    #+#             */
+/*   Updated: 2024/02/15 14:08:02 by elizabethte      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+char	*ft_read(int fd, char *output)
+{
+	ssize_t	byteread;
+	char	*buf;
+	char	*tmp;
+
+	buf = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	if (!buf)
+		return (NULL);
+	byteread = 1;
+	while (byteread > 0 && checkstr(output) == 0)
+	{
+		byteread = read(fd, buf, BUFFER_SIZE);
+		if (byteread < 0)
+		{
+			free(buf);
+			free(output);
+			return (NULL);
+		}
+		tmp = ft_join(output, buf);
+		free(output);
+		output = tmp;
+		ft_bzero(buf, BUFFER_SIZE + 1);
+	}
+	free(buf);
+	return (output);
+}
+
+void	ft_modsplit(char *srcstr, char *str)
+{
+	int		i;
+	int		cnt;
+	char	*tmp;
+
+	i = 0;
+	cnt = 0;
+	while (srcstr[cnt])
+		cnt++;
+	while (srcstr[i] && srcstr[i] != '\n')
+		i++;
+	tmp = ft_substr(srcstr, i + 1, cnt - i);
+	if (srcstr[i] == '\n')
+		srcstr[i + 1] = '\0';
+	if (tmp == NULL)
+		return ;
+	i = 0;
+	while (tmp[i])
+	{
+		str[i] = tmp[i];
+		i++;
+	}
+	free(tmp);
+}
+
+char	*get_next_line(int fd)
+{
+	static char	str[BUFFER_SIZE + 1];
+	char		*readstr;
+	char		*tmp;
+
+	if (fd < 0 || BUFFER_SIZE < 1)
+		return (NULL);
+	tmp = ft_substr(str, 0, BUFFER_SIZE + 1);
+	readstr = ft_read(fd, tmp);
+	ft_bzero(str, BUFFER_SIZE + 1);
+	if (readstr == NULL)
+		return (NULL);
+	if (!*readstr)
+	{
+		free (readstr);
+		return (NULL);
+	}
+	ft_modsplit(readstr, str);
+	return (readstr);
+}
