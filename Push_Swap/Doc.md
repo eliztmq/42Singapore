@@ -94,19 +94,23 @@ d. output list string, compare outgoing node in consideration vs receiving stack
 e. count list items 
 
 --Exec--
-a. initialise function
+a. initialise function 4a and 4b
 b. MAIN REPEATED: execution from 4c 
 c. AFTER CALC COST: execute based on list of operation
-d. Basic operation for when stack = 3 numbers
+d. Basic operation for when stack = 3 numbers THEN ONTO push back
 
 --push back--
 a. use calc cost (c) logic to rotate stack A accordingly for push from B
 b. find min of stack A to do rotation for output
 
---checker--
+--checker & filler--
 a. check if input list already ordered
-b. check for error on inputs
+b. MAIN CHECKER: check for error on inputs & link to a
+c. MAIN FILLER: filling t_node stack a with 
 
+--push_swap--
+a. MAIN: takes in arguments + initialise the two stacks, a and b + check argv to see if its valid (linking to checker.c) + execute
+b. error free stack
 ---
 
 Background:
