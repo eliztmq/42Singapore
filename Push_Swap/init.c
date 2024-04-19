@@ -1,37 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   chk_fill.c                                         :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 22:22:49 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/04/18 23:24:10 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/04/19 13:32:58 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft/libft.h"
-
-int	ft_process(char **argv, t_node **a)
-{
-	int		i;
-	long	num;
-
-	i = 0;
-	while (argv[++i])
-	{
-		if (if_alpha(argv[i]))
-			return (1);
-		num = ft_atoi(argv[i]);
-		if (num >= INT_MAX || num <= INT_MIN)
-			return (1);
-		if (ft_checkdup(a, (int)num))
-			return (1);
-		ft_addnode(a, (int)num);
-	}
-	return(0);
-}
 
 int	if_alpha(char *str)
 {
@@ -48,7 +28,7 @@ int	if_alpha(char *str)
 	return (flag);
 }
 
-int	ft_checkdup(t_node **a, int num)
+int	check_dup(t_node **a, int num)
 {
 	if (!*a)
 		return (0);
@@ -61,7 +41,7 @@ int	ft_checkdup(t_node **a, int num)
 	return (0);
 }
 
-void	ft_addnode(t_node **a, int num)
+void	add_node(t_node **a, int num)
 {
 	t_node	*new_node;
 	t_node	*last_node;
@@ -79,4 +59,25 @@ void	ft_addnode(t_node **a, int num)
 	}
 	last_node = ft_lstlast(*a);
 	new_node->prev = last_node;
+	last_node->next = new_node;
+}
+
+int	ft_process(char **argv, t_node **a)
+{
+	int		i;
+	long	num;
+
+	i = 0;
+	while (argv[++i])
+	{
+		if (if_alpha(argv[i]))
+			return (1);
+		num = ft_atoi(argv[i]);
+		if (num >= INT_MAX || num <= INT_MIN)
+			return (1);
+		if (check_dup(a, (int)num))
+			return (1);
+		add_node(a, (int)num);
+	}
+	return (0);
 }

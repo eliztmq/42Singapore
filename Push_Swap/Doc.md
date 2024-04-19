@@ -50,7 +50,7 @@ Int Min of whole list
 Int Max of whole list
 
 4. Establish logic flow
-a. count number of int, if = 3, just do basic op, if = 4 just push one
+a. count number of int, if <= 3, just do basic op
 
 b. else, push two int
 
@@ -93,20 +93,26 @@ c. **output node where insertion will take place on top of,
 d. output list string, compare outgoing node in consideration vs receiving stack (to do 4f(v))
 e. count list items 
 
+--basic--
+a. Basic operation for when stack = 3 numbers THEN ONTO push back
+b. find int_max of stack
+c. find int_min of stack
+
 --Exec--
 a. initialise function 4a and 4b
 b. MAIN REPEATED: execution from 4c 
 c. AFTER CALC COST: execute based on list of operation
-d. Basic operation for when stack = 3 numbers THEN ONTO push back
+d. check if list already ordered -> free stack a
 
 --push back--
 a. use calc cost (c) logic to rotate stack A accordingly for push from B
 b. find min of stack A to do rotation for output
 
---checker & filler--
-a. check if input list already ordered
-b. MAIN CHECKER: check for error on inputs & link to a
-c. MAIN FILLER: filling t_node stack a with 
+--initialise--
+a. MAIN PROCESS: check error and fill and check dup
+b. check if alphabet 
+c. check if duplicate
+d. add node to end 
 
 --push_swap--
 a. MAIN: takes in arguments + initialise the two stacks, a and b + check argv to see if its valid (linking to checker.c) + execute

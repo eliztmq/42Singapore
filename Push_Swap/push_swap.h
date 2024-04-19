@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 21:48:55 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/04/07 22:18:31 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/04/19 14:01:13 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,27 @@ typedef struct s_node
 	struct s_node	*next;
 	int		for_ind;
 	int		back_ind;
-	char	*op;
-	int		min_cost;
-	int		min_num;
-	int		max_num;
+	int		cost;
 }	t_node;
+
+//push_swap.c
+void	free_stack(t_node **stack);
+
+//init.c
+int		if_alpha(char *str);
+int		check_dup(t_node **a, int num);
+void	add_node(t_node **a, int num);
+int		ft_process(char **argv, t_node **a);
+
+//exec.c
+int		check_order(t_node **a);
+void	exec_loop(t_node **a, t_node **b);
+void	least_cost(t_node **a, t_node **b);
+void	ft_execute(t_node **a, t_node **b);
+
+//basic.c
+int		max_stack(t_node *a);
+int		min_stack(t_node *a);
+void	basic_op(t_node **a);
 
 #endif
