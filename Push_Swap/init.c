@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 22:22:49 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/04/19 13:32:58 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/04/22 22:45:47 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	check_dup(t_node **a, int num)
 {
 	if (!*a)
 		return (0);
-	while ((*a)->next)
+	while (*a)
 	{
 		if ((*a)->num == num)
 			return (1);

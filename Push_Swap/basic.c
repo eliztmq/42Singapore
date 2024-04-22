@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 13:18:52 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/04/19 13:34:18 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/04/22 22:46:28 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ int	max_stack(t_node *a)
 {
 	int	max;
 
+	if (!a)
+		return (NULL);
 	max = INT_MIN;
-	while(a->next)
+	while(a)
 	{
 		if (a->num > max)
 			max = a->num;
@@ -31,8 +33,10 @@ int	min_stack(t_node *a)
 {
 	int	min;
 
+	if (!a)
+		return (NULL);
 	min = INT_MAX;
-	while (a->next)
+	while (a)
 	{
 		if (a->num < min)
 			min = a->num;

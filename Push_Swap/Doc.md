@@ -61,15 +61,14 @@ d. If yes, do appropriate operation to arrange stack A in asc order
 e. If no, calculate cost of pushing each no. in A
 
 f. Cost = 
-(i) check if no. is min or max, rot of stack b =  0/1 (after push), exit
-(ii) if not, refresh indexes based on current position A & B
-(iii) count no. of rotation needed for stack B e.g. 4 (both index)
+(i) refresh indexes based on current position A & B (if index is not refreshed for both, then exit)
+(ii) count no. of rotation needed for stack B e.g. 4 (both index)
 -- count rot for stack B by compare stack A no., a < b(get rot from index of this no.) but > b - 1 --
-(iv) compare with corr index of stack A, e.g. 3
-(v) compare diff moves, larger no. of rrot vs larger no. of rot vs rotA + rrot B(or vice versa)
-(vi) populate the string list of operations needed
-(vii)take the larger no. of rotation + 1 (push)
-(viii) keep track of lowest cost
+(iii) compare with corr index of stack A, e.g. 3
+(iv) compare diff moves, larger no. of rrot vs larger no. of rot vs rotA + rrot B(or vice versa)
+(v) populate the string list of operations needed
+(vi)take the larger no. of rotation + 1 (push)
+(vii) keep track of lowest cost
 
 g. Execute based on lowest cost
 (i) if length of list = int min cost
