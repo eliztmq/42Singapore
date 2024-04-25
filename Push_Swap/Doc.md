@@ -66,14 +66,11 @@ f. Cost =
 -- count rot for stack B by compare stack A no., a < b(get rot from index of this no.) but > b - 1 --
 (iii) compare with corr index of stack A, e.g. 3
 (iv) compare diff moves, larger no. of rrot vs larger no. of rot vs rotA + rrot B(or vice versa)
-(v) populate the string list of operations needed
-(vi)take the larger no. of rotation + 1 (push)
-(vii) keep track of lowest cost
 
-g. Execute based on lowest cost
-(i) if length of list = int min cost
-(ii) execute each operation in list of string operations by order
-(iii) after executing reroute to 4c and repeat
+g. Execute based on lowest cost [TO BE FILLED]
+(i) shift through whole of stack a to find lowest cost -> get the node 
+(ii) find the corresponding node in b where u want to insert on top of
+(iii) TBC
 
 h. when stack A has = 3 numbers
 (i) check if numbers are in order
@@ -85,12 +82,11 @@ j. find min of stack A and using forward and backward index, see which is smalle
 
 5. Determine what are the sub codes logic that need to be thought through
 --Calc Cost--
-a. MAIN: populate cost of outgoing stack numbers and find abs min cost
+a. MAIN: populate cost of outgoing stack numbers
 b. refresh indexes
 c. **output node where insertion will take place on top of, 
 -compare number from outgoing stack with whole of receiving stack (insertion)-
-d. output list string, compare outgoing node in consideration vs receiving stack (to do 4f(v))
-e. count list items 
+d.  condition function to calculate costs to be filled
 
 --basic--
 a. Basic operation for when stack = 3 numbers THEN ONTO push back
