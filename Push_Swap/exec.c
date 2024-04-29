@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:49:20 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/04/25 22:58:07 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/04/29 22:31:21 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,35 +37,6 @@ int	check_order(t_node **a)
 	return (flag);
 }
 
-t_node	*lowest_cost(t_node **a)
-{
-	t_node	*output;
-	int		min;
-
-	min = INT_MAX;
-	while (*a)
-	{
-		if ((*a)->cost == 0)
-			return (*a);
-		if ((*a)->cost < min)
-		{
-			min = (*a)->cost;
-			output = *a;
-		}
-		(*a) = (*a)->next;
-	}
-	return (output);
-}
-
-void	least_cost(t_node **a, t_node **b)
-{
-	t_node	*sel_a;
-	t_node	*sel_b;
-
-	sel_a = lowest_cost(a);
-	sel_b = comp_stk(sel_a, b);
-}
-
 void	exec_loop(t_node **a, t_node **b)
 {
 	if (ft_lstsize(*a) <= 3)
@@ -75,7 +46,7 @@ void	exec_loop(t_node **a, t_node **b)
 		return ;
 	}
 	ft_cost(a, b);
-	least_cost(a, b);
+	ft_least(a, b);
 	exec_loop(a, b);
 }
 

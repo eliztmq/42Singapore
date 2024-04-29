@@ -70,7 +70,7 @@ f. Cost =
 g. Execute based on lowest cost [TO BE FILLED]
 (i) shift through whole of stack a to find lowest cost -> get the node 
 (ii) find the corresponding node in b where u want to insert on top of
-(iii) TBC
+(iii) use the same conditions to sift through, then have a common function with a flag that looks at operations to execute
 
 h. when stack A has = 3 numbers
 (i) check if numbers are in order
@@ -88,6 +88,13 @@ c. **output node where insertion will take place on top of,
 -compare number from outgoing stack with whole of receiving stack (insertion)-
 d.  condition function to calculate costs to be filled
 
+--least cost -- 
+a. MAIN: filter based on same conditions and execute operations accordingly
+b. output node with the lowest cost in the stack
+c. execution when both stacks need forward rotation
+d. execution when both stacks need backward rotation
+e. execution when both stacks have separate rotations needed
+
 --basic--
 a. Basic operation for when stack = 3 numbers THEN ONTO push back
 b. find int_max of stack
@@ -96,8 +103,7 @@ c. find int_min of stack
 --Exec--
 a. initialise function 4a and 4b
 b. MAIN REPEATED: execution from 4c 
-c. AFTER CALC COST: execute based on list of operation
-d. check if list already ordered -> free stack a
+c. check if list already ordered -> free stack a
 
 --push back--
 a. use calc cost (c) logic to rotate stack A accordingly for push from B
