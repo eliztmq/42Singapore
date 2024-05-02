@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 22:16:41 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/04/29 23:11:19 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/05/02 23:08:26 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,12 @@ t_node	*lowest_cost(t_node **a)
 	return (output);
 }
 
-void	for_exec(t_node **a, t_node **b, int a_idx, int b_idx)
+void	ab_for(t_node **a, t_node **b, int a_idx, int b_idx)
 {
 	int	ab_loop;
 	int	ind_loop;
 
 	ab_loop = a_idx;
-	ind_loop = ft_abs(a_idx - b_idx);
 	if (a_idx > b_idx)
 		ab_loop = b_idx;
 	while (ab_loop)
@@ -47,23 +46,16 @@ void	for_exec(t_node **a, t_node **b, int a_idx, int b_idx)
 		ft_rr(a, b);
 		ab_loop--;
 	}
-	while (ind_loop)
-	{
-		if (a_idx > b_idx)
-			ft_ra(a);
-		else
-			ft_rb(b);
-		ind_loop--;
-	}
+	fill_index(a);
+	fill_index(b);
 }
 
-void	back_exec(t_node **a, t_node **b, int a_idx, int b_idx)
+void	ab_back(t_node **a, t_node **b, int a_idx, int b_idx)
 {
 	int	ab_loop;
 	int	ind_loop;
 
 	ab_loop = a_idx;
-	ind_loop = ft_abs(a_idx - b_idx);
 	if (a_idx > b_idx)
 		ab_loop = b_idx;
 	while (ab_loop)
@@ -71,38 +63,28 @@ void	back_exec(t_node **a, t_node **b, int a_idx, int b_idx)
 		ft_rrr(a, b);
 		ab_loop--;
 	}
-	while (ind_loop)
-	{
-		if (a_idx > b_idx)
-			ft_rra(a);
-		else
-			ft_rrb(b);
-		ind_loop--;
-	}
+	fill_index(a);
+	fill_index(b);
 }
 
-void	sep_exec(t_node *a, t_node **b, t_node *sel_a, t_node *sel_b)
+void	stack_exec(t_node **stack, t_node *target, char stack_name)
 {
-	int	r_loop;
-	int	rr_loop;
-
-	if (sel_a->for_ind + sel_b->back_ind < sel_a->back_ind + sel_b->for_ind)
+	while (*stack != target)
 	{
-		r_loop = sel_a->for_ind + 1;
-		rr_loop = sel_b->back_ind + 1;
-		while (--r_loop)
-			ft_ra(a);
-		while (--rr_loop)
-			ft_rrb(b);
-	}
-	else
-	{
-		r_loop = sel_b->for_ind + 1;
-		rr_loop = sel_a->back_ind + 1;
-		while (--r_loop)
-			ft_rb(b);
-		while (--rr_loop)
-			ft_rra(a);
+		if (stack_name == 'a')
+		{
+			if (target->for_ind <= target->back_ind)
+				ft_ra(stack);
+			else
+				ft_rra(stack);
+		}
+		else if (stack_name == 'b')
+		{
+			if (target->for_ind <= target->back_ind)
+				ft_rb(stack);
+			else
+				ft_rrb(stack);			
+		}
 	}
 }
 
@@ -112,12 +94,12 @@ void	ft_least(t_node **a, t_node **b)
 	t_node	*s_b;
 
 	s_a = lowest_cost(a);
-	s_b = comp_stk(s_a, b);
+	s_b = comp_stack(s_a, b);
 	if (s_a->for_ind <= s_a->back_ind && s_b->for_ind <= s_b->back_ind)
-		for_exec(a, b, s_a->for_ind, s_b->for_ind);
+		ab_for(a, b, s_a->for_ind, s_b->for_ind);
 	else if (s_a->for_ind > s_a->back_ind && s_b->for_ind > s_b->back_ind)
-		back_exec(a, b, s_a->back_ind, s_b->back_ind);
-	else
-		sep_exec(a, b, s_a, s_b);
+		ab_back(a, b, s_a->back_ind, s_b->back_ind);
+	stack_exec(a, s_a, 'a');
+	stack_exec(b, s_b, 'b');
 	ft_pa(a);
 }

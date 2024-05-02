@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 22:14:54 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/04/25 22:50:11 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/05/02 22:43:25 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	fill_index(t_node **stack)
 	return(1);
 }
 
-t_node	*comp_stk(t_node *inc_node, t_node **stack)
+t_node	*comp_stack(t_node *inc_node, t_node **stack)
 {
 	t_node	*output;
 	t_node	**tmp;
@@ -43,7 +43,8 @@ t_node	*comp_stk(t_node *inc_node, t_node **stack)
 	while (*tmp)
 	{
 		if (!(*tmp)->next)
-			if ((*tmp)->num < inc_node->num && (*stack)->num > inc_node->num)
+			if ((*tmp)->nu
+			m < inc_node->num && (*stack)->num > inc_node->num)
 				output = tmp;
 		else if ((*tmp)->num < inc_node->num && (*tmp)->next->num > inc_node->num)
 			output = *tmp;
@@ -52,41 +53,41 @@ t_node	*comp_stk(t_node *inc_node, t_node **stack)
 	return (output);
 }
 
-void	fill_cost(t_node *a, t_node *b_in)
+void	fill_cost(t_node *p_stack, t_node *r_stack)
 {
-	if (a->for_ind <= a->back_ind && b_in->for_ind <= b_in->back_ind)
+	if (p_stack->for_ind <= p_stack->back_ind && r_stack->for_ind <= r_stack->back_ind)
 	{
-		if (a->for_ind >= b_in->for_ind)
-			a->cost = a->for_ind;
+		if (p_stack->for_ind >= r_stack->for_ind)
+			p_stack->cost = p_stack->for_ind;
 		else
-			a->cost = b_in->for_ind;
+			p_stack->cost = r_stack->for_ind;
 	}
-	else if (a->for_ind > a->back_ind && b_in->for_ind > b_in->back_ind)
+	else if (p_stack->for_ind > p_stack->back_ind && r_stack->for_ind > r_stack->back_ind)
 	{
-		if (a->back_ind >= b_in->back_ind)
-			a->cost = a->back_ind;
+		if (p_stack->back_ind >= r_stack->back_ind)
+			p_stack->cost = p_stack->back_ind;
 		else
-			a->cost = b_in->back_ind;
+			p_stack->cost = r_stack->back_ind;
 	}
 	else
 	{
-		if (a->for_ind + b_in->back_ind < a->back_ind + b_in->for_ind)
-			a->cost = a->for_ind + b_in->back_ind;
+		if (p_stack->for_ind + r_stack->back_ind < p_stack->back_ind + r_stack->for_ind)
+			p_stack->cost = p_stack->for_ind + r_stack->back_ind;
 		else
-			a->cost = a->back_ind + b_in->for_ind;
+			p_stack->cost = p_stack->back_ind + r_stack->for_ind;
 	}
 }
 
-void	ft_cost(t_node **a, t_node **b)
+void	ft_cost(t_node **p_stack, t_node **r_stack)
 {
-	t_node	*b_in;
+	t_node	*r_in;
 
-	if (!fill_index(a) && !fill_index(b))
+	if (!fill_index(p_stack) && !fill_index(r_stack))
 		return ;
-	while (*a)
+	while (*p_stack)
 	{
-		b_in = comp_stk(*a, b);
-		fill_cost(*a, b_in);
-		(*a) = (*a)->next;
+		r_in = comp_stack(*p_stack, r_stack);
+		fill_cost(*p_stack, r_in);
+		(*p_stack) = (*p_stack)->next;
 	}
 }

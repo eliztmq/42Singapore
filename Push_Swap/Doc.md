@@ -70,7 +70,7 @@ f. Cost =
 g. Execute based on lowest cost [TO BE FILLED]
 (i) shift through whole of stack a to find lowest cost -> get the node 
 (ii) find the corresponding node in b where u want to insert on top of
-(iii) use the same conditions to sift through, then have a common function with a flag that looks at operations to execute
+(iii) use the same conditions to sift through and push accordingly
 
 h. when stack A has = 3 numbers
 (i) check if numbers are in order
