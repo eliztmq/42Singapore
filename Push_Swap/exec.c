@@ -6,12 +6,27 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:49:20 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/02 23:08:28 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/05/06 22:38:38 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft/libft.h"
+
+int	lstsize(t_node *lst)
+{
+	int		i;
+	t_node	*n;
+
+	i = 0;
+	n = lst;
+	while (n)
+	{
+		n = n->next;
+		i++;
+	}
+	return (i);
+}
 
 int	check_order(t_node **a)
 {
@@ -39,7 +54,7 @@ int	check_order(t_node **a)
 
 void	exec_loop(t_node **a, t_node **b)
 {
-	if (ft_lstsize(*a) <= 3)
+	if (lstsize(*a) <= 3)
 	{
 		basic_op(a);
 		ft_pushback(a, b);
@@ -61,7 +76,7 @@ void	ft_execute(t_node **a, t_node **b)
 		write(1, "Arguments are in order\n", 24);
 		exit(EXIT_SUCCESS);
 	}
-	if (ft_lstsize(*a) <= 3)
+	if (lstsize(*a) <= 3)
 	{
 		basic_op(a);
 		return ;

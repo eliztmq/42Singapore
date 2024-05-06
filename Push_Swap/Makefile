@@ -6,7 +6,7 @@
 #    By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/07 22:02:13 by elizabethte       #+#    #+#              #
-#    Updated: 2024/05/06 21:47:29 by elizabethte      ###   ########.fr        #
+#    Updated: 2024/05/06 22:54:56 by elizabethte      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,18 +30,18 @@ $(NAME) : $(OFILES) $(LIBFT)
 	$(CC) $(CFLAGS) -I. -o $(NAME) $(OFILES) $(LIBFT)
 
 $(OFILES): $(SRC)
-	$(CC) $(CFLAGS) -c $^
+	$(CC) $(CFLAGS) -I. -c $^
 
 $(LIBFT):
 	@make -C $(LIBFT_PATH) all
 
 clean :
 	@make -C $(LIBFT_PATH) clean
-	rm -f $(OFILES)
+	rm -rf $(OFILES)
 
 fclean : clean
 	@make -C $(LIBFT_PATH) fclean
-	rm -f $(NAME)
+	rm -rf $(NAME)
 
 re : fclean all
 

@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 13:18:52 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/06 21:58:51 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/05/06 22:43:04 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	max_stack(t_node *a)
 	int	max;
 
 	if (!a)
-		return (NULL);
+		return (-1);
 	max = INT_MIN;
 	while (a)
 	{
@@ -34,7 +34,7 @@ int	min_stack(t_node *a)
 	int	min;
 
 	if (!a)
-		return (NULL);
+		return (-1);
 	min = INT_MAX;
 	while (a)
 	{
@@ -60,7 +60,7 @@ void	basic_op(t_node **a)
 	}
 	else
 	{
-		if (ft_lstlast((*a)->num) == min_stack(*a))
+		if (lstlast(*a)->num == min_stack(*a))
 			ft_rra(a);
 		else
 			ft_sa(a);

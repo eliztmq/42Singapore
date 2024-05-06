@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 21:48:55 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/06 21:58:04 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/05/06 22:37:40 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	add_node(t_node **a, int num);
 int		ft_process(char **argv, t_node **a);
 
 //exec.c
+int	lstsize(t_node *lst);
 int		check_order(t_node **a);
 void	exec_loop(t_node **a, t_node **b);
 void	ft_execute(t_node **a, t_node **b);
@@ -65,24 +66,25 @@ int		min_stack(t_node *a);
 void	basic_op(t_node **a);
 
 //op_push.c
-static void	ft_push(t_node **pusher, t_node **receiver);
+void	ft_push(t_node **pusher, t_node **receiver);
 void	ft_pa(t_node **b, t_node **a);
 void	ft_pb(t_node **a, t_node **b);
 
 //op_revrotate.c
-static void	ft_rev_rotate(t_node **stack);
+t_node	*lstlast(t_node *lst);
+void	ft_rev_rotate(t_node **stack);
 void	ft_rra(t_node **a);
 void	ft_rrb(t_node **b);
 void	ft_rrr(t_node **a, t_node **b);
 
 //op_rotate.c
-static void	ft_rotate(t_node **stack);
+void	ft_rotate(t_node **stack);
 void	ft_ra(t_node **a);
 void	ft_rb(t_node **b);
 void	ft_rr(t_node **a, t_node **b);
 
 //op_swap.c
-static void	ft_swap(t_node **stack);
+void	ft_swap(t_node **stack);
 void	ft_sa(t_node **a);
 void	ft_sb(t_node **b);
 void	ft_ss(t_node **a, t_node **b);

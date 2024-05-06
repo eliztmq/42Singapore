@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 22:14:54 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/06 22:02:23 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/05/06 22:47:28 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	fill_index(t_node **stack)
 	if (!(*stack))
 		return (0);
 	for_ind = 0;
-	back_ind = ft_lstsize(*stack);
+	back_ind = lstsize(*stack);
 	while (*stack)
 	{
 		(*stack)->for_ind = for_ind;
@@ -43,8 +43,10 @@ t_node	*comp_stack(t_node *inc_node, t_node **stack)
 	while (*tmp)
 	{
 		if (!(*tmp)->next)
+		{
 			if ((*tmp)->num < inc_node->num && (*stack)->num > inc_node->num)
-				output = tmp;
+				output = *tmp;
+		}
 		else if ((*tmp)->num < inc_node->num
 			&& (*tmp)->next->num > inc_node->num)
 			output = *tmp;

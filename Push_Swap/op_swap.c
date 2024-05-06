@@ -6,14 +6,14 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 22:07:50 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/04/08 22:51:17 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/05/06 22:25:11 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft/libft.h"
 
-static void	ft_swap(t_node **stack)
+void	ft_swap(t_node **stack)
 {
 	t_node	*tmp;
 

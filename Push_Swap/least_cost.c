@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 22:16:41 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/06 22:02:40 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/05/06 22:50:59 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ t_node	*lowest_cost(t_node **a)
 void	ab_for(t_node **a, t_node **b, int a_idx, int b_idx)
 {
 	int	ab_loop;
-	int	ind_loop;
 
 	ab_loop = a_idx;
 	if (a_idx > b_idx)
@@ -53,7 +52,6 @@ void	ab_for(t_node **a, t_node **b, int a_idx, int b_idx)
 void	ab_back(t_node **a, t_node **b, int a_idx, int b_idx)
 {
 	int	ab_loop;
-	int	ind_loop;
 
 	ab_loop = a_idx;
 	if (a_idx > b_idx)
@@ -101,5 +99,5 @@ void	ft_least(t_node **a, t_node **b)
 		ab_back(a, b, s_a->back_ind, s_b->back_ind);
 	stack_exec(a, s_a, 'a');
 	stack_exec(b, s_b, 'b');
-	ft_pa(a);
+	ft_pb(a, b);
 }

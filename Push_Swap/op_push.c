@@ -6,14 +6,14 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 22:13:44 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/04/08 22:51:52 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/05/06 22:50:37 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft/libft.h"
 
-static void	ft_push(t_node **pusher, t_node **receiver)
+void	ft_push(t_node **pusher, t_node **receiver)
 {
 	t_node	*push;
 
@@ -35,7 +35,7 @@ static void	ft_push(t_node **pusher, t_node **receiver)
 	}
 }
 
-void	ft_pa(t_node **b, t_node **a)
+void	ft_pa(t_node **a, t_node **b)
 {
 	ft_push(b, a);
 	write(1, "pa\n", 3);

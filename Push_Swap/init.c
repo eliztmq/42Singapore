@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 22:22:49 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/04/22 22:45:47 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/05/06 22:34:23 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	add_node(t_node **a, int num)
 		new_node->prev = NULL;
 		return ;
 	}
-	last_node = ft_lstlast(*a);
+	last_node = lstlast(*a);
 	new_node->prev = last_node;
 	last_node->next = new_node;
 }
