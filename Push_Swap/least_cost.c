@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 22:16:41 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/02 23:08:26 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/05/06 22:02:40 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	stack_exec(t_node **stack, t_node *target, char stack_name)
 			if (target->for_ind <= target->back_ind)
 				ft_rb(stack);
 			else
-				ft_rrb(stack);			
+				ft_rrb(stack);
 		}
 	}
 }

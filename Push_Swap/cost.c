@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 22:14:54 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/02 22:43:25 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/05/06 22:02:23 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	fill_index(t_node **stack)
 		return (0);
 	for_ind = 0;
 	back_ind = ft_lstsize(*stack);
-	while(*stack)
+	while (*stack)
 	{
 		(*stack)->for_ind = for_ind;
 		(*stack)->back_ind = back_ind;
@@ -30,7 +30,7 @@ int	fill_index(t_node **stack)
 		back_ind--;
 		(*stack) = (*stack)->next;
 	}
-	return(1);
+	return (1);
 }
 
 t_node	*comp_stack(t_node *inc_node, t_node **stack)
@@ -43,10 +43,10 @@ t_node	*comp_stack(t_node *inc_node, t_node **stack)
 	while (*tmp)
 	{
 		if (!(*tmp)->next)
-			if ((*tmp)->nu
-			m < inc_node->num && (*stack)->num > inc_node->num)
+			if ((*tmp)->num < inc_node->num && (*stack)->num > inc_node->num)
 				output = tmp;
-		else if ((*tmp)->num < inc_node->num && (*tmp)->next->num > inc_node->num)
+		else if ((*tmp)->num < inc_node->num
+			&& (*tmp)->next->num > inc_node->num)
 			output = *tmp;
 		*tmp = (*tmp)->next;
 	}
@@ -55,14 +55,16 @@ t_node	*comp_stack(t_node *inc_node, t_node **stack)
 
 void	fill_cost(t_node *p_stack, t_node *r_stack)
 {
-	if (p_stack->for_ind <= p_stack->back_ind && r_stack->for_ind <= r_stack->back_ind)
+	if (p_stack->for_ind <= p_stack->back_ind
+		&& r_stack->for_ind <= r_stack->back_ind)
 	{
 		if (p_stack->for_ind >= r_stack->for_ind)
 			p_stack->cost = p_stack->for_ind;
 		else
 			p_stack->cost = r_stack->for_ind;
 	}
-	else if (p_stack->for_ind > p_stack->back_ind && r_stack->for_ind > r_stack->back_ind)
+	else if (p_stack->for_ind > p_stack->back_ind
+		&& r_stack->for_ind > r_stack->back_ind)
 	{
 		if (p_stack->back_ind >= r_stack->back_ind)
 			p_stack->cost = p_stack->back_ind;
@@ -71,7 +73,8 @@ void	fill_cost(t_node *p_stack, t_node *r_stack)
 	}
 	else
 	{
-		if (p_stack->for_ind + r_stack->back_ind < p_stack->back_ind + r_stack->for_ind)
+		if (p_stack->for_ind + r_stack->back_ind
+			< p_stack->back_ind + r_stack->for_ind)
 			p_stack->cost = p_stack->for_ind + r_stack->back_ind;
 		else
 			p_stack->cost = p_stack->back_ind + r_stack->for_ind;

@@ -1,46 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push_back.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/11 22:21:42 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/06 21:59:23 by elizabethte      ###   ########.fr       */
+/*   Created: 2024/05/06 21:32:23 by elizabethte       #+#    #+#             */
+/*   Updated: 2024/05/06 21:46:12 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft/libft.h"
 
-void	free_stack(t_node **stack)
+void	ft_pushback(t_node **a, t_node **b)
 {
-	t_node	*tmp;
+	t_node	*r_a;
+	t_node	*p_b;
 
-	if (!stack)
-		return ;
-	while (*stack)
+	while (!(*b))
 	{
-		tmp = (*stack)->next;
-		free(*stack);
-		*stack = tmp;
+		ft_cost(b, a);
+		p_b = lowest_cost(b);
+		r_a = comp_stack(p_b, a);
+		if (r_a->for_ind <= r_a->back_ind && p_b->for_ind <= p_b->back_ind)
+			ab_for(a, b, r_a->for_ind, p_b->for_ind);
+		else if (r_a->for_ind > r_a->back_ind && p_b->for_ind > p_b->back_ind)
+			ab_back(a, b, r_a->back_ind, p_b->back_ind);
+		stack_exec(a, r_a, 'a');
+		stack_exec(b, p_b, 'b');
+		ft_pb(b);
 	}
-}
-
-int	main(int argc, char **argv)
-{
-	t_node	*a;
-	t_node	*b;
-
-	if (argc == 1)
-		exit(EXIT_FAILURE);
-	a = NULL;
-	b = NULL;
-	if (ft_process(argv, &a))
-	{
-		write(2, "Error\n", 6);
-		exit(EXIT_FAILURE);
-	}
-	ft_execute(&a, &b);
-	free_stack(&a);
 }

@@ -93,7 +93,7 @@ a. MAIN: filter based on same conditions and execute operations accordingly
 b. output node with the lowest cost in the stack
 c. execution when both stacks need forward rotation
 d. execution when both stacks need backward rotation
-e. execution when both stacks have separate rotations needed
+e. execution stack needs separate rotation (will have to be applicable to either a or b, flag required)
 
 --basic--
 a. Basic operation for when stack = 3 numbers THEN ONTO push back
@@ -105,7 +105,7 @@ a. initialise function 4a and 4b
 b. MAIN REPEATED: execution from 4c 
 c. check if list already ordered -> free stack a
 
---push back--
+--push back-- (SHOULD HIGHLIGHT IF THERE ARE SIMILARITIES IN LOGIC AND THINK ABOUT HOW TO BRING THEM TOGETHER)
 a. use calc cost (c) logic to rotate stack A accordingly for push from B
 b. find min of stack A to do rotation for output
 
