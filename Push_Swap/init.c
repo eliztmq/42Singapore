@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 22:22:49 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/10 08:03:51 by eteo             ###   ########.fr       */
+/*   Updated: 2024/05/10 16:39:30 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,16 @@ int	if_alpha(char *str)
 
 int	check_dup(t_node **a, int num)
 {
+	t_node	**tmp;
+
 	if (!*a)
 		return (0);
-	while (*a)
+	tmp = a;
+	while (*tmp)
 	{
-		if ((*a)->num == num)
+		if ((*tmp)->num == num)
 			return (1);
-		(*a) = (*a)->next;
+		(*tmp) = (*tmp)->next;
 	}
 	return (0);
 }

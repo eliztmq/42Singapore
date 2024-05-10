@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:49:20 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/06 22:38:38 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/05/10 17:02:12 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,17 @@ int	check_order(t_node **a)
 {
 	int	check;
 	int	flag;
+	t_node	*tmp;
 
 	check = INT_MIN;
 	flag = 0;
-	while (*a)
+	tmp = *a;
+	while (tmp)
 	{
-		if ((*a)->num >= check)
+		if ((tmp)->num >= check)
 		{
-			check = (*a)->num;
-			(*a) = (*a)->next;
+			check = (tmp)->num;
+			(tmp) = (tmp)->next;
 			flag = 1;
 		}
 		else

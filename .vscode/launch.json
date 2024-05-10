@@ -5,11 +5,17 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"type": "by-gdb",
-			"request": "launch",
-			"name": "Launch(gdb)",
-			"program": "${fileBasenameNoExtension}",
-			"cwd": "${workspaceRoot}"
+            "name": "(lldb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "preLaunchTask": "C/C++: gcc build active file"
 		}
 	]
 }

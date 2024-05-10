@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 22:16:41 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/06 22:50:59 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/05/10 17:19:12 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,20 @@ t_node	*lowest_cost(t_node **a)
 {
 	t_node	*output;
 	int		min;
+	t_node	*tmp;
 
 	min = INT_MAX;
-	while (*a)
+	tmp = *a;
+	while (tmp)
 	{
-		if ((*a)->cost == 0)
-			return (*a);
-		if ((*a)->cost < min)
+		if ((tmp)->cost == 0)
+			return (tmp);
+		if ((tmp)->cost < min)
 		{
-			min = (*a)->cost;
-			output = *a;
+			min = (tmp)->cost;
+			output = tmp;
 		}
-		(*a) = (*a)->next;
+		(tmp) = (tmp)->next;
 	}
 	return (output);
 }

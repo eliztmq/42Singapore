@@ -6,6 +6,7 @@
 		"mlx.h": "c",
 		"mlx_int.h": "c",
 		"fdf.h": "c",
-		"stddef.h": "c"
+		"stddef.h": "c",
+		"ratio": "c"
 	}
 }
