@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
+/*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 22:22:49 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/06 22:34:23 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/05/10 08:03:51 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	add_node(t_node **a, int num)
 
 	new_node = (t_node *)malloc(sizeof(t_node));
 	if (new_node == NULL)
-		exit (EXIT_FAILURE);
+		return ;
 	new_node->num = num;
 	new_node->next = NULL;
 	if (*a == NULL)

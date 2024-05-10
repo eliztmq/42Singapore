@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+         #
+#    By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/07 22:02:13 by elizabethte       #+#    #+#              #
-#    Updated: 2024/05/06 22:54:56 by elizabethte      ###   ########.fr        #
+#    Updated: 2024/05/10 05:22:27 by eteo             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ LIBFT = $(LIBFT_PATH)/libft.a
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 
 SRC =  op_push.c op_revrotate.c op_rotate.c op_swap.c\
 init.c exec.c basic.c push_swap.c cost.c least_cost.c push_back.c\
