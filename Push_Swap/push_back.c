@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_back.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
+/*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 21:32:23 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/06 22:50:46 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/05/13 15:10:25 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ void	ft_pushback(t_node **a, t_node **b)
 			ab_back(a, b, r_a->back_ind, p_b->back_ind);
 		stack_exec(a, r_a, 'a');
 		stack_exec(b, p_b, 'b');
-		ft_pa(a, b);
+		ft_pa(b, a);
 	}
 }

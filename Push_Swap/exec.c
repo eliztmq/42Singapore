@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
+/*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:49:20 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/10 17:02:12 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/05/13 15:10:02 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,6 @@ void	ft_execute(t_node **a, t_node **b)
 		return ;
 	}
 	while (--count)
-		ft_pa(a, b);
+		ft_pb(a, b);
 	exec_loop(a, b);
 }

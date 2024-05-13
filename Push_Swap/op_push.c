@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
+/*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 22:13:44 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/06 22:50:37 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/05/13 15:09:52 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_push(t_node **pusher, t_node **receiver)
 	}
 }
 
-void	ft_pa(t_node **a, t_node **b)
+void	ft_pa(t_node **b, t_node **a)
 {
 	ft_push(b, a);
 	write(1, "pa\n", 3);

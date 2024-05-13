@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cost.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
+/*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 22:14:54 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/10 17:16:41 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/05/13 15:20:03 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	fill_index(t_node **stack)
 	return (1);
 }
 
-t_node	*comp_stack(t_node *inc_node, t_node **stack)
+t_node	*comp_stack(t_node *inc_node, t_node **stack) //debug checking till here
 {
 	t_node	*output;
 	t_node	*tmp;
@@ -47,7 +47,7 @@ t_node	*comp_stack(t_node *inc_node, t_node **stack)
 	{
 		if (!(tmp)->next)
 		{
-			if ((tmp)->num < inc_node->num && (tmp)->num > inc_node->num)
+			if ((tmp)->num < inc_node->num && (*stack)->num > inc_node->num)
 				output = tmp;
 		}
 		else if ((tmp)->num < inc_node->num
@@ -89,16 +89,16 @@ void	fill_cost(t_node *p_stack, t_node *r_stack)
 void	ft_cost(t_node **p_stack, t_node **r_stack)
 {
 	t_node	*r_in;
-	t_node	**tmp_p;
+	t_node	*tmp_p;
 
 	if (!fill_index(p_stack) && !fill_index(r_stack))
 		return ;
-	tmp_p = p_stack;
+	tmp_p = *p_stack;
 	while (*p_stack)
 	{
 		r_in = comp_stack(*p_stack, r_stack);
 		fill_cost(*p_stack, r_in);
 		(*p_stack) = (*p_stack)->next;
 	}
-	p_stack = tmp_p;
+	*p_stack = tmp_p;
 }
