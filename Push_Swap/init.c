@@ -6,7 +6,7 @@
 /*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 22:22:49 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/10 16:39:30 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/05/13 22:16:09 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,16 @@ int	if_alpha(char *str)
 
 int	check_dup(t_node **a, int num)
 {
-	t_node	**tmp;
+	t_node	*tmp;
 
-	if (!*a)
+	tmp = *a;
+	if (!tmp)
 		return (0);
-	tmp = a;
-	while (*tmp)
+	while (tmp)
 	{
-		if ((*tmp)->num == num)
+		if ((tmp)->num == num)
 			return (1);
-		(*tmp) = (*tmp)->next;
+		(tmp) = (tmp)->next;
 	}
 	return (0);
 }
