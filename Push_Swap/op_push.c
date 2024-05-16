@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 22:13:44 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/13 15:09:52 by eteo             ###   ########.fr       */
+/*   Updated: 2024/05/16 06:58:29 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	ft_push(t_node **pusher, t_node **receiver)
 		return ;
 	push = (*pusher);
 	(*pusher) = (*pusher)->next;
-	(*pusher)->prev = NULL;
+	if (*pusher)
+		(*pusher)->prev = NULL;
 	if (!(*receiver))
 	{
 		(*receiver) = push;

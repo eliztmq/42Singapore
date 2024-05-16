@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 22:14:54 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/13 15:20:03 by eteo             ###   ########.fr       */
+/*   Updated: 2024/05/16 06:50:25 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	fill_index(t_node **stack)
 	return (1);
 }
 
-t_node	*comp_stack(t_node *inc_node, t_node **stack) //debug checking till here
+t_node	*comp_stack(t_node *inc_node, t_node **stack)
 {
 	t_node	*output;
 	t_node	*tmp;
@@ -45,14 +45,17 @@ t_node	*comp_stack(t_node *inc_node, t_node **stack) //debug checking till here
 	tmp = *stack;
 	while (tmp)
 	{
-		if (!(tmp)->next)
+		if ((inc_node->num > max_stack(*stack) || inc_node->num < min_stack(*stack)) && (tmp->num == max_stack(*stack) || tmp->num == min_stack(*stack)))
+			return (tmp);
+		else if (!(tmp)->next)
 		{
 			if ((tmp)->num < inc_node->num && (*stack)->num > inc_node->num)
-				output = tmp;
+				return (tmp);
 		}
 		else if ((tmp)->num < inc_node->num
 			&& (tmp)->next->num > inc_node->num)
-			output = tmp;
+			return (tmp);
+
 		tmp = (tmp)->next;
 	}
 	return (output);

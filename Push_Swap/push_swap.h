@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
+/*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 21:48:55 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/06 22:37:40 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/05/16 07:35:19 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ typedef struct s_node
 void	free_stack(t_node **stack);
 
 //push_back.c
+t_node	*min_pos(t_node *a, int min);
+void	rot_a(t_node **a);
 void	ft_pushback(t_node **a, t_node **b);
 
 //least_cost.c
@@ -49,7 +51,7 @@ void	add_node(t_node **a, int num);
 int		ft_process(char **argv, t_node **a);
 
 //exec.c
-int	lstsize(t_node *lst);
+int		lstsize(t_node *lst);
 int		check_order(t_node **a);
 void	exec_loop(t_node **a, t_node **b);
 void	ft_execute(t_node **a, t_node **b);

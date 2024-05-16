@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:49:20 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/13 15:10:02 by eteo             ###   ########.fr       */
+/*   Updated: 2024/05/16 07:11:41 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int	lstsize(t_node *lst)
 
 int	check_order(t_node **a)
 {
-	int	check;
-	int	flag;
+	int		check;
+	int		flag;
 	t_node	*tmp;
 
 	check = INT_MIN;

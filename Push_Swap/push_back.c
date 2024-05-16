@@ -6,19 +6,52 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 21:32:23 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/13 15:10:25 by eteo             ###   ########.fr       */
+/*   Updated: 2024/05/16 07:35:40 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft/libft.h"
 
+t_node	*min_pos(t_node *a, int min)
+{
+	t_node	*tmp;
+
+	tmp = a;
+	while (tmp)
+	{
+		if (tmp->num == min)
+			return (tmp);
+		tmp = tmp->next;
+	}
+	return (tmp);
+}
+
+void	rot_a(t_node **a)
+{
+	t_node	*min_a;
+	int		rot_freq;
+
+	min_a = min_pos(*a, min_stack(*a));
+	rot_freq = min_a->for_ind;
+	if (min_a->back_ind < min_a->for_ind)
+		rot_freq = min_a->back_ind;
+	while (rot_freq)
+	{
+		if (min_a->back_ind < min_a->for_ind)
+			ft_rra(a);
+		else
+			ft_ra(a);
+		rot_freq--;
+	}
+}
+
 void	ft_pushback(t_node **a, t_node **b)
 {
 	t_node	*r_a;
 	t_node	*p_b;
 
-	while (!(*b))
+	while (*b)
 	{
 		ft_cost(b, a);
 		p_b = lowest_cost(b);
@@ -31,4 +64,5 @@ void	ft_pushback(t_node **a, t_node **b)
 		stack_exec(b, p_b, 'b');
 		ft_pa(b, a);
 	}
+	rot_a(a);
 }
