@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cost.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
+/*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 22:14:54 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/17 10:32:33 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/05/17 03:27:46 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,17 @@ t_node	*comp_stack(t_node *inc_node, t_node **stack)
 	while (tmp)
 	{
 		if ((inc_node->num > max_stack(*stack)
-				|| inc_node->num < min_stack(*stack))
-			&& (tmp->num == max_stack(*stack)
-				|| tmp->num == min_stack(*stack)))
+			|| inc_node->num < min_stack(*stack))
+			&& tmp->num == min_stack(*stack))
 			return (tmp);
-		else if (!(tmp)->next)
+		else if (!(tmp)->prev)
 		{
-			if ((tmp)->num < inc_node->num && (*stack)->num > inc_node->num)
+			if ((tmp)->num > inc_node->num
+				&& lstlast(*stack)->num < inc_node->num)
 				return (tmp);
 		}
-		else if ((tmp)->num < inc_node->num
-			&& (tmp)->next->num > inc_node->num)
+		else if ((tmp)->num > inc_node->num
+			&& (tmp)->prev->num < inc_node->num)
 			return (tmp);
 		tmp = (tmp)->next;
 	}

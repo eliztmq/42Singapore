@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 21:32:23 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/16 07:35:40 by eteo             ###   ########.fr       */
+/*   Updated: 2024/05/17 03:17:49 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	rot_a(t_node **a)
 	t_node	*min_a;
 	int		rot_freq;
 
+	fill_index(a);
 	min_a = min_pos(*a, min_stack(*a));
 	rot_freq = min_a->for_ind;
 	if (min_a->back_ind < min_a->for_ind)

@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:49:20 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/16 07:11:41 by eteo             ###   ########.fr       */
+/*   Updated: 2024/05/17 03:55:15 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,32 @@ int	lstsize(t_node *lst)
 		i++;
 	}
 	return (i);
+}
+
+int	desc_order(t_node **a)
+{
+	int		check;
+	int		flag;
+	t_node	*tmp;
+
+	check = INT_MAX;
+	flag = 0;
+	tmp = *a;
+	while (tmp)
+	{
+		if ((tmp)->num <= check)
+		{
+			check = (tmp)->num;
+			(tmp) = (tmp)->next;
+			flag = 1;
+		}
+		else
+		{
+			flag = 0;
+			break ;
+		}
+	}
+	return (flag);
 }
 
 int	check_order(t_node **a)
@@ -58,7 +84,8 @@ void	exec_loop(t_node **a, t_node **b)
 {
 	if (lstsize(*a) <= 3)
 	{
-		basic_op(a);
+		if (!check_order(a) && !desc_order(a))
+			basic_op(a);
 		ft_pushback(a, b);
 		return ;
 	}
