@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cost.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 22:14:54 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/17 14:56:22 by eteo             ###   ########.fr       */
+/*   Updated: 2024/05/17 23:03:51 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ t_node	*comp_stack(t_node *inc_node, t_node **stack)
 	while (tmp)
 	{
 		if (inc_node->num > max_stack(*stack) && tmp->num == min_stack(*stack))
+			return (tmp);
+		if (inc_node->num < min_stack(*stack) && tmp->num == max_stack(*stack))
 			return (tmp);
 		else if ((tmp)->num > inc_node->num
 			&& (tmp)->num - inc_node->num <= diff)
