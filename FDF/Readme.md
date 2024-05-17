@@ -10,3 +10,9 @@ Objective: to use MiniLibX to create a simple wireframe model representation of 
 Navigation of model space: Rotation by right clicking and dragging of mouse
 
 Background: MiniLibX is a library developed internally that includes basic necessary tools to open a window, create images and deal with keyboard and mouse events
+
+
+ISSUE WITH WINDOW.C
+when file is really big, scale ~ 0, so need to add in line 76
+if (vis->scale == 0)
+	visc->scale = 1;
