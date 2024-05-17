@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cost.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 22:14:54 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/16 06:50:25 by eteo             ###   ########.fr       */
+/*   Updated: 2024/05/17 10:32:33 by elizabethte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 int	fill_index(t_node **stack)
 {
-	int	for_ind;
-	int	back_ind;
+	int		for_ind;
+	int		back_ind;
 	t_node	*tmp;
 
 	if (!(*stack))
@@ -45,7 +45,10 @@ t_node	*comp_stack(t_node *inc_node, t_node **stack)
 	tmp = *stack;
 	while (tmp)
 	{
-		if ((inc_node->num > max_stack(*stack) || inc_node->num < min_stack(*stack)) && (tmp->num == max_stack(*stack) || tmp->num == min_stack(*stack)))
+		if ((inc_node->num > max_stack(*stack)
+				|| inc_node->num < min_stack(*stack))
+			&& (tmp->num == max_stack(*stack)
+				|| tmp->num == min_stack(*stack)))
 			return (tmp);
 		else if (!(tmp)->next)
 		{
@@ -55,7 +58,6 @@ t_node	*comp_stack(t_node *inc_node, t_node **stack)
 		else if ((tmp)->num < inc_node->num
 			&& (tmp)->next->num > inc_node->num)
 			return (tmp);
-
 		tmp = (tmp)->next;
 	}
 	return (output);
