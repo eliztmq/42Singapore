@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   least_cost.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
+/*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 22:16:41 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/10 17:19:12 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/05/19 14:40:33 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ void	stack_exec(t_node **stack, t_node *target, char stack_name)
 		if (stack_name == 'a')
 		{
 			if (target->for_ind <= target->back_ind)
-				ft_ra(stack);
-			else
 				ft_rra(stack);
+			else
+				ft_ra(stack);
 		}
 		else if (stack_name == 'b')
 		{

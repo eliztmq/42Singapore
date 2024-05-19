@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 21:32:23 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/17 03:17:49 by eteo             ###   ########.fr       */
+/*   Updated: 2024/05/19 14:32:20 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ void	ft_pushback(t_node **a, t_node **b)
 			ab_for(a, b, r_a->for_ind, p_b->for_ind);
 		else if (r_a->for_ind > r_a->back_ind && p_b->for_ind > p_b->back_ind)
 			ab_back(a, b, r_a->back_ind, p_b->back_ind);
-		stack_exec(a, r_a, 'a');
 		stack_exec(b, p_b, 'b');
+		stack_exec(a, r_a, 'a');
 		ft_pa(b, a);
 	}
 	rot_a(a);
