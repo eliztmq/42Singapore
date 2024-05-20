@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 22:14:54 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/19 14:11:01 by eteo             ###   ########.fr       */
+/*   Updated: 2024/05/20 14:13:40 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,8 @@ void	ft_cost(t_node **p_stack, t_node **r_stack)
 	t_node	*r_in;
 	t_node	*tmp_p;
 
-	if (!fill_index(p_stack) && !fill_index(r_stack))
-		return ;
+	fill_index(p_stack);
+	fill_index(r_stack);
 	tmp_p = *p_stack;
 	while (*p_stack)
 	{

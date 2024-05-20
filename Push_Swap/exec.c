@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:49:20 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/19 14:11:32 by eteo             ###   ########.fr       */
+/*   Updated: 2024/05/20 14:40:54 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ void	ft_execute(t_node **a, t_node **b)
 	if (check_order(a))
 	{
 		free_stack(a);
-		write(1, "Arguments are in order\n", 24);
 		exit(EXIT_SUCCESS);
 	}
 	if (lstsize(*a) <= 3)

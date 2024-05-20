@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 22:16:41 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/19 14:40:33 by eteo             ###   ########.fr       */
+/*   Updated: 2024/05/20 07:45:43 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ void	stack_exec(t_node **stack, t_node *target, char stack_name)
 		if (stack_name == 'a')
 		{
 			if (target->for_ind <= target->back_ind)
-				ft_rra(stack);
-			else
 				ft_ra(stack);
+			else
+				ft_rra(stack);
 		}
 		else if (stack_name == 'b')
 		{

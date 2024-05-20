@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 22:22:49 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/13 14:50:17 by eteo             ###   ########.fr       */
+/*   Updated: 2024/05/20 15:08:02 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	ft_process(char **argv, t_node **a)
 		if (if_alpha(argv[i]))
 			return (1);
 		num = ft_atoi(argv[i]);
-		if (num >= INT_MAX || num <= INT_MIN)
+		if (num > INT_MAX || num < INT_MIN)
 			return (1);
 		if (check_dup(a, (int)num))
 			return (1);
