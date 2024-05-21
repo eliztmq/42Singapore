@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 21:48:55 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/19 14:11:40 by eteo             ###   ########.fr       */
+/*   Updated: 2024/05/21 08:10:09 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	free_stack(t_node **stack);
 //push_back.c
 t_node	*min_pos(t_node *a, int min);
 void	rot_a(t_node **a);
+t_node	*pushback_stack(t_node *inc_node, t_node **stack);
 void	ft_pushback(t_node **a, t_node **b);
 
 //least_cost.c

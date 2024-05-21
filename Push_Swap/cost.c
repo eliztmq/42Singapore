@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cost.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
+/*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 22:14:54 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/21 15:45:29 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/05/21 08:10:39 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,27 +40,27 @@ t_node	*comp_stack(t_node *inc_node, t_node **stack)
 {
 	t_node	*output;
 	t_node	*tmp;
-	t_node	*smallest;
+	t_node	*biggest;
 	int		diff;
 
 	output = NULL;
-	smallest = NULL;
+	biggest = NULL;
 	tmp = *stack;
 	diff = INT_MAX;
 	while (tmp)
 	{
 		if ((tmp)->num < inc_node->num
-			&& (tmp)->num - inc_node->num <= diff)
+			&& inc_node->num - (tmp)->num <= diff)
 		{
 			output = tmp;
-			diff = (tmp)->num - inc_node->num;
+			diff = inc_node->num - (tmp)->num;
 		}
 		if (tmp->num == max_stack(*stack))
-			smallest = tmp;
+			biggest = tmp;
 		tmp = (tmp)->next;
 	}
 	if (diff == INT_MAX)
-		output = smallest;
+		output = biggest;
 	return (output);
 }
 
