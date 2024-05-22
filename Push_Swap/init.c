@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 22:22:49 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/22 19:37:44 by eteo             ###   ########.fr       */
+/*   Updated: 2024/05/22 16:10:40 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	if_digit(char *str)
 	flag = 0;
 	while (str[++i])
 	{
+		if ((str[i] == '+' || str[i] == '-') && flag == 0)
+			i++;
 		if (str[i] >= '0' && str[i] <= '9')
 			flag = 1;
 		else if ((str[i] < '0' || str[i] > '9') && flag == 1)
