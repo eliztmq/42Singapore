@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:31:26 by eteo              #+#    #+#             */
-/*   Updated: 2024/02/28 15:04:34 by eteo             ###   ########.fr       */
+/*   Updated: 2024/05/22 14:39:52 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int			ft_tolower(int c);
 int			ft_strncmp(const char *str1, const char *str2, size_t n);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
 int			ft_atoi(const char *str);
+long		ft_atol(const char *str);
 char		*ft_strchr(const char *str, int c);
 char		*ft_strrchr(const char *str, int c);
 char		*ft_strnstr(const char *haystack, const char *needle, size_t len);

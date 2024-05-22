@@ -6,14 +6,14 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 22:22:49 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/20 15:08:02 by eteo             ###   ########.fr       */
+/*   Updated: 2024/05/22 19:37:44 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft/libft.h"
 
-int	if_alpha(char *str)
+int	if_digit(char *str)
 {
 	int	i;
 	int	flag;
@@ -22,8 +22,12 @@ int	if_alpha(char *str)
 	flag = 0;
 	while (str[++i])
 	{
-		if (ft_isalpha((int)str[i]))
+		if (str[i] >= '0' && str[i] <= '9')
 			flag = 1;
+		else if ((str[i] < '0' || str[i] > '9') && flag == 1)
+			flag = 0;
+		else
+			return (flag);
 	}
 	return (flag);
 }
@@ -73,9 +77,9 @@ int	ft_process(char **argv, t_node **a)
 	i = 0;
 	while (argv[++i])
 	{
-		if (if_alpha(argv[i]))
+		if (!if_digit(argv[i]))
 			return (1);
-		num = ft_atoi(argv[i]);
+		num = ft_atol(argv[i]);
 		if (num > INT_MAX || num < INT_MIN)
 			return (1);
 		if (check_dup(a, (int)num))

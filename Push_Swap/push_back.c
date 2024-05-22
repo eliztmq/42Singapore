@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 21:32:23 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/21 08:10:21 by eteo             ###   ########.fr       */
+/*   Updated: 2024/05/22 13:35:21 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,15 @@ void	ft_pushback(t_node **a, t_node **b)
 {
 	t_node	*r_a;
 	t_node	*p_b;
+	int		count;
 
+	count = 0;
 	while (*b)
 	{
 		ft_cost(b, a);
 		p_b = lowest_cost(b);
+		if (count > 0)
+			p_b = *b;
 		r_a = pushback_stack(p_b, a);
 		if (r_a->for_ind <= r_a->back_ind && p_b->for_ind <= p_b->back_ind)
 			ab_for(a, b, r_a->for_ind, p_b->for_ind);
@@ -92,6 +96,7 @@ void	ft_pushback(t_node **a, t_node **b)
 		stack_exec(b, p_b, 'b');
 		stack_exec(a, r_a, 'a');
 		ft_pa(b, a);
+		count++;
 	}
 	rot_a(a);
 }

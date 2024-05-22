@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 21:48:55 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/21 08:10:09 by eteo             ###   ########.fr       */
+/*   Updated: 2024/05/22 17:40:21 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@
 
 typedef struct s_node
 {
-	int		num;
+	int				num;
 	struct s_node	*prev;
 	struct s_node	*next;
-	int		for_ind;
-	int		back_ind;
-	int		cost;
+	int				for_ind;
+	int				back_ind;
+	int				cost;
 }	t_node;
 
 //push_swap.c
@@ -46,7 +46,7 @@ void	stack_exec(t_node **stack, t_node *target, char stack_name);
 void	ft_least(t_node **a, t_node **b);
 
 //init.c
-int		if_alpha(char *str);
+int		if_digit(char *str);
 int		check_dup(t_node **a, int num);
 void	add_node(t_node **a, int num);
 int		ft_process(char **argv, t_node **a);
