@@ -4,7 +4,7 @@ make re
 make clean
 
 # Define the length of each sequence
-sequence_lengths=(500)
+sequence_lengths=(5)
 
 # Specify the directory to store files
 output_directory="test_results"

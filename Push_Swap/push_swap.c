@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
+/*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 22:21:42 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/10 17:24:57 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/05/23 17:56:50 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	main(int argc, char **argv)
 	b = NULL;
 	if (ft_process(argv, &a))
 	{
+		free_stack(&a);
 		write(2, "Error\n", 6);
 		exit(EXIT_FAILURE);
 	}

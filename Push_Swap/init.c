@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 22:22:49 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/22 16:10:40 by eteo             ###   ########.fr       */
+/*   Updated: 2024/05/23 18:10:38 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int	if_digit(char *str)
 		if (str[i] >= '0' && str[i] <= '9')
 			flag = 1;
 		else if ((str[i] < '0' || str[i] > '9') && flag == 1)
-			flag = 0;
+			//flag = 0;
+			return (0);
 		else
 			return (flag);
 	}
