@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   basic.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elizabethteo <elizabethteo@student.42.f    +#+  +:+       +#+        */
+/*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 13:18:52 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/06 22:43:04 by elizabethte      ###   ########.fr       */
+/*   Updated: 2024/05/24 14:18:28 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	max_stack(t_node *a)
 	max = INT_MIN;
 	while (a)
 	{
-		if (a->num > max)
+		if (a->num >= max)
 			max = a->num;
 		a = a->next;
 	}
@@ -38,7 +38,7 @@ int	min_stack(t_node *a)
 	min = INT_MAX;
 	while (a)
 	{
-		if (a->num < min)
+		if (a->num <= min)
 			min = a->num;
 		a = a->next;
 	}

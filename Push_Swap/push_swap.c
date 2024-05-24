@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 22:21:42 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/23 17:56:50 by eteo             ###   ########.fr       */
+/*   Updated: 2024/05/24 14:13:45 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,28 @@ void	free_stack(t_node **stack)
 	}
 }
 
+void	norm(t_node **stack)
+{
+	unsigned int	rank;
+	t_node			*comp;
+	t_node			*tmp;
+
+	tmp = *stack;
+	while (tmp)
+	{
+		rank = 1;
+		comp = *stack;
+		while (comp)
+		{
+			if (comp->num < tmp->num)
+				rank++;
+			comp = comp->next;
+		}
+		tmp->rank = rank;
+		tmp = tmp->next;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_node	*a;
@@ -42,6 +64,7 @@ int	main(int argc, char **argv)
 		write(2, "Error\n", 6);
 		exit(EXIT_FAILURE);
 	}
+	norm(&a);
 	ft_execute(&a, &b);
 	free_stack(&a);
 }

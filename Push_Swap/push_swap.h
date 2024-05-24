@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 21:48:55 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/22 17:40:21 by eteo             ###   ########.fr       */
+/*   Updated: 2024/05/24 14:12:09 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 typedef struct s_node
 {
 	int				num;
+	int				rank;
 	struct s_node	*prev;
 	struct s_node	*next;
 	int				for_ind;
@@ -31,6 +32,7 @@ typedef struct s_node
 
 //push_swap.c
 void	free_stack(t_node **stack);
+void	norm(t_node **stack);
 
 //push_back.c
 t_node	*min_pos(t_node *a, int min);

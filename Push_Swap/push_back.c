@@ -6,7 +6,7 @@
 /*   By: eteo <eteo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 21:32:23 by elizabethte       #+#    #+#             */
-/*   Updated: 2024/05/22 13:35:21 by eteo             ###   ########.fr       */
+/*   Updated: 2024/05/24 14:17:46 by eteo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,11 @@ t_node	*pushback_stack(t_node *inc_node, t_node **stack)
 	diff = INT_MAX;
 	while (tmp)
 	{
-		if ((tmp)->num > inc_node->num
-			&& (tmp)->num - inc_node->num <= diff)
+		if ((tmp)->rank > inc_node->rank
+			&& (tmp)->rank - inc_node->rank <= diff)
 		{
 			output = tmp;
-			diff = (tmp)->num - inc_node->num;
+			diff = (tmp)->rank - inc_node->rank;
 		}
 		if (tmp->num == min_stack(*stack))
 			smallest = tmp;
