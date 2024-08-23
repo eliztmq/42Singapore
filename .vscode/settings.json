@@ -7,6 +7,8 @@
 		"mlx_int.h": "c",
 		"fdf.h": "c",
 		"stddef.h": "c",
-		"ratio": "c"
+		"ratio": "c",
+		"ft_printf.h": "c",
+		"minishell.h": "c"
 	}
 }
